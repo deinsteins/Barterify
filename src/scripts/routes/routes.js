@@ -1,6 +1,7 @@
+import Home from "../views/pages/home";
 
 const routes = {
-  // Add routes here
+  '/': Home
 };
 
 export default routes;

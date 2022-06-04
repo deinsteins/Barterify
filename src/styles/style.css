@@ -5,135 +5,141 @@
 @import "tailwindcss/utilities";
 
 body {
-    font-family: "Poppins", sans-serif;
-    margin: 0;
-    padding: 0;
-  }
-  
-  /* HEADER */
-  
-  header {
-    background-image: url("/images/Background_Home_Page.png");
-    min-height: 400px;
-    background-size: cover;
-    padding-bottom: 30px;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-  }
-  
-  header nav .logo {
-    width: 15%;
-    margin: 10px;
-    float: left;
-  }
-  
-  header h1 {
-    color: white;
-    margin-left: 20px;
-    margin-top: 30px;
-  }
-  
-  header p {
-    color: white;
-    margin-left: 20px;
-    margin-bottom: 30px;
-  }
-  
-  header nav {
-    padding: 5px;
-    text-align: right;
-    position: sticky;
-    top: 0;
-    overflow: auto;
-    background-color: rgba(17, 43, 60, 0.5);
-  }
-  
-  header nav ul {
-    margin-top: 20px;
-  }
-  header nav li {
-    display: inline;
-    list-style-type: none;
-    margin-right: 20px;
-  }
-  
-  header nav a {
-    font-size: 18px;
-    padding: 18px;
-    font-weight: 400;
-    text-decoration: none;
-    color: white;
-  }
-  header nav a:hover {
-    padding: 18px;
-    font-weight: bold;
-    color: rgb(255, 255, 255);
-    border: 1px solid white;
-    border-radius: 10px;
-  }
-  
-  .hero-title {
-    position: absolute;
-    top: 20%;
-    font-size: 32px;
-  }
-  
-  /*MAIN*/
-  main .kategori_card {
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-    border-radius: 5px;
-    padding: 20px;
-    margin-top: 20px;
-  }
-  main .kategori_card h1 {
-    margin-bottom: 20px;
-    color: #112b3c;
-    font-size: 20px;
-    text-align: center;
-  }
-  main .kategori_card h5 {
-    color: #205375;
-    text-align: center;
-  }
-  
-  main .produk_card {
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-    border-radius: 5px;
-    padding: 20px;
-    margin-top: 20px;
-  }
-  
-  main .produk_card h1 {
-    margin-bottom: 20px;
-    color: #112b3c;
-    font-size: 20px;
-    text-align: center;
-  }
-  main .produk_card h5 {
-    color: #205375;
-    text-align: center;
-  }
-  
-  .c-card img {
-    transition: transform 0.3s ease-in-out;
-  }
-  
-  .c-card:hover img {
-    transform: scale(1.05);
-  }
-  
-  .icon {
-    margin-right: 3px;
-  }
-  /*footer*/
-  
-  footer {
-    text-align: center;
-    background-color: #112b3c;
-    color: #a3a3a3;
-    padding: 30px;
-  }
-  
-  footer b {
-    color: #f66b0e;
-  }
-  
+  font-family: "Poppins", sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+/* HEADER */
+
+header {
+  background-image: url("/images/Background_Home_Page.png");
+  min-height: 500px;
+  background-size: cover;
+  padding-bottom: 30px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+header nav .logo {
+  width: 15%;
+  margin: 10px;
+  float: left;
+}
+
+header h1 {
+  color: white;
+  margin-left: 20px;
+  margin-top: 30px;
+}
+
+header p {
+  color: white;
+  margin-left: 20px;
+  margin-bottom: 30px;
+}
+
+nav {
+  padding: 5px;
+  text-align: right;
+  position: sticky;
+  top: 0;
+  background-color: rgba(17, 43, 60, 0.5);
+}
+
+header nav ul {
+  transition: transform 0.3s ease;
+  text-align: center;
+  margin-top: 20px;
+}
+header nav li {
+  display: inline;
+  list-style-type: none;
+  margin-right: 20px;
+}
+
+header nav a {
+  padding: 18px;
+}
+
+#link {
+  font-size: 18px;
+  padding: 18px;
+  font-weight: 400;
+  text-decoration: none;
+  color: white;
+}
+
+header nav a:hover {
+  padding: 12px;
+  font-weight: bold;
+  color: rgb(255, 255, 255);
+  border: 1px solid white;
+  border-radius: 10px;
+}
+
+.hero-title {
+  position: absolute;
+  left: 5%;
+  top: 25%;
+  font-size: 32px;
+}
+
+/*MAIN*/
+main .kategori_card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+  padding: 20px;
+  margin-top: 20px;
+}
+main .kategori_card h1 {
+  margin-bottom: 20px;
+  color: #112b3c;
+  font-size: 20px;
+  text-align: center;
+}
+main .kategori_card h5 {
+  color: #205375;
+  text-align: center;
+}
+
+main .produk_card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+  padding: 20px;
+  margin-top: 20px;
+}
+
+main .produk_card h1 {
+  margin-bottom: 20px;
+  color: #112b3c;
+  font-size: 20px;
+  text-align: center;
+}
+main .produk_card h5 {
+  color: #205375;
+  text-align: center;
+}
+
+.c-card img {
+  transition: transform 0.3s ease-in-out;
+}
+
+.c-card:hover img {
+  transform: scale(1.05);
+}
+
+.icon {
+  margin-right: 3px;
+}
+/*footer*/
+
+footer {
+  text-align: center;
+  background-color: #112b3c;
+  color: #a3a3a3;
+  padding: 30px;
+}
+
+footer b {
+  color: #f66b0e;
+}

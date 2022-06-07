@@ -75,6 +75,16 @@ class BarterifyDbSource {
       }
   }
 
+    static async Data() {
+      try {
+        const response = await axios.get('DATA.json');
+        console.log(response.data);
+        return response.data;
+      } catch (err) {
+        return { error: err.response || err.message };
+      }
+    }
+
 }
 
 export default BarterifyDbSource;

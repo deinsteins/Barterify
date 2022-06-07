@@ -179,48 +179,46 @@ const createFilterFormTemplate = () => `
 `;
 
 
-const createProductListTemplate = () => `
-            <div class="flex flex-wrap -mx-4" id="productCard">
-              <div class="w-full sm:w-1/2 md:w-1/2 xl:w-1/4 p-4">
-                <a
-                  href=""
-                  class="c-card block bg-white shadow-md hover:shadow-xl rounded-lg overflow-hidden"
-                >
-                  <div class="relative pb-48 overflow-hidden">
-                    <img
-                      class="absolute inset-0 h-full w-full object-cover"
-                      src="https://source.unsplash.com/random"
-                      alt=""
-                    />
-                  </div>
-                  <div class="p-4">
-                    <span
-                      class="inline-block px-2 py-1 leading-none bg-orange-200 text-orange-800 rounded-full font-semibold uppercase tracking-wide text-xs"
-                      >Nama User</span
-                    >
-                    <h2 class="mt-2 mb-2 font-bold">Lorem ipsum dolor</h2>
-                    <p class="text-sm">
-                      Lorem ipsum dolor sit amet consectetur, adipisicing elit. 
-                    </p>
-                    <div class="mt-3 flex items-center">
-                      <span class="text-sm font-semibold">Rp</span>&nbsp;<span
-                        class="font-bold text-xl"
-                        >45.000.000</span
-                      >
-                    </div>
-                  </div>
-                   <div class="p-4 border-t border-b text-xs text-gray-700">
-                    <span class="flex items-center mb-1">
-                      <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg> 3 hari lalu
-                    </span>
-                    <span class="flex items-center">
-                      <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s-8-4.5-8-11.8A8 8 0 0 1 12 2a8 8 0 0 1 8 8.2c0 7.3-8 11.8-8 11.8z"/><circle cx="12" cy="10" r="3"/></svg>
-                       Bekasi
-                    </span>
-                  </div>
-                  
-                </a>
-              </div>
+const createProductListTemplate = (product) => `
+        <div class="w-full sm:w-1/2 md:w-1/2 xl:w-1/4 p-4">
+        <a
+          href=""
+          class="c-card block bg-white shadow-md hover:shadow-xl rounded-lg overflow-hidden"
+        >
+          <div class="relative pb-48 overflow-hidden">
+            <img
+              class="absolute inset-0 h-full w-full object-cover"
+              src="${product.pictureId}"
+              alt=""
+            />
+          </div>
+          <div class="p-4">
+            <span
+              class="inline-block px-2 py-1 leading-none bg-orange-200 text-orange-800 rounded-full font-semibold uppercase tracking-wide text-xs"
+              >${product.username}</span
+            >
+            <h2 class="mt-2 mb-2 font-bold">${product.name}</h2>
+            <p class="text-sm">
+            ${product.description.slice(0, 50)}...
+            </p>
+            <div class="mt-3 flex items-center">
+              <span class="text-sm font-semibold">Rp</span>&nbsp;<span
+                class="font-bold text-l"
+                >${product.price}</span
+              >
+            </div>
+          </div>
+          <div class="p-4 border-t border-b text-xs text-gray-700">
+            <span class="flex items-center mb-1">
+              <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg> ${product.createdAt}
+            </span>
+            <span class="flex items-center">
+              <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s-8-4.5-8-11.8A8 8 0 0 1 12 2a8 8 0 0 1 8 8.2c0 7.3-8 11.8-8 11.8z"/><circle cx="12" cy="10" r="3"/></svg>
+              ${product.location}
+            </span>
+          </div>
+        </a>
+        </div>
 `;
 
 const createLoginRegisterFormTemplate = () => `
@@ -333,7 +331,7 @@ const createNavlinkWithoutAuth = () => `
               <a href="#" class="block md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700" id="link">Informasi</a>
               </li>
               <li>
-              <a href="#" class="block md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700" id="link">Tentang Kami</a>
+              <a href="#/about" class="block md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700" id="link">Tentang Kami</a>
               </li>
               <li>
               <a href="#/login-register" class="block md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700" id="link">Daftar/Masuk</a>
@@ -348,18 +346,18 @@ const createNavlinkWithAuth = () => `
               <a href="#" class="block md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700" id="link">Informasi</a>
               </li>
               <li>
-              <a href="#" class="block md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700" id="link">Tentang Kami</a>
+              <a href="#/about" class="block md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700" id="link">Tentang Kami</a>
               </li>
               <!-- Profile dropdown -->
               <div class="ml-3 relative">
-                <div class="mt-3">
+                <div class="mt-3" id="profileIcon">
                   <button type="button" class="bg-gray-800 flex text-sm rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white" id="user-menu-button" aria-expanded="false" aria-haspopup="true">
                     <span class="sr-only">Open user menu</span>
                     <svg xmlns="http://www.w3.org/2000/svg" width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="#FFFF" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><path d="M5.52 19c.64-2.2 1.84-3 3.22-3h6.52c1.38 0 2.58.8 3.22 3"/><circle cx="12" cy="10" r="3"/><circle cx="12" cy="12" r="10"/></svg>
                   </button>
                 </div>
                 <div class="hide origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1" id="user">
-                  <a href="#" class="block px-4 py-2 text-sm " role="menuitem" tabindex="-1" id="user-menu-item-0">Your Profile</a>
+                  <a href="#/profile" class="block px-4 py-2 text-sm " role="menuitem" tabindex="-1" id="user-menu-item-0">Your Profile</a>
                   <a href="#" class="block px-4 py-2 text-sm " role="menuitem" tabindex="-1" id="user-menu-item-1">Settings</a>
                   <a href="#" class="block px-4 py-2 text-sm " role="menuitem" tabindex="-1" id="user-menu-item-2">Sign out</a>
                 </div>
@@ -369,7 +367,6 @@ const createNavlinkWithAuth = () => `
 const createProductDetailTemplate = () => `
     
 `;
-
 
 export {
   createFilterFormTemplate,

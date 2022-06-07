@@ -90,5 +90,39 @@
       "createdAt": "2022-01-01",
       "username": "Jane Doe"
     }
+  ],
+  "teams": [
+    {
+      "name": "Deni Hidayat",
+      "photo": "images/photos/deni.jpeg",
+      "role": "Fullstack Developer",
+      "fb": "",
+      "linkedin": "https://linkedin.com/in/deni-hidayat-9a8b5b108/",
+      "github": "https://github.com/deinsteins"
+    },
+    {
+      "name": "Windiana Rosari Simangunsong",
+      "photo": "images/photos",
+      "role": "Frontend Developer",
+      "fb": "",
+      "linkedin": "",
+      "github": ""
+    },
+    {
+      "name": "Adam Arnap",
+      "photo": "images/photos",
+      "role": "Frontend Developer",
+      "fb": "",
+      "linkedin": "",
+      "github": ""
+    },
+    {
+      "name": "Tri Jannati Putri",
+      "photo": "images/photos",
+      "role": "Frontend Developer",
+      "fb": "",
+      "linkedin": "",
+      "github": ""
+    }
   ]
 }

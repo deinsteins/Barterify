@@ -1,6 +1,6 @@
 import BarterifyDbSource from "../../data/barterifydb-source";
 import { createLoginRegisterFormTemplate } from "../templates/template-creator";
-import { redirectUserLogin, redirectUserRegister } from "../../utils/redirect";
+import { redirectUserLogin, redirectUserRegister } from "../../utils/redirect-helper";
 import showMessage from "../../utils/alert-helper";
 
 const LoginRegister = {

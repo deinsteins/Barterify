@@ -11,6 +11,11 @@ self.addEventListener('activate', (event) => {
   event.waitUntil(CacheHelper.deleteOldCache());
 });
 
+
 self.addEventListener('fetch', (event) => {
-  event.respondWith(CacheHelper.revalidateCache(event.request));
+  if(event.request.method !== "GET") {
+    console.log('Cannot fetch POST');
+  }else {
+    event.respondWith(CacheHelper.revalidateCache(event.request));
+  }
 });

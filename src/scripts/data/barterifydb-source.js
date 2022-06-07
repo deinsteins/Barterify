@@ -56,7 +56,6 @@ class BarterifyDbSource {
 
     static async logout() {
       const jwtToken = localStorage.getItem('token').replaceAll('"', '');
-      console.log(jwtToken);
       try {
         const response = await axios({
           url: `${API_ENDPOINT.LOGOUT}`,

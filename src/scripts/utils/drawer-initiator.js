@@ -16,7 +16,7 @@ const DrawerInitiator = {
 
   _closeDrawer(event, drawer) {
     event.stopPropagation();
-    drawer.classList.remove('hidden');
+    drawer.classList.add('hidden');
   },
 };
 

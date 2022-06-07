@@ -9,10 +9,12 @@ class AppBar extends HTMLElement {
   render() {
     this.innerHTML = `
     <header>
+    <div class="hero-image">
     <div class="hero-title">
           <h1><b>Tukarkan barangmu disini.</b></h1>
           <p>Cepat, Mudah, dan Aman</p>
       </div>
+    </div>
     <nav>
     <div class="container flex flex-wrap justify-between items-center mx-auto">
       <a href="/" class="flex items-center" >
@@ -57,6 +59,12 @@ class AppBar extends HTMLElement {
           e.preventDefault();
           const userDropdown = document.getElementById('user');
           userDropdown.classList.toggle('show');
+        });
+
+        document.querySelector('main').addEventListener('click', async (e) => {
+          e.preventDefault();
+          const userDropdown = document.getElementById('user');
+          userDropdown.classList.remove('show');
         });
 
         document.getElementById('user-menu-item-2').addEventListener('click', async (e) => {

@@ -13,8 +13,7 @@ body {
 }
 
 /* HEADER */
-
-header {
+.hero-image {
   background-image: url("/images/Background_Home_Page.png");
   min-height: 500px;
   background-size: cover;
@@ -42,8 +41,9 @@ header p {
 
 nav {
   padding: 5px;
+  width: 100%;
   text-align: right;
-  position: sticky;
+  position: absolute;
   top: 0;
   background-color: rgba(17, 43, 60, 0.5);
 }
@@ -173,4 +173,8 @@ footer b {
 }
 .overlay > div > * {
   margin: 2rem;
+}
+
+#profileIcon {
+  margin: auto 0;
 }

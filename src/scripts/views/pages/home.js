@@ -4,6 +4,11 @@ import DATA from '../../../../DATA.json';
 const Home = {
 
   async render() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    const header = document.querySelector('header');
+    header.style.display = 'block';
+    const footer = document.querySelector('footer');
+    footer.style.display = 'block';
     return `
     <section>
         <div class="max-w-screen-xl px-4 py-12 mx-auto sm:px-6 lg:px-8">

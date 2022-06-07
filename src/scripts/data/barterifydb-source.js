@@ -75,6 +75,52 @@ class BarterifyDbSource {
       }
   }
 
+    static async profile() {
+      const jwtToken = localStorage.getItem('token').replaceAll('"', '');
+      try {
+        const response = await axios({
+          url: `${API_ENDPOINT.PROFILE}`,
+          method: 'GET',
+          headers: {
+              'Authorization': `${jwtToken}`
+          }
+        })
+        if (response.statusText !== 'OK') {
+          throw new Error(response.data.message);
+        }
+        return response.data;
+      } catch (err) {
+        return { error: err.response.data.message || err.message};
+      }
+    }
+
+    static async profileEdit({ firstname, lastname, gender, phone, address }) {
+      const jwtToken = localStorage.getItem('token').replaceAll('"', '');
+      try {
+        const response = await axios({
+          url: `${API_ENDPOINT.PROFILE}`,
+          method: 'PUT',
+          headers: {
+            'Authorization': `${jwtToken}`
+        },
+        data: {
+          firstname,
+          lastname,
+          gender,
+          phone,
+          address,
+        },
+        })
+        if (response.status !== 201) {
+          throw new Error(response);
+        }
+        console.log(response);
+        return response;
+      } catch (err) {
+        return { error: err.response  || err.message };
+      }
+    }
+
     static async Data() {
       try {
         const response = await axios.get('DATA.json');

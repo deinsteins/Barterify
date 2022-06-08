@@ -131,6 +131,22 @@ class BarterifyDbSource {
       }
     }
 
+    static async ProductList() {
+      try {
+        const response = await axios({
+          url: `${API_ENDPOINT.PRODUCT_LIST}`,
+          method: 'GET',
+        })
+
+        if(response.statusText !== 'OK'){
+          throw new Error(response.data.message);
+        }
+        return response.data;
+      } catch (err) {
+        return { error: err.response || err.message };
+      }
+    }
+
 }
 
 export default BarterifyDbSource;

@@ -188,18 +188,18 @@ const createProductListTemplate = (product) => `
           <div class="relative pb-48 overflow-hidden">
             <img
               class="absolute inset-0 h-full w-full object-cover"
-              src="${product.pictureId}"
+              src="https://source.unsplash.com/random"
               alt=""
             />
           </div>
           <div class="p-4">
             <span
               class="inline-block px-2 py-1 leading-none bg-orange-200 text-orange-800 rounded-full font-semibold uppercase tracking-wide text-xs"
-              >${product.username}</span
+              >${product.user.userName}</span
             >
             <h2 class="mt-2 mb-2 font-bold">${product.name}</h2>
             <p class="text-sm">
-            ${product.description.slice(0, 50)}...
+            ${product.details.description.slice(0, 50)}...
             </p>
             <div class="mt-3 flex items-center">
               <span class="text-sm font-semibold">Rp</span>&nbsp;<span
@@ -210,7 +210,7 @@ const createProductListTemplate = (product) => `
           </div>
           <div class="p-4 border-t border-b text-xs text-gray-700">
             <span class="flex items-center mb-1">
-              <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg> ${product.createdAt}
+              <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg> ${product.createdAt.slice(0, 10)}
             </span>
             <span class="flex items-center">
               <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s-8-4.5-8-11.8A8 8 0 0 1 12 2a8 8 0 0 1 8 8.2c0 7.3-8 11.8-8 11.8z"/><circle cx="12" cy="10" r="3"/></svg>

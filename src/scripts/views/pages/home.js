@@ -34,11 +34,11 @@ const Home = {
   },
 
   async afterRender() {
-    const productData = await BarterifyDbSource.Data();
+    const productData = await BarterifyDbSource.ProductList();
     const container= document.querySelector('#content');
     container.innerHTML += createFilterFormTemplate();
     const productList = document.querySelector('#productCard');
-    productData.products.forEach((product) =>{
+    productData.data.forEach((product) =>{
       productList.innerHTML += createProductListTemplate(product);
     });
   },

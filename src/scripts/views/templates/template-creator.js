@@ -179,7 +179,7 @@ const createProductListTemplate = (product) => `
           <div class="relative pb-48 overflow-hidden">
             <img
               class="absolute inset-0 h-full w-full object-cover"
-              src="https://source.unsplash.com/random"
+              src="${CONFIG.BASE_IMAGE_URL}${product.image}"
               alt=""
             />
           </div>
@@ -190,7 +190,7 @@ const createProductListTemplate = (product) => `
             >
             <h2 class="mt-2 mb-2 font-bold">${product.name}</h2>
             <p class="text-sm">
-            ${product.details.description.slice(0, 50)}...
+            ${product.description.slice(0, 50)}...
             </p>
             <div class="mt-3 flex items-center">
               <span class="text-sm font-semibold">Rp</span>&nbsp;<span
@@ -215,12 +215,12 @@ const createProductListTemplate = (product) => `
 
 const createProductDetailTemplate = (product) => `
       <div class="lg:w-4/5 mx-auto flex flex-wrap">
-      <img alt="ecommerce" class="lg:w-1/2 w-full lg:h-auto h-64 object-cover object-center rounded" src="https://dummyimage.com/400x400">
+      <img alt="ecommerce" class="lg:w-1/2 w-full lg:h-auto h-64 object-cover object-center rounded" src="${CONFIG.BASE_IMAGE_URL}${product.image}">
       <div class="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
         <h2 class="text-sm title-font text-gray-500 tracking-widest">${product.username}</h2>
         <h1 class="text-gray-900 text-3xl title-font font-medium mb-1">${product.name}</h1>
         <h2 class="text-sm title-font text-gray-500 tracking-widest">${product.createdAt.slice(0,10)}</h2>
-        <p class="mt-6 leading-relaxed">${product.details.description}</p>
+        <p class="mt-6 leading-relaxed">${product.description}</p>
         <div class="flex mt-6 items-center pb-5 border-b-2 border-gray-100 mb-5">
           <div class="flex">
             <span class="mr-3">Lokasi :</span>
@@ -229,7 +229,7 @@ const createProductDetailTemplate = (product) => `
           <div class="flex ml-6 items-center">
             <span class="mr-3">Tanggal Pembelian :</span>
             <div class="relative">
-              <span class="mr-3">${product.details.dateOfPurchase.slice(0,10)}</span>
+              <span class="mr-3">${product.dateOfPurchase.slice(0,10)}</span>
             </div>
           </div>
         </div>
@@ -262,7 +262,7 @@ const createUserProductListTemplate = (product) => `
           <div class="relative pb-48 overflow-hidden">
             <img
               class="absolute inset-0 h-full w-full object-cover"
-              src="https://source.unsplash.com/random"
+              src="${CONFIG.BASE_IMAGE_URL}${product.image}"
               alt=""
             />
           </div>
@@ -273,7 +273,7 @@ const createUserProductListTemplate = (product) => `
             >
             <h2 class="mt-2 mb-2 font-bold">${product.name}</h2>
             <p class="text-sm">
-            ${product.details.description.slice(0, 50)}...
+            ${product.description.slice(0, 50)}...
             </p>
             <div class="mt-3 flex items-center">
               <span class="text-sm font-semibold">Rp</span>&nbsp;<span
@@ -299,12 +299,12 @@ const createUserProductListTemplate = (product) => `
 
 const createUserProductDetailTemplate = (product) => `
         <div class="lg:w-4/5 mx-auto flex flex-wrap">
-        <img alt="ecommerce" class="lg:w-1/2 w-full lg:h-auto h-64 object-cover object-center rounded" src="https://dummyimage.com/400x400">
+        <img alt="ecommerce" class="lg:w-1/2 w-full lg:h-auto h-64 object-cover object-center rounded" src="${CONFIG.BASE_IMAGE_URL}${product.image}">
         <div class="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
           <h2 class="text-sm title-font text-gray-500 tracking-widest">${product.username}</h2>
           <h1 class="text-gray-900 text-3xl title-font font-medium mb-1">${product.name}</h1>
           <h2 class="text-sm title-font text-gray-500 tracking-widest">${product.createdAt.slice(0,10)}</h2>
-          <p class="mt-6 leading-relaxed">${product.details.description}</p>
+          <p class="mt-6 leading-relaxed">${product.description}</p>
           <div class="flex mt-6 items-center pb-5 border-b-2 border-gray-100 mb-5">
             <div class="flex">
               <span class="mr-3">Lokasi :</span>
@@ -313,7 +313,7 @@ const createUserProductDetailTemplate = (product) => `
             <div class="flex ml-6 items-center">
               <span class="mr-3">Tanggal Pembelian :</span>
               <div class="relative">
-                <span class="mr-3">${product.details.dateOfPurchase.slice(0,10)}</span>
+                <span class="mr-3">${product.dateOfPurchase.slice(0,10)}</span>
               </div>
             </div>
           </div>
@@ -461,7 +461,7 @@ const createNavlinkWithAuth = () => `
               <a href="#" class="block md:bg-transparent md:text-blue-700 md:p-0 dark:text-white" aria-current="page" id="link">Beranda</a>
               </li>
               <li>
-              <a href="information-page" class="block md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700" id="link">Informasi</a>
+              <a href="#/information-page" class="block md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700" id="link">Informasi</a>
               </li>
               <li>
               <a href="#/about" class="block md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700" id="link">Tentang Kami</a>

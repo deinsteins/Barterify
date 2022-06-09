@@ -461,7 +461,7 @@ const createNavlinkWithAuth = () => `
               <a href="#" class="block md:bg-transparent md:text-blue-700 md:p-0 dark:text-white" aria-current="page" id="link">Beranda</a>
               </li>
               <li>
-              <a href="information-page" class="block md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700" id="link">Informasi</a>
+              <a href="#/information-page" class="block md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700" id="link">Informasi</a>
               </li>
               <li>
               <a href="#/about" class="block md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700" id="link">Tentang Kami</a>
@@ -719,7 +719,7 @@ const createTeamCardTemplate = (data) => `
 
         <div class="flex">
           <div class="flex gap-4">
-            <a href="#">
+            <a href="${data.facebook}">
               <svg
                 class="w-6 h-6 text-blue-600 fill-current"
                 xmlns="http://www.w3.org/2000/svg"
@@ -730,7 +730,7 @@ const createTeamCardTemplate = (data) => `
                 />
               </svg>
             </a>
-            <a href="#">
+            <a href=${data.twitter}">
               <svg
                 class="w-6 h-6 text-blue-300 fill-current"
                 xmlns="http://www.w3.org/2000/svg"

@@ -6,6 +6,7 @@ const API_ENDPOINT = {
   LOGOUT: `${CONFIG.BASE_URL}/users/logout`,
   PROFILE: `${CONFIG.BASE_URL}/profiles`,
   PRODUCT_LIST: `${CONFIG.BASE_URL}/products/all`,
+  PRODUCT: `${CONFIG.BASE_URL}/products`,
 };
 
 export default API_ENDPOINT;

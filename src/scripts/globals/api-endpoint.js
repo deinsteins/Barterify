@@ -7,6 +7,7 @@ const API_ENDPOINT = {
   PROFILE: `${CONFIG.BASE_URL}/profiles`,
   PRODUCT_LIST: `${CONFIG.BASE_URL}/products/all`,
   PRODUCT: `${CONFIG.BASE_URL}/products`,
+  CATEGORY: `${CONFIG.BASE_URL}/products-categories`,
 };
 
 export default API_ENDPOINT;

@@ -56,19 +56,17 @@ class AppBar extends HTMLElement {
       } else {
         navlinkContainer.innerHTML += createNavlinkWithAuth();
         document.getElementById('user-menu-button').addEventListener('click', async (e) => {
-          e.preventDefault();
+          // e.preventDefault();
           const userDropdown = document.getElementById('user');
           userDropdown.classList.toggle('show');
         });
 
         document.querySelector('main').addEventListener('click', async (e) => {
-          e.preventDefault();
           const userDropdown = document.getElementById('user');
           userDropdown.classList.remove('show');
         });
 
         document.getElementById('user-menu-item-2').addEventListener('click', async (e) => {
-          e.preventDefault();
           const data = await BarterifyDbSource.logout();
           if (data.success == '') {
             redirectUserRegister();

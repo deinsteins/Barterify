@@ -186,7 +186,7 @@ const createProductListTemplate = (product) => `
           <div class="p-4">
             <span
               class="inline-block px-2 py-1 leading-none bg-orange-200 text-orange-800 rounded-full font-semibold uppercase tracking-wide text-xs"
-              >${product.user.userName}</span
+              >${product.username}</span
             >
             <h2 class="mt-2 mb-2 font-bold">${product.name}</h2>
             <p class="text-sm">
@@ -217,7 +217,7 @@ const createProductDetailTemplate = (product) => `
       <div class="lg:w-4/5 mx-auto flex flex-wrap">
       <img alt="ecommerce" class="lg:w-1/2 w-full lg:h-auto h-64 object-cover object-center rounded" src="https://dummyimage.com/400x400">
       <div class="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
-        <h2 class="text-sm title-font text-gray-500 tracking-widest">${product.user.userName}</h2>
+        <h2 class="text-sm title-font text-gray-500 tracking-widest">${product.username}</h2>
         <h1 class="text-gray-900 text-3xl title-font font-medium mb-1">${product.name}</h1>
         <h2 class="text-sm title-font text-gray-500 tracking-widest">${product.createdAt.slice(0,10)}</h2>
         <p class="mt-6 leading-relaxed">${product.details.description}</p>
@@ -255,7 +255,7 @@ const createProductDetailTemplate = (product) => `
 const createUserProductListTemplate = (product) => `
         <div class="w-full sm:w-1/2 md:w-1/2 xl:w-1/4 p-4">
         <a
-          href="#/product/${product.id}"
+          href="#/userproducts/${product.id}"
           class="c-card block bg-white shadow-md hover:shadow-xl rounded-lg overflow-hidden"
           id="productLink"
         >
@@ -269,7 +269,7 @@ const createUserProductListTemplate = (product) => `
           <div class="p-4">
             <span
               class="inline-block px-2 py-1 leading-none bg-orange-200 text-orange-800 rounded-full font-semibold uppercase tracking-wide text-xs"
-              >${product.user.userName}</span
+              >${product.username}</span
             >
             <h2 class="mt-2 mb-2 font-bold">${product.name}</h2>
             <p class="text-sm">
@@ -295,6 +295,48 @@ const createUserProductListTemplate = (product) => `
         </a>
         </div>
 
+`;
+
+const createUserProductDetailTemplate = (product) => `
+        <div class="lg:w-4/5 mx-auto flex flex-wrap">
+        <img alt="ecommerce" class="lg:w-1/2 w-full lg:h-auto h-64 object-cover object-center rounded" src="https://dummyimage.com/400x400">
+        <div class="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
+          <h2 class="text-sm title-font text-gray-500 tracking-widest">${product.username}</h2>
+          <h1 class="text-gray-900 text-3xl title-font font-medium mb-1">${product.name}</h1>
+          <h2 class="text-sm title-font text-gray-500 tracking-widest">${product.createdAt.slice(0,10)}</h2>
+          <p class="mt-6 leading-relaxed">${product.details.description}</p>
+          <div class="flex mt-6 items-center pb-5 border-b-2 border-gray-100 mb-5">
+            <div class="flex">
+              <span class="mr-3">Lokasi :</span>
+              <span class="mr-3">${product.location}</span>
+            </div>
+            <div class="flex ml-6 items-center">
+              <span class="mr-3">Tanggal Pembelian :</span>
+              <div class="relative">
+                <span class="mr-3">${product.details.dateOfPurchase.slice(0,10)}</span>
+              </div>
+            </div>
+          </div>
+          <div class="flex">
+            <span class="title-font font-medium text-2xl text-gray-900">Rp.${product.price.toLocaleString()}</span>
+          </div>
+          <div class="flex">
+          <button class="flex mt-5 text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded">Ajukan Barter</button>
+            <button title="Chat dengan pemilik" class="mt-5 rounded-full w-10 h-10 bg-gray-200 p-0 border-0 inline-flex items-center justify-center text-gray-500 ml-4">
+            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
+            </button>
+            <button title="Tambahkan ke wishlist" class="mt-5 rounded-full w-10 h-10 bg-gray-200 p-0 border-0 inline-flex items-center justify-center text-gray-500 ml-4">
+              <svg fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
+                <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"></path>
+              </svg>
+            </button>
+          </div>
+          <div class="flex mt-5">
+          <button type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800" id="btnEdit">Edit</button>
+        <button type="button" class="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900" id="btnDelete">Hapus</button>
+        </div>
+        </div>
+        </div>
 `;
 
 const createLoginRegisterFormTemplate = () => `
@@ -840,6 +882,7 @@ export {
   createAddProductFormTemplate,
   createCategoriesTemplate,
   createProductDetailTemplate,
+  createUserProductDetailTemplate,
   createLoginRegisterFormTemplate,
   createNavlinkWithAuth,
   createNavlinkWithoutAuth,

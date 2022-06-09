@@ -18,4 +18,10 @@ const redirectInventory = () => {
   document.location.hash = '/inventory';
 };
 
-export { redirectUserLogin, redirectUserRegister, redirectUserProfile, redirectUserProfileEdit, redirectInventory };
+export { 
+  redirectUserLogin,
+  redirectUserRegister,
+  redirectUserProfile,
+  redirectUserProfileEdit,
+  redirectInventory,
+};

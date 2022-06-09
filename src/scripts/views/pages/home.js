@@ -4,7 +4,6 @@ import { createProductListTemplate, createFilterFormTemplate } from '../template
 const Home = {
 
   async render() {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
     const header = document.querySelector('header');
     header.style.display = 'block';
     const nav = document.querySelector('nav');

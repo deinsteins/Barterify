@@ -4,6 +4,7 @@ import UserProfile from "../views/pages/userProfile";
 import UserProfileEdit from "../views/pages/userProfileEdit";
 import About from "../views/pages/about";
 import Inventory from "../views/pages/inventory";
+import addProduct from "../views/pages/addProduct";
 
 const routes = {
   '/': Home,
@@ -13,6 +14,7 @@ const routes = {
   '/profile': UserProfile,
   '/profile-edit': UserProfileEdit,
   '/inventory': Inventory,
+  '/product': addProduct,
 };
 
 export default routes;

@@ -16,6 +16,7 @@ const redirectUserProfileEdit = () => {
 
 const redirectInventory = () => {
   document.location.hash = '/inventory';
+  window.location.reload();
 };
 
 export { 

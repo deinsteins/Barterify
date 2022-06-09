@@ -38,26 +38,26 @@ const createFilterFormTemplate = () => `
             <div class="px-5 py-6 space-y-2">
               <div class="flex items-center">
                 <input
-                  id="toy"
+                  id="barang"
                   type="checkbox"
-                  name="type[toy]"
+                  name="type[barang]"
                   class="w-5 h-5 border-gray-300 rounded"
                 />
 
-                <label for="toy" class="ml-3 text-sm font-medium">
+                <label for="barang" class="ml-3 text-sm font-medium">
                   Barang
                 </label>
               </div>
 
               <div class="flex items-center">
                 <input
-                  id="game"
+                  id="jasa"
                   type="checkbox"
-                  name="type[game]"
+                  name="type[jasa]"
                   class="w-5 h-5 border-gray-300 rounded"
                 />
 
-                <label for="game" class="ml-3 text-sm font-medium">
+                <label for="jasa" class="ml-3 text-sm font-medium">
                   Jasa
                 </label>
               </div>
@@ -75,63 +75,54 @@ const createFilterFormTemplate = () => `
               <div class="px-5 py-6 space-y-2">
                 <div class="flex items-center">
                   <input
-                    id="3+"
+                    id="semua-lokasi"
                     type="checkbox"
-                    name="age[3+]"
+                    name="location[semua-lokasi]"
                     class="w-5 h-5 border-gray-300 rounded"
                   />
 
-                  <label for="3+" class="ml-3 text-sm font-medium">
+                  <label for="semua-lokasi" class="ml-3 text-sm font-medium">
                     Semua Lokasi
                   </label>
                 </div>
 
                 <div class="flex items-center">
                   <input
-                    id="8+"
+                    id="bekasi"
                     type="checkbox"
-                    name="age[8+]"
+                    name="location[bekasi]"
                     class="w-5 h-5 border-gray-300 rounded"
                   />
 
-                  <label for="8+" class="ml-3 text-sm font-medium">
-                    Jawa Barat
+                  <label for="bekasi" class="ml-3 text-sm font-medium">
+                    Bekasi
                   </label>
                 </div>
 
                 <div class="flex items-center">
                   <input
-                    id="12+"
+                    id="jakarta"
                     type="checkbox"
-                    name="age[12+]"
+                    name="location[jakarta]"
                     class="w-5 h-5 border-gray-300 rounded"
                   />
 
-                  <label for="12+" class="ml-3 text-sm font-medium">
-                    Jawa Tengah
+                  <label for="jakarta" class="ml-3 text-sm font-medium">
+                    Jakarta
                   </label>
                 </div>
 
                 <div class="flex items-center">
                   <input
-                    id="16+"
+                    id="jogja"
                     type="checkbox"
-                    name="age[16+]"
+                    name="location[jogja]"
                     class="w-5 h-5 border-gray-300 rounded"
                   />
 
-                  <label for="16+" class="ml-3 text-sm font-medium">
-                    Jawa Timur
+                  <label for="jogja" class="ml-3 text-sm font-medium">
+                    Yogyakarta
                   </label>
-                </div>
-
-                <div class="pt-2">
-                  <button
-                    type="button"
-                    class="text-xs text-gray-500 underline"
-                  >
-                    Reset Lokasi
-                  </button>
                 </div>
               </div>
             </fieldset>
@@ -182,7 +173,7 @@ const createFilterFormTemplate = () => `
 const createProductListTemplate = (product) => `
         <div class="w-full sm:w-1/2 md:w-1/2 xl:w-1/4 p-4">
         <a
-          href=""
+          href="#/products/${product.id}"
           class="c-card block bg-white shadow-md hover:shadow-xl rounded-lg overflow-hidden"
         >
           <div class="relative pb-48 overflow-hidden">
@@ -208,6 +199,56 @@ const createProductListTemplate = (product) => `
               >
             </div>
           </div>
+          <div class="p-4 border-t border-b text-xs text-gray-700">
+            <span class="flex items-center mb-1">
+              <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg> ${product.createdAt.slice(0, 10)}
+            </span>
+            <span class="flex items-center">
+              <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s-8-4.5-8-11.8A8 8 0 0 1 12 2a8 8 0 0 1 8 8.2c0 7.3-8 11.8-8 11.8z"/><circle cx="12" cy="10" r="3"/></svg>
+              ${product.location}
+            </span>
+          </div>
+        </a>
+        </div>
+
+`;
+
+const createProductDetailTemplate = (product) => `
+        
+`;
+
+
+const createUserProductListTemplate = (product) => `
+        <div class="w-full sm:w-1/2 md:w-1/2 xl:w-1/4 p-4">
+        <a
+          href="#/product/${product.id}"
+          class="c-card block bg-white shadow-md hover:shadow-xl rounded-lg overflow-hidden"
+          id="productLink"
+        >
+          <div class="relative pb-48 overflow-hidden">
+            <img
+              class="absolute inset-0 h-full w-full object-cover"
+              src="https://source.unsplash.com/random"
+              alt=""
+            />
+          </div>
+          <div class="p-4">
+            <span
+              class="inline-block px-2 py-1 leading-none bg-orange-200 text-orange-800 rounded-full font-semibold uppercase tracking-wide text-xs"
+              >${product.user.userName}</span
+            >
+            <h2 class="mt-2 mb-2 font-bold">${product.name}</h2>
+            <p class="text-sm">
+            ${product.details.description.slice(0, 50)}...
+            </p>
+            <div class="mt-3 flex items-center">
+              <span class="text-sm font-semibold">Rp</span>&nbsp;<span
+                class="font-bold text-l"
+                >${product.price}</span
+              >
+            </div>
+          </div>
+          
           <div class="p-4 border-t border-b text-xs text-gray-700">
             <span class="flex items-center mb-1">
               <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg> ${product.createdAt.slice(0, 10)}
@@ -362,11 +403,6 @@ const createNavlinkWithAuth = () => `
                   <a href="#" class="block px-4 py-2 text-sm " role="menuitem" tabindex="-1" id="user-menu-item-1">Settings</a>
                   <a href="#" class="block px-4 py-2 text-sm " role="menuitem" tabindex="-1" id="user-menu-item-2">Sign out</a>
                 </div>
-`;
-
-
-const createProductDetailTemplate = () => `
-    
 `;
 
 const createProfileTemplate = (data) =>   `
@@ -649,6 +685,8 @@ const createTeamCardTemplate = (data) => `
 export {
   createFilterFormTemplate,
   createProductListTemplate,
+  createUserProductListTemplate,
+  createProductDetailTemplate,
   createLoginRegisterFormTemplate,
   createNavlinkWithAuth,
   createNavlinkWithoutAuth,

@@ -45,12 +45,11 @@ const addProduct = {
           description: document.getElementById('description').value,
           location: document.getElementById('location').value,
         });
-        console.log(data.error);
-        if (data.error) {
+        if (data.error.status == 400) {
           Swal.fire({
             icon: 'error',
             title: 'Oops...',
-            text: `${data.error.data.message}`,
+            text: 'Mohon lengkapi semua data',
           });
         } else {
           Swal.fire({

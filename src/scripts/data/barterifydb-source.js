@@ -187,26 +187,26 @@ class BarterifyDbSource {
       }
     }
 
-    static async AddProduct({ name, price, category, quantity, details:{ dateOfPurchase, description }, location }) {
+    static async AddProduct({ name, price, category, dateOfPurchase, description, location }) {
       const jwtToken = localStorage.getItem('token').replaceAll('"', '');
       try {
+        const selectedFile = document.getElementById("product-image").files[0];
+        const bodyFormData = new FormData();
+        bodyFormData.append('name', name);
+        bodyFormData.append('image', selectedFile);
+        bodyFormData.append('price', price);
+        bodyFormData.append('category', category);
+        bodyFormData.append('description', description);
+        bodyFormData.append('dateOfPurchase', dateOfPurchase);
+        bodyFormData.append('location', location);
         const response = await axios({
           url: `${API_ENDPOINT.PRODUCT}`,
           method: 'POST',
           headers: {
-            'Authorization': `${jwtToken}`
+            'Authorization': `${jwtToken}`,
+            'Content-Type': 'multipart/form-data',
         },
-        data: {
-          name,
-          price,
-          category,
-          quantity,
-          details: {
-            dateOfPurchase,
-            description,
-          },
-          location,
-        },
+        data: bodyFormData,
         })
         if (response.status !== 201) {
           throw new Error(response);

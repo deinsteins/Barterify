@@ -36,22 +36,21 @@ const addProduct = {
         categoriesOptions.innerHTML += createCategoriesTemplate(category);
       });
       document.getElementById('btnSubmit').addEventListener('click', async (e) => {
-        e.preventDefault();
+        e.preventDefault(); 
         const data = await BarterifyDbSource.AddProduct({
           name: document.getElementById('product-name').value,
           price: document.getElementById('price').value,
           category: document.getElementById('product-category').value,
-          details: {
-              dateOfPurchase: document.getElementById('date').value,
-              description: document.getElementById('description').value,
-          },
+          dateOfPurchase: document.getElementById('date').value,
+          description: document.getElementById('description').value,
           location: document.getElementById('location').value,
         });
+        console.log(data.error);
         if (data.error) {
           Swal.fire({
             icon: 'error',
             title: 'Oops...',
-            text: `${data.error}`,
+            text: `${data.error.data.message}`,
           });
         } else {
           Swal.fire({

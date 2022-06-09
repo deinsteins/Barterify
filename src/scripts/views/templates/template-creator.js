@@ -38,26 +38,26 @@ const createFilterFormTemplate = () => `
             <div class="px-5 py-6 space-y-2">
               <div class="flex items-center">
                 <input
-                  id="toy"
+                  id="barang"
                   type="checkbox"
-                  name="type[toy]"
+                  name="type[barang]"
                   class="w-5 h-5 border-gray-300 rounded"
                 />
 
-                <label for="toy" class="ml-3 text-sm font-medium">
+                <label for="barang" class="ml-3 text-sm font-medium">
                   Barang
                 </label>
               </div>
 
               <div class="flex items-center">
                 <input
-                  id="game"
+                  id="jasa"
                   type="checkbox"
-                  name="type[game]"
+                  name="type[jasa]"
                   class="w-5 h-5 border-gray-300 rounded"
                 />
 
-                <label for="game" class="ml-3 text-sm font-medium">
+                <label for="jasa" class="ml-3 text-sm font-medium">
                   Jasa
                 </label>
               </div>
@@ -75,63 +75,54 @@ const createFilterFormTemplate = () => `
               <div class="px-5 py-6 space-y-2">
                 <div class="flex items-center">
                   <input
-                    id="3+"
+                    id="semua-lokasi"
                     type="checkbox"
-                    name="age[3+]"
+                    name="location[semua-lokasi]"
                     class="w-5 h-5 border-gray-300 rounded"
                   />
 
-                  <label for="3+" class="ml-3 text-sm font-medium">
+                  <label for="semua-lokasi" class="ml-3 text-sm font-medium">
                     Semua Lokasi
                   </label>
                 </div>
 
                 <div class="flex items-center">
                   <input
-                    id="8+"
+                    id="bekasi"
                     type="checkbox"
-                    name="age[8+]"
+                    name="location[bekasi]"
                     class="w-5 h-5 border-gray-300 rounded"
                   />
 
-                  <label for="8+" class="ml-3 text-sm font-medium">
-                    Jawa Barat
+                  <label for="bekasi" class="ml-3 text-sm font-medium">
+                    Bekasi
                   </label>
                 </div>
 
                 <div class="flex items-center">
                   <input
-                    id="12+"
+                    id="jakarta"
                     type="checkbox"
-                    name="age[12+]"
+                    name="location[jakarta]"
                     class="w-5 h-5 border-gray-300 rounded"
                   />
 
-                  <label for="12+" class="ml-3 text-sm font-medium">
-                    Jawa Tengah
+                  <label for="jakarta" class="ml-3 text-sm font-medium">
+                    Jakarta
                   </label>
                 </div>
 
                 <div class="flex items-center">
                   <input
-                    id="16+"
+                    id="jogja"
                     type="checkbox"
-                    name="age[16+]"
+                    name="location[jogja]"
                     class="w-5 h-5 border-gray-300 rounded"
                   />
 
-                  <label for="16+" class="ml-3 text-sm font-medium">
-                    Jawa Timur
+                  <label for="jogja" class="ml-3 text-sm font-medium">
+                    Yogyakarta
                   </label>
-                </div>
-
-                <div class="pt-2">
-                  <button
-                    type="button"
-                    class="text-xs text-gray-500 underline"
-                  >
-                    Reset Lokasi
-                  </button>
                 </div>
               </div>
             </fieldset>
@@ -182,13 +173,13 @@ const createFilterFormTemplate = () => `
 const createProductListTemplate = (product) => `
         <div class="w-full sm:w-1/2 md:w-1/2 xl:w-1/4 p-4">
         <a
-          href=""
+          href="#/products/${product.id}"
           class="c-card block bg-white shadow-md hover:shadow-xl rounded-lg overflow-hidden"
         >
           <div class="relative pb-48 overflow-hidden">
             <img
               class="absolute inset-0 h-full w-full object-cover"
-              src="${product.pictureId}"
+              src="https://source.unsplash.com/random"
               alt=""
             />
           </div>
@@ -199,7 +190,7 @@ const createProductListTemplate = (product) => `
             >
             <h2 class="mt-2 mb-2 font-bold">${product.name}</h2>
             <p class="text-sm">
-            ${product.description.slice(0, 50)}...
+            ${product.details.description.slice(0, 50)}...
             </p>
             <div class="mt-3 flex items-center">
               <span class="text-sm font-semibold">Rp</span>&nbsp;<span
@@ -210,7 +201,7 @@ const createProductListTemplate = (product) => `
           </div>
           <div class="p-4 border-t border-b text-xs text-gray-700">
             <span class="flex items-center mb-1">
-              <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg> ${product.createdAt}
+              <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg> ${product.createdAt.slice(0, 10)}
             </span>
             <span class="flex items-center">
               <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s-8-4.5-8-11.8A8 8 0 0 1 12 2a8 8 0 0 1 8 8.2c0 7.3-8 11.8-8 11.8z"/><circle cx="12" cy="10" r="3"/></svg>
@@ -220,6 +211,132 @@ const createProductListTemplate = (product) => `
         </a>
         </div>
 
+`;
+
+const createProductDetailTemplate = (product) => `
+      <div class="lg:w-4/5 mx-auto flex flex-wrap">
+      <img alt="ecommerce" class="lg:w-1/2 w-full lg:h-auto h-64 object-cover object-center rounded" src="https://dummyimage.com/400x400">
+      <div class="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
+        <h2 class="text-sm title-font text-gray-500 tracking-widest">${product.username}</h2>
+        <h1 class="text-gray-900 text-3xl title-font font-medium mb-1">${product.name}</h1>
+        <h2 class="text-sm title-font text-gray-500 tracking-widest">${product.createdAt.slice(0,10)}</h2>
+        <p class="mt-6 leading-relaxed">${product.details.description}</p>
+        <div class="flex mt-6 items-center pb-5 border-b-2 border-gray-100 mb-5">
+          <div class="flex">
+            <span class="mr-3">Lokasi :</span>
+            <span class="mr-3">${product.location}</span>
+          </div>
+          <div class="flex ml-6 items-center">
+            <span class="mr-3">Tanggal Pembelian :</span>
+            <div class="relative">
+              <span class="mr-3">${product.details.dateOfPurchase.slice(0,10)}</span>
+            </div>
+          </div>
+        </div>
+        <div class="flex">
+          <span class="title-font font-medium text-2xl text-gray-900">Rp.${product.price.toLocaleString()}</span>
+        </div>
+        <div class="flex">
+        <button class="flex mt-5 text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded">Ajukan Barter</button>
+          <button title="Chat dengan pemilik" class="mt-5 rounded-full w-10 h-10 bg-gray-200 p-0 border-0 inline-flex items-center justify-center text-gray-500 ml-4">
+          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
+          </button>
+          <button title="Tambahkan ke wishlist" class="mt-5 rounded-full w-10 h-10 bg-gray-200 p-0 border-0 inline-flex items-center justify-center text-gray-500 ml-4">
+            <svg fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
+              <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+      </div>
+`;
+
+
+const createUserProductListTemplate = (product) => `
+        <div class="w-full sm:w-1/2 md:w-1/2 xl:w-1/4 p-4">
+        <a
+          href="#/userproducts/${product.id}"
+          class="c-card block bg-white shadow-md hover:shadow-xl rounded-lg overflow-hidden"
+          id="productLink"
+        >
+          <div class="relative pb-48 overflow-hidden">
+            <img
+              class="absolute inset-0 h-full w-full object-cover"
+              src="https://source.unsplash.com/random"
+              alt=""
+            />
+          </div>
+          <div class="p-4">
+            <span
+              class="inline-block px-2 py-1 leading-none bg-orange-200 text-orange-800 rounded-full font-semibold uppercase tracking-wide text-xs"
+              >${product.username}</span
+            >
+            <h2 class="mt-2 mb-2 font-bold">${product.name}</h2>
+            <p class="text-sm">
+            ${product.details.description.slice(0, 50)}...
+            </p>
+            <div class="mt-3 flex items-center">
+              <span class="text-sm font-semibold">Rp</span>&nbsp;<span
+                class="font-bold text-l"
+                >${product.price}</span
+              >
+            </div>
+          </div>
+          
+          <div class="p-4 border-t border-b text-xs text-gray-700">
+            <span class="flex items-center mb-1">
+              <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg> ${product.createdAt.slice(0, 10)}
+            </span>
+            <span class="flex items-center">
+              <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s-8-4.5-8-11.8A8 8 0 0 1 12 2a8 8 0 0 1 8 8.2c0 7.3-8 11.8-8 11.8z"/><circle cx="12" cy="10" r="3"/></svg>
+              ${product.location}
+            </span>
+          </div>
+        </a>
+        </div>
+
+`;
+
+const createUserProductDetailTemplate = (product) => `
+        <div class="lg:w-4/5 mx-auto flex flex-wrap">
+        <img alt="ecommerce" class="lg:w-1/2 w-full lg:h-auto h-64 object-cover object-center rounded" src="https://dummyimage.com/400x400">
+        <div class="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
+          <h2 class="text-sm title-font text-gray-500 tracking-widest">${product.username}</h2>
+          <h1 class="text-gray-900 text-3xl title-font font-medium mb-1">${product.name}</h1>
+          <h2 class="text-sm title-font text-gray-500 tracking-widest">${product.createdAt.slice(0,10)}</h2>
+          <p class="mt-6 leading-relaxed">${product.details.description}</p>
+          <div class="flex mt-6 items-center pb-5 border-b-2 border-gray-100 mb-5">
+            <div class="flex">
+              <span class="mr-3">Lokasi :</span>
+              <span class="mr-3">${product.location}</span>
+            </div>
+            <div class="flex ml-6 items-center">
+              <span class="mr-3">Tanggal Pembelian :</span>
+              <div class="relative">
+                <span class="mr-3">${product.details.dateOfPurchase.slice(0,10)}</span>
+              </div>
+            </div>
+          </div>
+          <div class="flex">
+            <span class="title-font font-medium text-2xl text-gray-900">Rp.${product.price.toLocaleString()}</span>
+          </div>
+          <div class="flex">
+          <button class="flex mt-5 text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded">Ajukan Barter</button>
+            <button title="Chat dengan pemilik" class="mt-5 rounded-full w-10 h-10 bg-gray-200 p-0 border-0 inline-flex items-center justify-center text-gray-500 ml-4">
+            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
+            </button>
+            <button title="Tambahkan ke wishlist" class="mt-5 rounded-full w-10 h-10 bg-gray-200 p-0 border-0 inline-flex items-center justify-center text-gray-500 ml-4">
+              <svg fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
+                <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"></path>
+              </svg>
+            </button>
+          </div>
+          <div class="flex mt-5">
+          <button type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800" id="btnEdit">Edit</button>
+        <button type="button" class="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900" id="btnDelete">Hapus</button>
+        </div>
+        </div>
+        </div>
 `;
 
 const createLoginRegisterFormTemplate = () => `
@@ -364,11 +481,6 @@ const createNavlinkWithAuth = () => `
                 </div>
 `;
 
-
-const createProductDetailTemplate = () => `
-    
-`;
-
 const createProfileTemplate = (data) =>   `
         <div class="mt-11 md:flex no-wrap md:-mx-2" >
             <!-- Left Side -->
@@ -378,7 +490,7 @@ const createProfileTemplate = (data) =>   `
                 <div class="image overflow-hidden">
                   <img
                     class="h-auto w-full mx-auto"
-                    src="https://lavinephotography.com.au/wp-content/uploads/2017/01/PROFILE-Photography-112.jpg"
+                    src="images/Logo/user.png"
                     alt=""
                   />
                 </div>
@@ -645,16 +757,131 @@ const createTeamCardTemplate = (data) => `
       </div>
       </div>
 `;
-/*
-const createInformationPage = () => `
-    <div>
-    <p>fsdsdafs</p>
-    </div>
+const createAddProductFormTemplate = () => `
+<form action="#" >
+            <div class="shadow-md overflow-hidden sm:rounded-md">
+              <div class="px-4 py-5 bg-white sm:p-6">
+                <div class="grid grid-cols-6 gap-6">
+                    <div class="col-span-6 sm:col-span-4">
+                    <label
+                    for="product-name"
+                    class="block text-sm font-medium text-gray-700"
+                    >Nama Barang</label
+                    >
+                    <input
+                    type="text"
+                    name="product-name"
+                    id="product-name"
+                    autocomplete="email"
+                    class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-15 shadow-sm sm:text-sm border-gray-300 rounded-md w-full" required
+                    />
+                </div>
+
+                <div class="col-span-6 sm:col-span-4">
+                <label
+                    for="price"
+                    class="block text-sm font-medium text-gray-700"
+                    >Harga Jual</label
+                >
+                <input
+                    type="number"
+                    name="price"
+                    id="price"
+                    autocomplete="phone"
+                    class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                    required 
+                />
+                </div>
+                  <div class="col-span-6 sm:col-span-3">
+                    <label
+                      for="product-category"
+                      class="block text-sm font-medium text-gray-700"
+                      >Kategori</label
+                    >
+                    <select
+                      id="product-category"
+                      name="product-category"
+                      autocomplete="product-category-name"
+                      class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                    >
+                    </select>
+                  </div>
+
+                  <div class="col-span-6 sm:col-span-4">
+                <label
+                    for="date"
+                    class="block text-sm font-medium text-gray-700"
+                    >Tanggal Beli</label
+                >
+                <input
+                    type="date"
+                    name="date"
+                    id="date"
+                    autocomplete="date"
+                    class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                    required 
+                />
+                </div>
+
+                  <div class="col-span-6">
+                  <label
+                    class="block text-sm font-medium text-gray-700"
+                    for="product-image"
+                    >Upload foto</label
+                > <input type="file" name="product-image"
+                id="product-image" class="w-full text-gray-700 px-3 py-2 border rounded" >
+                </div>
+
+                  <div class="col-span-6">
+                    <label
+                      for="description"
+                      class="block text-sm font-medium text-gray-700"
+                      >Deskripsi</label
+                    >
+                    <textarea name="description"
+                    id="description" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" rows="4"></textarea>
+                
+                  </div>
+
+                  <div class="col-span-6">
+                  <label
+                    for="location"
+                    class="block text-sm font-medium text-gray-700"
+                    >Lokasi</label
+                  >
+                  <textarea name="location"
+                  id="location" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" rows="4"></textarea>
+              
+                </div>
+                </div>
+              </div>
+              <div class="px-4 py-3 bg-gray-50 text-right sm:px-6">
+                <button
+                  id="btnSubmit"
+                  type="submit"
+                  class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                >
+                  Save
+                </button>
+              </div>
+            </div>
+          </form>
 `;
-*/
+
+const createCategoriesTemplate = (category) =>`
+      <div>
+      <option value="${category.id}">${category.name}</option>
+      </div>
+`;
+
 export {
   createFilterFormTemplate,
   createProductListTemplate,
+  createUserProductListTemplate,
+  createAddProductFormTemplate,
+  createCategoriesTemplate,
+  createProductDetailTemplate,
+  createUserProductDetailTemplate,
   createLoginRegisterFormTemplate,
   createNavlinkWithAuth,
   createNavlinkWithoutAuth,

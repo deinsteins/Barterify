@@ -131,6 +131,128 @@ class BarterifyDbSource {
       }
     }
 
+    static async ProductList() {
+      try {
+        const response = await axios({
+          url: `${API_ENDPOINT.PRODUCT_LIST}`,
+          method: 'GET',
+        })
+
+        if(response.statusText !== 'OK'){
+          throw new Error(response.data.message);
+        }
+        return response.data;
+      } catch (err) {
+        return { error: err.response || err.message };
+      }
+    }
+
+    static async UserProductList() {
+      const jwtToken = localStorage.getItem('token').replaceAll('"', '');
+      try {
+        const response = await axios({
+          url: `${API_ENDPOINT.PRODUCT}`,
+          method: 'GET',
+          headers: {
+            'Authorization': `${jwtToken}`
+          },
+        })
+
+        if (response.statusText !== 'OK') {
+          throw new Error(response.data.message);
+        }
+        return response.data;
+      } catch (err) {
+        return { error: err.response || err.message };
+      }
+    }
+
+    static async GetCategories() {
+      const jwtToken = localStorage.getItem('token').replaceAll('"', '');
+      try {
+        const response = await axios({
+          url: `${API_ENDPOINT.CATEGORY}`,
+          method: 'GET',
+          headers: {
+            'Authorization': `${jwtToken}`
+          },
+        })
+
+        if (response.statusText !== 'OK') {
+          throw new Error(response.data.message);
+        }
+        return response.data;
+      } catch (err) {
+        return { error: err.response || err.message };
+      }
+    }
+
+    static async AddProduct({ name, price, category, quantity, details:{ dateOfPurchase, description }, location }) {
+      const jwtToken = localStorage.getItem('token').replaceAll('"', '');
+      try {
+        const response = await axios({
+          url: `${API_ENDPOINT.PRODUCT}`,
+          method: 'POST',
+          headers: {
+            'Authorization': `${jwtToken}`
+        },
+        data: {
+          name,
+          price,
+          category,
+          quantity,
+          details: {
+            dateOfPurchase,
+            description,
+          },
+          location,
+        },
+        })
+        if (response.status !== 201) {
+          throw new Error(response);
+        }
+        console.log(response);
+        return response;
+      } catch (err) {
+        return { error: err.response  || err.message };
+      }
+    }
+
+    static async ProductDetail(id) {
+      try {
+        const response = await axios({
+          url: `${API_ENDPOINT.PRODUCT_DETAIL(id)}`,
+          method: 'GET',
+        })
+
+        if (response.statusText !== 'OK') {
+          throw new Error(response.data.message);
+        }
+        return response.data;
+      } catch (err) {
+        return { error: err.response || err.message };
+      }
+    }
+
+    static async UserProductDetail(id) {
+      const jwtToken = localStorage.getItem('token').replaceAll('"', '');
+      try {
+        const response = await axios({
+          url: `${API_ENDPOINT.USER_PRODUCT_DETAIL(id)}`,
+          method: 'GET',
+          headers: {
+            'Authorization': `${jwtToken}`
+        },
+        })
+
+        if (response.statusText !== 'OK') {
+          throw new Error(response.data.message);
+        }
+        return response.data;
+      } catch (err) {
+        return { error: err.response || err.message };
+      }
+    }
 }
 
 export default BarterifyDbSource;

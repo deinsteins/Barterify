@@ -4,7 +4,6 @@ import { createProductListTemplate, createFilterFormTemplate } from '../template
 const Home = {
 
   async render() {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
     const header = document.querySelector('header');
     header.style.display = 'block';
     const nav = document.querySelector('nav');
@@ -34,11 +33,11 @@ const Home = {
   },
 
   async afterRender() {
-    const productData = await BarterifyDbSource.Data();
+    const productData = await BarterifyDbSource.ProductList();
     const container= document.querySelector('#content');
     container.innerHTML += createFilterFormTemplate();
     const productList = document.querySelector('#productCard');
-    productData.products.forEach((product) =>{
+    productData.data.forEach((product) =>{
       productList.innerHTML += createProductListTemplate(product);
     });
   },

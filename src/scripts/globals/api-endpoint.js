@@ -7,6 +7,7 @@ const API_ENDPOINT = {
   PROFILE: `${CONFIG.BASE_URL}/profiles`,
   PRODUCT_LIST: `${CONFIG.BASE_URL}/products/all`,
   PRODUCT: `${CONFIG.BASE_URL}/products`,
+  PRODUCT_DETAIL: (id) => `${CONFIG.BASE_URL}/products/all/${id}`,
   CATEGORY: `${CONFIG.BASE_URL}/products-categories`,
 };
 

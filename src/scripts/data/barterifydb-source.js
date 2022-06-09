@@ -147,6 +147,26 @@ class BarterifyDbSource {
       }
     }
 
+    static async UserProductList() {
+      const jwtToken = localStorage.getItem('token').replaceAll('"', '');
+      try {
+        const response = await axios({
+          url: `${API_ENDPOINT.PRODUCT}`,
+          method: 'GET',
+          headers: {
+            'Authorization': `${jwtToken}`
+          },
+        })
+
+        if (response.statusText !== 'OK') {
+          throw new Error(response.data.message);
+        }
+        console.log(response.data);
+        return response.data;
+      } catch (err) {
+        return { error: err.response || err.message };
+      }
+    }
 }
 
 export default BarterifyDbSource;

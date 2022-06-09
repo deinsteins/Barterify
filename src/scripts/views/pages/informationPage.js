@@ -70,7 +70,7 @@ const InformationPage = {
            <ol class="list-outside list-decimal mb-10 px-10 text-sm">
            <li>Silahkan hubungi pengirim produk pada fitur chat dalam applikasi.</li>
            <li>Tanyakan keterangan pengiriman produk yang telah pengirim kirimkan.</li>
-           <li>Jika cara diatas tidak membuahkan hasil dalam kurun waktu kurang lebih 7x24 jam, silahkan hubungi kami <a href="" class="text-blue-500"><b>disini</b></a>.</li>
+           <li>Jika cara diatas tidak membuahkan hasil dalam kurun waktu kurang lebih 7x24 jam, silahkan hubungi kami <a href="https://api.whatsapp.com/send/?phone=%2B62123456563&text&app_absent=0" class="text-green-500"><b>disini</b></a>.</li>
            </ol>
         </p>
     </div>

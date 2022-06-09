@@ -96,7 +96,8 @@
       "name": "Deni Hidayat",
       "photo": "images/photos/deni.jpeg",
       "role": "Fullstack Developer",
-      "fb": "",
+      "facebook": "",
+      "twitter" :"",
       "linkedin": "https://linkedin.com/in/deni-hidayat-9a8b5b108/",
       "github": "https://github.com/deinsteins"
     },
@@ -104,23 +105,26 @@
       "name": "Windiana Rosari Simangunsong",
       "photo": "images/photos",
       "role": "Frontend Developer",
-      "fb": "",
+      "facebook": "",
+      "twitter": "",
       "linkedin": "",
       "github": ""
     },
     {
       "name": "Adam Arnap",
-      "photo": "images/photos",
+      "photo": "images/photos/adam.JPG",
       "role": "Frontend Developer",
-      "fb": "",
-      "linkedin": "",
-      "github": ""
+      "facebook": "",
+      "twitter": "https://twitter.com/AdamArnap?t=RTZhKIbly1UM_729XmUXFw&s=08",
+      "linkedin": "https://www.linkedin.com/in/adam-arnap-bb6987237",
+      "github": "https://github.com/AdamArnap1311"
     },
     {
       "name": "Tri Jannati Putri",
       "photo": "images/photos",
       "role": "Frontend Developer",
-      "fb": "",
+      "facebook": "",
+      "twitter": "",
       "linkedin": "",
       "github": ""
     }

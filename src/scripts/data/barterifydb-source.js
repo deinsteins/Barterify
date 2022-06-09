@@ -161,7 +161,6 @@ class BarterifyDbSource {
         if (response.statusText !== 'OK') {
           throw new Error(response.data.message);
         }
-        console.log(response.data);
         return response.data;
       } catch (err) {
         return { error: err.response || err.message };
@@ -224,6 +223,26 @@ class BarterifyDbSource {
         const response = await axios({
           url: `${API_ENDPOINT.PRODUCT_DETAIL(id)}`,
           method: 'GET',
+        })
+
+        if (response.statusText !== 'OK') {
+          throw new Error(response.data.message);
+        }
+        return response.data;
+      } catch (err) {
+        return { error: err.response || err.message };
+      }
+    }
+
+    static async UserProductDetail(id) {
+      const jwtToken = localStorage.getItem('token').replaceAll('"', '');
+      try {
+        const response = await axios({
+          url: `${API_ENDPOINT.USER_PRODUCT_DETAIL(id)}`,
+          method: 'GET',
+          headers: {
+            'Authorization': `${jwtToken}`
+        },
         })
 
         if (response.statusText !== 'OK') {

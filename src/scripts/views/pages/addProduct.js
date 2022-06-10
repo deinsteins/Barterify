@@ -45,7 +45,7 @@ const addProduct = {
           description: document.getElementById('description').value,
           location: document.getElementById('location').value,
         });
-        if (data.error.status == 400) {
+        if (data.error) {
           Swal.fire({
             icon: 'error',
             title: 'Oops...',

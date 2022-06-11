@@ -35,6 +35,24 @@ const addProduct = {
       categories.data.forEach((category) =>{
         categoriesOptions.innerHTML += createCategoriesTemplate(category);
       });
+
+      const input = document.getElementById('product-image')
+
+      input.addEventListener('change', async (e) => {
+        const target = e.target
+          if (target.files && target.files[0]) {
+            const maxAllowedSize = 2 * 1024 * 1024;
+            if (target.files[0].size > maxAllowedSize) {
+              Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'File too Big, please select a file less than 2mb',
+              });
+              target.value = ''
+            }
+        }
+      })
+
       document.getElementById('btnSubmit').addEventListener('click', async (e) => {
         e.preventDefault(); 
         const data = await BarterifyDbSource.AddProduct({
@@ -51,7 +69,8 @@ const addProduct = {
             title: 'Oops...',
             text: 'Mohon lengkapi semua data',
           });
-        } else {
+        } 
+        else {
           Swal.fire({
             title: 'Barang/Jasa berhasil di posting',
             confirmButtonText: 'OK',

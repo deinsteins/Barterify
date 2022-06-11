@@ -145,8 +145,9 @@ const createFilterFormTemplate = () => `
       <div class="lg:col-span-3">
       <div class="flex items-center justify-between">
           <p class="text-sm text-gray-500">
-            <span class="hidden sm:inline"> Showing </span>
-            24 Products
+          Showing
+            <span class="hidden sm:inline" id="productCount">24</span>
+            Products
           </p>
       
           <div class="ml-4">
@@ -166,12 +167,12 @@ const createFilterFormTemplate = () => `
           </div>
         </div>
           <div class="container mx-auto">
-            <div class="flex flex-wrap -mx-4" id="productCard">
+            <div class="flex flex-wrap -mx-4" id="productList">
 `;
 
 
 const createProductListTemplate = (product) => `
-        <div class="w-full sm:w-1/2 md:w-1/2 xl:w-1/4 p-4">
+        <div class="w-full sm:w-1/2 md:w-1/2 xl:w-1/4 p-4" id="productCard">
         <a
           href="#/products/${product.id}"
           class="c-card block bg-white shadow-md hover:shadow-xl rounded-lg overflow-hidden"

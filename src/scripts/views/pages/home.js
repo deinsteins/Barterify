@@ -36,10 +36,13 @@ const Home = {
     const productData = await BarterifyDbSource.ProductList();
     const container= document.querySelector('#content');
     container.innerHTML += createFilterFormTemplate();
-    const productList = document.querySelector('#productCard');
+    const productList = document.querySelector('#productList');
     productData.data.forEach((product) =>{
       productList.innerHTML += createProductListTemplate(product);
     });
+    const productCardTotal = document.querySelectorAll('[id=productCard]').length;
+    const counterShow = document.getElementById('productCount');
+    counterShow.innerText = productCardTotal;
   },
 };
 

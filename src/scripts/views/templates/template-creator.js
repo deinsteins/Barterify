@@ -870,7 +870,8 @@ const createProductEditFormTemplate = (data) => `
           <div class="shadow-md overflow-hidden sm:rounded-md">
             <div class="px-4 py-5 bg-white sm:p-6">
               <div class="grid grid-cols-6 gap-6">
-                    <div class="col-span-6 sm:col-span-3">
+                  
+                  <div class="col-span-6 sm:col-span-3">
                     <label
                       for="name"
                       class="block text-sm font-medium text-gray-700"
@@ -965,6 +966,18 @@ const createProductEditFormTemplate = (data) => `
                     required
                   />${data.data.location}</textarea>
                 </div>
+                <div class="col-span-6 sm:col-span-3">
+
+                    <input
+                      type="hidden"
+                      name="name"
+                      id="id"
+                      value="${data.data.id}"
+                      autocomplete="given-name"
+                      class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                      required
+                    />
+                  </div>
               </div>
             </div>
             <div class="px-4 py-3 bg-gray-50 text-right sm:px-6">

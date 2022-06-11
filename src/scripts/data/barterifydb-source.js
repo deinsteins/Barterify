@@ -218,7 +218,7 @@ class BarterifyDbSource {
       }
     }
 
-    static async productEdit({ name, price, category, dateOfPurchase, description,location }) {
+    static async productEdit({id, name, price, category, dateOfPurchase, description,location }) {
       const jwtToken = localStorage.getItem('token').replaceAll('"', '');
       try {
         const response = await axios({
@@ -228,6 +228,7 @@ class BarterifyDbSource {
             'Authorization': `${jwtToken}`
         },
         data: {
+          id,
           name,
           price,
           category,

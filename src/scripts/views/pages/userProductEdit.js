@@ -47,6 +47,7 @@ const UserProductEdit = {
       document.getElementById('editProductSubmit').addEventListener('click', async (e) => {
         e.preventDefault();
         const data = await BarterifyDbSource.productEdit({
+          id: document.getElementById('id').value,
           name: document.getElementById('name').value,
           price: document.getElementById('price').value,
           category: document.getElementById('product-edit-category').value,

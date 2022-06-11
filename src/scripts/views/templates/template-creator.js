@@ -869,8 +869,15 @@ const createProductEditFormTemplate = (data) => `
           <form>
           <div class="shadow-md overflow-hidden sm:rounded-md">
             <div class="px-4 py-5 bg-white sm:p-6">
-              <div class="grid grid-cols-6 gap-6">
-                  
+                  <div class="grid grid-cols-6 gap-6">
+                    <div class="col-span-6">
+                    <label
+                      class="block text-sm font-medium text-gray-700"
+                      for="product-image"
+                      >Upload foto</label>
+                    <input type="file" name="product-image" value="${data.data.image}"
+                    id="product-image" class="w-full text-gray-700 px-3 py-2 border rounded" />
+                  </div>
                   <div class="col-span-6 sm:col-span-3">
                     <label
                       for="name"
@@ -970,7 +977,7 @@ const createProductEditFormTemplate = (data) => `
 
                     <input
                       type="hidden"
-                      name="name"
+                      name="id"
                       id="id"
                       value="${data.data.id}"
                       autocomplete="given-name"

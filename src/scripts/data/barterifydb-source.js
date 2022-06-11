@@ -258,6 +258,26 @@ class BarterifyDbSource {
       }
     }
 
+    static async UserProductDelete(id) {
+      const jwtToken = localStorage.getItem('token').replaceAll('"', '');
+      try {
+        const response = await axios({
+          url: `${API_ENDPOINT.USER_PRODUCT_DETAIL(id)}`,
+          method: 'DELETE',
+          headers: {
+            'Authorization': `${jwtToken}`
+        },
+        })
+
+        if (response.statusText !== 'OK') {
+          throw new Error(response.data.message);
+        }
+        return response.data;
+      } catch (err) {
+        return { error: err.response || err.message };
+      }
+    }
+
     static async ProductDetail(id) {
       try {
         const response = await axios({

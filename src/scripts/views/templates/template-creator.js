@@ -321,19 +321,10 @@ const createUserProductDetailTemplate = (product) => `
             <span class="title-font font-medium text-2xl text-gray-900">Rp.${product.price.toLocaleString()}</span>
           </div>
           <div class="flex">
-          <button class="flex mt-5 text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded">Ajukan Barter</button>
-            <button title="Chat dengan pemilik" class="mt-5 rounded-full w-10 h-10 bg-gray-200 p-0 border-0 inline-flex items-center justify-center text-gray-500 ml-4">
-            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
-            </button>
-            <button title="Tambahkan ke wishlist" class="mt-5 rounded-full w-10 h-10 bg-gray-200 p-0 border-0 inline-flex items-center justify-center text-gray-500 ml-4">
-              <svg fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
-                <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"></path>
-              </svg>
-            </button>
           </div>
           <div class="flex mt-5">
-          <button type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800" id="btnEdit">Edit</button>
-        <button type="button" class="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900" id="btnDelete">Hapus</button>
+          <a  href="#/product-edit/${product.id}" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800" id="btnEditProduct">Edit</a>
+        <a href="#/product-delete/${product.id}" class="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900" id="btnDeleteProduct">Hapus</a>
         </div>
         </div>
         </div>
@@ -874,6 +865,119 @@ const createCategoriesTemplate = (category) =>`
       </div>
 `;
 
+const createProductEditFormTemplate = (data) => `
+          <form>
+          <div class="shadow-md overflow-hidden sm:rounded-md">
+            <div class="px-4 py-5 bg-white sm:p-6">
+              <div class="grid grid-cols-6 gap-6">
+                    <div class="col-span-6 sm:col-span-3">
+                    <label
+                      for="name"
+                      class="block text-sm font-medium text-gray-700"
+                      >Product Name</label
+                    >
+                    <input
+                      type="text"
+                      name="name"
+                      id="name"
+                      value="${data.data.name}"
+                      autocomplete="given-name"
+                      class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                      required
+                    />
+                  </div>
+
+                  <div class="col-span-6 sm:col-span-3">
+                    <label
+                      for="price"
+                      class="block text-sm font-medium text-gray-700"
+                      >Product Price</label
+                    >
+                    <input
+                      type="text"
+                      name="price"
+                      id="price"
+                      value="${data.data.price}"
+                      autocomplete="price"
+                      class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                      required
+                    />
+                  </div>
+                  <div class="col-span-6 sm:col-span-3">
+                        <label
+                        for="category"
+                        class="block text-sm font-medium text-gray-700"
+                        >Product Category</label
+                        >
+                        <select
+                          id="product-edit-category"
+                          name="product-category"
+                          autocomplete="product-category-name"                          
+                  value="${data.data.category}"
+                  autocomplete="product-category-name"
+                          class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                        >
+                    </select>
+                    </div>
+
+              <div class="col-span-6 sm:col-span-3">
+              <label
+                  for="date-of-purchase"
+                  class="block text-sm font-medium text-gray-700"
+                  >Date Of Purchase</label
+              >
+              <input
+                  type="date"
+                  name="date-of-purchase"
+                  id="date-of-purchase"
+                  autocomplete="dateOfPurchase"
+                  value="${data.data.dateOfPurchase.slice(0,10)}"
+                  class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                  placeholder="Contoh 62888211524416"
+                  required
+              />
+              </div>
+                <div class="col-span-6">
+                  <label
+                    for="description"
+                    class="block text-sm font-medium text-gray-700"
+                    >Description</label
+                  >
+                  <textarea
+                    name="description"
+                    id="description"
+                    autocomplete="description"
+                    class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                    required
+                  />${data.data.description}</textarea>
+                </div>
+                <div class="col-span-6">
+                  <label
+                    for="location"
+                    class="block text-sm font-medium text-gray-700"
+                    >Location</label
+                  >
+                  <textarea
+                    name="location"
+                    id="location"
+                    autocomplete="location"
+                    class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                    required
+                  />${data.data.location}</textarea>
+                </div>
+              </div>
+            </div>
+            <div class="px-4 py-3 bg-gray-50 text-right sm:px-6">
+              <button 
+                type="submit"
+                id="editProductSubmit"
+                class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                >Update Product</button>
+            </div>
+          </div>
+          </form>
+`;
+
 export {
   createFilterFormTemplate,
   createProductListTemplate,
@@ -888,4 +992,5 @@ export {
   createProfileTemplate,
   createProfileEditFormTemplate,
   createTeamCardTemplate,
+  createProductEditFormTemplate,
 };

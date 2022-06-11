@@ -8,6 +8,7 @@ import Inventory from "../views/pages/inventory";
 import addProduct from "../views/pages/addProduct";
 import productDetail from "../views/pages/productDetail";
 import userProductDetail from "../views/pages/UserProductDetail";
+import UserProductEdit from "../views/pages/userProductEdit";
 
 const routes = {
   '/': Home,
@@ -21,6 +22,7 @@ const routes = {
   '/product': addProduct,
   '/products/:id': productDetail,
   '/userproducts/:id': userProductDetail,
+  '/product-edit/:id' : UserProductEdit,
 };
 
 export default routes;

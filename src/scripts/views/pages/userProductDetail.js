@@ -1,6 +1,7 @@
 import BarterifyDbSource from '../../data/barterifydb-source';
 import UrlParser from '../../routes/url-parser';
 import { createUserProductDetailTemplate } from '../templates/template-creator';
+import { redirectInventory, redirectUserProfile, redirectEditProduct } from "../../utils/redirect-helper";
 
 const userProductDetail = {
   async render() {
@@ -26,6 +27,7 @@ const userProductDetail = {
     console.log(data);
     const Container = document.querySelector('#productContainer');
     Container.innerHTML = createUserProductDetailTemplate(data);
+
   },
 };
 

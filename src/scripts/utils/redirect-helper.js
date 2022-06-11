@@ -19,6 +19,8 @@ const redirectInventory = () => {
   window.location.reload();
 };
 
+
+
 export { 
   redirectUserLogin,
   redirectUserRegister,

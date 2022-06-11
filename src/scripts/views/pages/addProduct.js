@@ -13,7 +13,7 @@ const addProduct = {
       
       return `
       <div class="overlay" id="message-overlay"></div>
-        <div class="px-4 text-center mt-3 sm:px-0">
+        <div class="px-4 text-center mt-3 z-50 sm:px-0">
             <h3 class="text-xl font-semibold leading-6 text-gray-900">
               Posting Barang
             </h3>
@@ -59,10 +59,12 @@ const addProduct = {
           name: document.getElementById('product-name').value,
           price: document.getElementById('price').value,
           category: document.getElementById('product-category').value,
+          categoryName: document.getElementById('optionId').innerText,
           dateOfPurchase: document.getElementById('date').value,
           description: document.getElementById('description').value,
           location: document.getElementById('location').value,
         });
+        console.log(data);
         if (data.error) {
           Swal.fire({
             icon: 'error',

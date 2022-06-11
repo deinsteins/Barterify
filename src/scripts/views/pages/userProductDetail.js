@@ -28,6 +28,8 @@ const userProductDetail = {
     const Container = document.querySelector('#productContainer');
     Container.innerHTML = createUserProductDetailTemplate(data);
 
+
+
   },
 };
 

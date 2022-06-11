@@ -20,7 +20,8 @@ const redirectInventory = () => {
 };
 
 const redirectUserProductEdit = () => {
-  document.location.hash = '/products/:id';
+  document.location.hash = `/userproducts/${sessionStorage.getItem('productId')}`;
+  window.location.reload();
 }
 
 

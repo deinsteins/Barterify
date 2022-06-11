@@ -324,7 +324,7 @@ const createUserProductDetailTemplate = (product) => `
           </div>
           <div class="flex mt-5">
           <a  href="#/product-edit/${product.id}" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800" id="btnEditProduct">Edit</a>
-        <a href="#/product-delete/${product.id}" class="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900" id="btnDeleteProduct">Hapus</a>
+        <a href="#/" class="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900" id="btnDeleteProduct">Hapus</a>
         </div>
         </div>
         </div>
@@ -818,9 +818,9 @@ const createAddProductFormTemplate = () => `
                   <label
                     class="block text-sm font-medium text-gray-700"
                     for="product-image"
-                    >Upload foto</label
+                    >Upload foto (JPG/PNG) max 2 MB</label
                 > <input type="file" name="product-image"
-                id="product-image" class="w-full text-gray-700 px-3 py-2 border rounded" >
+                id="product-image" accept=".jpg, .jpeg, .png" class="w-full text-gray-700 px-3 py-2 border rounded" >
                 </div>
 
                   <div class="col-span-6">
@@ -861,7 +861,7 @@ const createAddProductFormTemplate = () => `
 
 const createCategoriesTemplate = (category) =>`
       <div>
-      <option value="${category.id}">${category.name}</option>
+      <option id="optionId" value="${category.id}">${category.name}</option>
       </div>
 `;
 
@@ -871,13 +871,12 @@ const createProductEditFormTemplate = (data) => `
             <div class="px-4 py-5 bg-white sm:p-6">
                   <div class="grid grid-cols-6 gap-6">
                     <div class="col-span-6">
-                    <img alt="ecommerce" class="lg:w-1/2 w-full lg:h-auto h-64 object-cover object-center rounded" src="${CONFIG.BASE_IMAGE_URL}${data.data.image}">
+                    <img alt="ecommerce" id="defaultImg" class="lg:w-1/2 w-full lg:h-auto h-64 object-cover object-center rounded" src="${CONFIG.BASE_IMAGE_URL}${data.data.image}">
                     <label
                       class="block text-sm font-medium mt-10 text-gray-700"
                       for="product-edit-image"
-                      >Upload foto</label>
-                    <input type="file" name="product-image" value="${data.data.image}"
-                    id="product-edit-image" class="w-full text-gray-700 px-3 py-2 border rounded" />
+                      >Upload foto (JPG/PNG) max 2 MB</label>
+                    <input type="file" name="product-image" id="product-edit-image" accept=".jpg, .jpeg, .png" class="w-full text-gray-700 px-3 py-2 border rounded"/>
                   </div>
                   <div class="col-span-6 sm:col-span-3">
                     <label
@@ -921,11 +920,10 @@ const createProductEditFormTemplate = (data) => `
                         <select
                           id="product-edit-category"
                           name="product-category"
-                          autocomplete="product-category-name"                          
-                  value="${data.data.category}"
-                  autocomplete="product-category-name"
+                          autocomplete="product-category-name"    
                           class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                         >
+                    <option id="optionId" value="${data.data.category}">${data.data.categoryName}</option>
                     </select>
                     </div>
 
@@ -974,18 +972,6 @@ const createProductEditFormTemplate = (data) => `
                     required
                   />${data.data.location}</textarea>
                 </div>
-                <div class="col-span-6 sm:col-span-3">
-
-                    <input
-                      type="hidden"
-                      name="id"
-                      id="id"
-                      value="${data.data.id}"
-                      autocomplete="given-name"
-                      class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
-                      required
-                    />
-                  </div>
               </div>
             </div>
             <div class="px-4 py-3 bg-gray-50 text-right sm:px-6">

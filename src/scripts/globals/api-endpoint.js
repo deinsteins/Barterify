@@ -9,6 +9,7 @@ const API_ENDPOINT = {
   PRODUCT: `${CONFIG.BASE_URL}/products`,
   PRODUCT_DETAIL: (id) => `${CONFIG.BASE_URL}/products/all/${id}`,
   USER_PRODUCT_DETAIL: (id) => `${CONFIG.BASE_URL}/products/${id}`,
+  USER_PRODUCT_EDIT: (id) => `${CONFIG.BASE_URL}/products/${id}`,
   CATEGORY: `${CONFIG.BASE_URL}/products-categories`,
 };
 

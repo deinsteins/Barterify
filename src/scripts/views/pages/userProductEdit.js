@@ -1,7 +1,6 @@
 import { createProductEditFormTemplate, createCategoriesTemplate} from "../templates/template-creator";
 import BarterifyDbSource from "../../data/barterifydb-source";
 import { redirectUserProductEdit } from "../../utils/redirect-helper";
-import showMessage from "../../utils/alert-helper";
 import UrlParser from '../../routes/url-parser';
 import Swal from 'sweetalert2';
 
@@ -28,27 +27,47 @@ const UserProductEdit = {
         </div>
         </div>  
 `;
+
+      
     },
 
     async afterRender() {
       const url = UrlParser.parseActiveUrlWithoutCombiner();
 
       const product = await BarterifyDbSource.UserProductDetail(url.id);
-      console.log(product);
       const productContainer = document.getElementById('productEditForm');
       productContainer.innerHTML += createProductEditFormTemplate(product);
-
+      const Idproduct = product.data.id;
+      sessionStorage.setItem(
+        'productId',
+        Idproduct
+      )
       const categories = await BarterifyDbSource.GetCategories();
       const categoriesOptions = document.getElementById('product-edit-category');
       categories.data.forEach((category) =>{
         categoriesOptions.innerHTML += createCategoriesTemplate(category);
       });
 
+      const input = document.getElementById('product-edit-image')
+
+      input.addEventListener('change', async (e) => {
+        const target = e.target
+          if (target.files && target.files[0]) {
+            const maxAllowedSize = 2 * 1024 * 1024;
+            if (target.files[0].size > maxAllowedSize) {
+              Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'File too Big, please select a file less than 2mb',
+              });
+              target.value = ''
+            }
+        }
+      })
+
       document.getElementById('editProductSubmit').addEventListener('click', async (e) => {
         e.preventDefault();
         const data = await BarterifyDbSource.productEdit({
-          id: document.getElementById('id').value,
-          image: document.getElementById('product-edit-image').value,
           name: document.getElementById('name').value,
           price: document.getElementById('price').value,
           category: document.getElementById('product-edit-category').value,
@@ -58,11 +77,21 @@ const UserProductEdit = {
         });
         console.log(data);
         if (data.error) {
-          showMessage(data.error);
+          Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Mohon lengkapi semua data',
+          });
         } else {
-          showMessage('Product berhasil di update');
-          redirectUserProductEdit();
-          window.location.reload();
+          Swal.fire({
+            title: 'Barang/Jasa berhasil di ubah',
+            confirmButtonText: 'OK',
+          }).then((result) => {
+            if (result.isConfirmed) {
+              Swal.fire('Saved!', '', 'success')
+              redirectUserProductEdit();
+            }
+          })
         }
       });
     },

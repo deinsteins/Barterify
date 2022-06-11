@@ -871,12 +871,13 @@ const createProductEditFormTemplate = (data) => `
             <div class="px-4 py-5 bg-white sm:p-6">
                   <div class="grid grid-cols-6 gap-6">
                     <div class="col-span-6">
+                    <img alt="ecommerce" class="lg:w-1/2 w-full lg:h-auto h-64 object-cover object-center rounded" src="${CONFIG.BASE_IMAGE_URL}${data.data.image}">
                     <label
-                      class="block text-sm font-medium text-gray-700"
-                      for="product-image"
+                      class="block text-sm font-medium mt-10 text-gray-700"
+                      for="product-edit-image"
                       >Upload foto</label>
                     <input type="file" name="product-image" value="${data.data.image}"
-                    id="product-image" class="w-full text-gray-700 px-3 py-2 border rounded" />
+                    id="product-edit-image" class="w-full text-gray-700 px-3 py-2 border rounded" />
                   </div>
                   <div class="col-span-6 sm:col-span-3">
                     <label

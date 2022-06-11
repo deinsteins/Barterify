@@ -218,8 +218,10 @@ class BarterifyDbSource {
       }
     }
 
-    static async productEdit({id, name, price, category, dateOfPurchase, description,location }) {
+    static async productEdit({id, name, image, price, category, dateOfPurchase, description,location }) {
       const jwtToken = localStorage.getItem('token').replaceAll('"', '');
+      image = document.getElementById("product-edit-image").files[0];
+      const picture = image;
       try {
         const response = await axios({
           url: `${API_ENDPOINT.USER_PRODUCT_DETAIL(id)}}`,
@@ -228,8 +230,10 @@ class BarterifyDbSource {
             'Authorization': `${jwtToken}`
         },
         data: {
+          
           id,
           name,
+          picture,
           price,
           category,
           dateOfPurchase,

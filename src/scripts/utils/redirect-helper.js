@@ -19,6 +19,10 @@ const redirectInventory = () => {
   window.location.reload();
 };
 
+const redirectUserProductEdit = () => {
+  document.location.hash = '/products/:id';
+}
+
 
 
 export { 
@@ -27,4 +31,5 @@ export {
   redirectUserProfile,
   redirectUserProfileEdit,
   redirectInventory,
+  redirectUserProductEdit,
 };

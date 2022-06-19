@@ -242,16 +242,25 @@ const createProductDetailTemplate = (product) => `
           <a href="#/chat" title="Chat dengan pemilik" class="mt-5 rounded-full w-10 h-10 bg-gray-200 p-0 border-0 inline-flex items-center justify-center text-gray-500 ml-4">
           <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
           </a>
-          <button title="Tambahkan ke wishlist" class="mt-5 rounded-full w-10 h-10 bg-gray-200 p-0 border-0 inline-flex items-center justify-center text-gray-500 ml-4">
-            <svg fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
-              <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"></path>
-            </svg>
+          <button title="Tambahkan ke wishlist" class="mt-5 rounded-full w-10 h-10 bg-gray-200 p-0 border-0 inline-flex items-center justify-center text-gray-500 ml-4" id="likeButtonContainer">
+            
           </button>
         </div>
       </div>
       </div>
 `;
 
+const createLikeButtonTemplate = () => `
+    <svg id="likeButton" fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
+    <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"></path>
+    </svg>
+`;
+
+const createUnlikedButtonTemplate = () => `
+    <svg id="likeButton" fill="#d10404" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
+    <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"></path>
+    </svg>
+`;
 
 const createUserProductListTemplate = (product) => `
         <div class="w-full sm:w-1/2 md:w-1/2 xl:w-1/4 p-4">
@@ -468,7 +477,7 @@ const createNavlinkWithAuth = () => `
                 </div>
                 <div class="hide origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1" id="user">
                   <a href="#/profile" class="block px-4 py-2 text-sm " role="menuitem" tabindex="-1" id="user-menu-item-0">Your Profile</a>
-                  <a href="#" class="block px-4 py-2 text-sm " role="menuitem" tabindex="-1" id="user-menu-item-1">Settings</a>
+                  <a href="#/wishlist" class="block px-4 py-2 text-sm " role="menuitem" tabindex="-1" id="user-menu-item-1">Wishlist</a>
                   <a href="#" class="block px-4 py-2 text-sm " role="menuitem" tabindex="-1" id="user-menu-item-2">Sign out</a>
                 </div>
 `;
@@ -1002,4 +1011,6 @@ export {
   createProfileEditFormTemplate,
   createTeamCardTemplate,
   createProductEditFormTemplate,
+  createLikeButtonTemplate,
+  createUnlikedButtonTemplate,
 };

@@ -9,6 +9,7 @@ import addProduct from "../views/pages/addProduct";
 import productDetail from "../views/pages/productDetail";
 import userProductDetail from "../views/pages/UserProductDetail";
 import UserProductEdit from "../views/pages/userProductEdit";
+import Favorites from "../views/pages/favorite";
 
 const routes = {
   '/': Home,
@@ -23,6 +24,7 @@ const routes = {
   '/products/:id': productDetail,
   '/userproducts/:id': userProductDetail,
   '/product-edit/:id' : UserProductEdit,
+  '/wishlist': Favorites,
 };
 
 export default routes;

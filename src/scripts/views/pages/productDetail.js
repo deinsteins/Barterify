@@ -1,6 +1,8 @@
 import BarterifyDbSource from '../../data/barterifydb-source';
 import UrlParser from '../../routes/url-parser';
 import { createProductDetailTemplate } from '../templates/template-creator';
+import LikeButtonPresenter from '../../utils/like-button-presenter';
+import FavoriteProductIdb from '../../data/favorite-product-idb';
 
 const productDetail = {
   async render() {
@@ -25,6 +27,12 @@ const productDetail = {
     const { data } = await BarterifyDbSource.ProductDetail(url.id);
     const Container = document.querySelector('#productContainer');
     Container.innerHTML = createProductDetailTemplate(data);
+
+    LikeButtonPresenter.init({
+      likeButtonContainer: document.querySelector('#likeButtonContainer'),
+      favoriteProduct: FavoriteProductIdb,
+      data,
+    });
   },
 };
 

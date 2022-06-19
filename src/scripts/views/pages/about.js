@@ -35,6 +35,11 @@ const About = {
           
         </div>
       </div>
+      <style>
+        footer {
+          margin-top: 5%;
+        }
+      </style>
         `
     },
     async afterRender() {

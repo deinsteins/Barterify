@@ -10,6 +10,8 @@ const Inventory = {
     const nav = document.querySelector('nav');
     nav.style.backgroundColor = '#112b3c';
     nav.style.position = 'relative';
+    const footer = document.querySelector('footer');
+    footer.style.display = 'none';
     return `
     <section>
         <div class="max-w-screen-xl px-4 py-12 mx-auto sm:px-6 lg:px-8">
@@ -45,7 +47,8 @@ const Inventory = {
             </div>
           </div>
         </section>
-        `;
+        `
+        ;
   },
 
   async afterRender() {

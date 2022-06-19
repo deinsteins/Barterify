@@ -44,9 +44,13 @@ class BarterifyDbSource {
         throw new Error(response.data.message);
       }
       const responseToken = response.data.data.token;
+      const responseUsername = response.data.data.user.username;
       localStorage.setItem(
         'token',
         JSON.stringify(responseToken)
+      );
+      localStorage.setItem(
+        'username', JSON.stringify(responseUsername)
       );
       return response.data;
     } catch (err) {
@@ -284,10 +288,13 @@ class BarterifyDbSource {
           url: `${API_ENDPOINT.PRODUCT_DETAIL(id)}`,
           method: 'GET',
         })
-
         if (response.statusText !== 'OK') {
           throw new Error(response.data.message);
         }
+        const responseProductId = response.data.data.name;
+        sessionStorage.setItem(
+          'productName', JSON.stringify(responseProductId)
+        );
         return response.data;
       } catch (err) {
         return { error: err.response || err.message };

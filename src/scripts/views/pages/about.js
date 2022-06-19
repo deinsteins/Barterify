@@ -40,7 +40,6 @@ const About = {
     async afterRender() {
       const teamsData = await BarterifyDbSource.Data();
       const aboutContainer = document.getElementById('aboutUs');
-      console.log(teamsData);
       teamsData.teams.forEach((team) =>{
         aboutContainer.innerHTML += createTeamCardTemplate(team);
       });

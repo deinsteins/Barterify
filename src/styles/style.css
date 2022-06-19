@@ -14,7 +14,7 @@ body {
 
 /* HEADER */
 .hero-image {
-  background-image: url("/images/Background_Home_Page.png");
+  background-image: url("/images/Background_Home_Page-large.jpg");
   min-height: 500px;
   background-size: cover;
   padding-bottom: 30px;
@@ -173,4 +173,9 @@ footer b {
 }
 .overlay > div > * {
   margin: 2rem;
+}
+
+#defaultImg {
+  width: 250px;
+  height: 250px;
 }

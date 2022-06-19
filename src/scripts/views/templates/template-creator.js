@@ -179,7 +179,7 @@ const createProductListTemplate = (product) => `
         >
           <div class="relative pb-48 overflow-hidden">
             <img
-              class="absolute inset-0 h-full w-full object-cover"
+              class="lazyload absolute inset-0 h-full w-full object-cover"
               src="${CONFIG.BASE_IMAGE_URL}${product.image}"
               alt=""
             />
@@ -189,7 +189,7 @@ const createProductListTemplate = (product) => `
               class="inline-block px-2 py-1 leading-none bg-orange-200 text-orange-800 rounded-full font-semibold uppercase tracking-wide text-xs"
               >${product.username}</span
             >
-            <h2 class="mt-2 mb-2 font-bold">${product.name}</h2>
+            <h2 class="mt-2 mb-2 font-bold" id="productName">${product.name}</h2>
             <p class="text-sm">
             ${product.description.slice(0, 50)}...
             </p>
@@ -239,9 +239,9 @@ const createProductDetailTemplate = (product) => `
         </div>
         <div class="flex">
         <button class="flex mt-5 text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded">Ajukan Barter</button>
-          <button title="Chat dengan pemilik" class="mt-5 rounded-full w-10 h-10 bg-gray-200 p-0 border-0 inline-flex items-center justify-center text-gray-500 ml-4">
+          <a href="#/chat" title="Chat dengan pemilik" class="mt-5 rounded-full w-10 h-10 bg-gray-200 p-0 border-0 inline-flex items-center justify-center text-gray-500 ml-4">
           <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
-          </button>
+          </a>
           <button title="Tambahkan ke wishlist" class="mt-5 rounded-full w-10 h-10 bg-gray-200 p-0 border-0 inline-flex items-center justify-center text-gray-500 ml-4">
             <svg fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
               <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"></path>
@@ -262,7 +262,7 @@ const createUserProductListTemplate = (product) => `
         >
           <div class="relative pb-48 overflow-hidden">
             <img
-              class="absolute inset-0 h-full w-full object-cover"
+              class="lazyload absolute inset-0 h-full w-full object-cover"
               src="${CONFIG.BASE_IMAGE_URL}${product.image}"
               alt=""
             />
@@ -482,7 +482,7 @@ const createProfileTemplate = (data) =>   `
                 <div class="image overflow-hidden">
                   <img
                     class="h-auto w-full mx-auto"
-                    src="images/Logo/user.png"
+                    src="logo/user.png"
                     alt=""
                   />
                 </div>
@@ -696,13 +696,14 @@ const createProfileEditFormTemplate = (data) => `
 const createTeamCardTemplate = (data) => `
       <div class="p-4 shadow">
       <div class="h-48 mb-2 overflow-hidden rounded-lg shadow-lg md:h-80">
+        <picture>
+        <source media="(max-width: 600px)" srcset="${data.photoSmall}">
         <img
-          src="${data.photo}"
-          alt="Photo"
-          class="object-cover object-center w-full h-full"
-        />
+            class="lazyload"
+            src="${data.photoLarge}" 
+            alt=""></img>
+        </picture>
       </div>
-
       <div class="flex flex-col items-center justify-center">
         <div class="font-bold text-indigo-500 md:text-lg">${data.name}</div>
         <p class="mb-3 text-sm text-gray-500 md:text-base md:mb-4">

@@ -18,7 +18,6 @@ const Home = {
         <div class="max-w-screen-xl px-4 py-12 mx-auto sm:px-6 lg:px-8">
             <div class="relative max-w-3xl mx-auto text-center">
             <span class="absolute inset-x-0 h-px -translate-y-1/2 bg-black/10 top-1/2"></span>
-
             <h2 class="relative inline-block px-4 text-2xl font-bold text-center bg-white">
                 Rekomendasi
             </h2>

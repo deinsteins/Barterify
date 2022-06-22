@@ -1,7 +1,7 @@
-/* eslint-disable linebreak-style */
 /* eslint-disable no-param-reassign */
 /* eslint-disable no-restricted-globals */
 import io from 'socket.io-client';
+import Swal from 'sweetalert2';
 
 const Chat = {
   async render() {
@@ -35,12 +35,10 @@ const Chat = {
         </div>
         
         <div class="messages-block">    
-            <div class="messages" id="public_messages">
-                <!-- USER JOINED / MESSAGE RECEIVED / MESSAGE SENDED SECTION -->                      
+            <div class="messages" id="public_messages">                    
             </div>                      
             
             <div class="message-input">
-                <input id="message_input" type="text">  <!-- MESSAGE INPUT FIELD -->
                 <button class="send_button" id="public_message_send"> <img src="/send-plane-2-fill.svg" alt="" srcset=""></div></button> <!-- MESSAGE  SEND BUTTON -->
             </div>
         </div>
@@ -52,19 +50,19 @@ const Chat = {
   async afterRender() {
     const socket = io('http://localhost:8000/');
     const messageContainer = document.querySelector('.messages');
-    const userName = localStorage.getItem('username').replaceAll('"', ''); // SIGN UP FOR NEW USER
+    const userName = localStorage.getItem('username').replaceAll('"', '');
     if (userName) {
       socket.emit('new-user-joined', userName);
-      const myName = document.getElementById('my-name'); // DISPLAYING CURRENT USER NAME
+      const myName = document.getElementById('my-name');
       myName.innerText = userName.toUpperCase();
     }
 
     // FUNCTION TO DISPLAY ALL THE MESSAGES AND NOTIFICATIONS
     const append = (data, position) => {
-      const messageElement = document.createElement('div'); //  CREATING A DIV
-      messageElement.className += 'message '; //  ADDING CLASSES IN IT
+      const messageElement = document.createElement('div');
+      messageElement.className += 'message ';
       messageElement.className += position;
-      const spansection = document.createElement('span'); //  CREATING CHILD SECTION OF DIV
+      const spansection = document.createElement('span');
       spansection.innerText = data;
       // CREATING NOTIFICATION OF NEW USER
       if (position === 'joined') {
@@ -83,7 +81,6 @@ const Chat = {
 
     // FUNCTION TO SEND MESSAGE DATA TO OTHER USER
     function sendMessage(toUser) {
-      // CHECKING IF CURRENT MESSAGE SENDED IS TO PUBLIC CHAT OR PRIVATE
       if (toUser === 'public') {
         if (userName) {
           const messageSended = document.getElementById('message_input').value;
@@ -91,7 +88,11 @@ const Chat = {
             socket.emit('message-sended', messageSended);
             append(messageSended, 'sended');
           } else {
-            alert('Please enter a message.');
+            Swal.fire({
+              icon: 'error',
+              title: 'Oops...',
+              text: 'Silahkan ketik pesan terlebih dahulu',
+            });
           }
           document.getElementById('message_input').value = '';
         } else {
@@ -111,7 +112,6 @@ const Chat = {
       if (userName) {
         append({ message_received: data.message, senderName: data.senderName, senderId: data.senderId }, 'received');
       } else {
-        alert('Please Enter your Name to read the chat..!');
         location.reload();
       }
     });
@@ -119,7 +119,6 @@ const Chat = {
     // FUNCTION TO INFORM LEFT USER
     socket.on('user-left', (data) => {
       append({ leftUserId: data.leftUserId, leftUserName: data.leftUserName }, 'left');
-      console.log(data)
     });
 
     document.querySelector('.send_button').addEventListener(('click'), async () => {

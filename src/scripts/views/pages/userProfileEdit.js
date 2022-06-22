@@ -1,7 +1,7 @@
+import Swal from 'sweetalert2';
 import { createProfileEditFormTemplate } from '../templates/template-creator';
 import BarterifyDbSource from '../../data/barterifydb-source';
 import { redirectUserProfileEdit } from '../../utils/redirect-helper';
-import showMessage from '../../utils/alert-helper';
 
 const UserProfileEdit = {
   async render() {
@@ -42,13 +42,22 @@ const UserProfileEdit = {
         phone: document.getElementById('phone-number').value,
         address: document.getElementById('address').value,
       });
-      console.log(data);
       if (data.error) {
-        showMessage(data.error);
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'Mohon lengkapi semua data',
+        });
       } else {
-        showMessage('Profile berhasil di update');
-        redirectUserProfileEdit();
-        window.location.reload();
+        Swal.fire({
+          title: 'Profile berhasil diubah',
+          confirmButtonText: 'OK',
+        }).then((result) => {
+          if (result.isConfirmed) {
+            Swal.fire('Tersimpan!', '', 'sukses');
+            redirectUserProfileEdit();
+          }
+        });
       }
     });
   },

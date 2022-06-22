@@ -15,6 +15,9 @@ self.addEventListener('fetch', (event) => {
   if (event.request.method !== 'GET') {
     console.log('Cannot fetch POST');
   } else {
-    event.respondWith(CacheHelper.revalidateCache(event.request));
+    event.respondWith(
+      fetch(event.request)
+        .catch(() => caches.match(event.request)),
+    );
   }
 });

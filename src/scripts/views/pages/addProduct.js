@@ -56,7 +56,7 @@ const addProduct = {
     document.getElementById('btnSubmit').addEventListener('click', async (e) => {
       e.preventDefault();
       const data = await BarterifyDbSource.AddProduct({
-        name: document.getElementById('product-name').value,
+        name: document.getElementById('product-name').value.toLowerCase(),
         price: document.getElementById('price').value,
         waNumber: document.getElementById('waNumber').value,
         category: document.getElementById('product-category').value,

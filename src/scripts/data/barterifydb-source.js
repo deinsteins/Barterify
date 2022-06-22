@@ -134,13 +134,16 @@ class BarterifyDbSource {
     }
   }
 
-  static async ProductList() {
+  static async ProductList(query) {
+    const sortQuery = query;
     try {
       const response = await axios({
         url: `${API_ENDPOINT.PRODUCT_LIST}`,
         method: 'GET',
+        params: { sortBy: sortQuery },
       });
-
+      console.log(query);
+      console.log(response);
       if (response.statusText !== 'OK') {
         throw new Error(response.data.message);
       }

@@ -145,9 +145,9 @@ const createFilterFormTemplate = () => `
       <div class="lg:col-span-3">
       <div class="flex items-center justify-between">
           <p class="text-sm text-gray-500">
-          Showing
-            <span class="hidden sm:inline" id="productCount">24</span>
-            Products
+          Menampilkan
+            <span class="hidden sm:inline" id="productCount">0</span>
+            Produk
           </p>
       
           <div class="ml-4">
@@ -158,11 +158,11 @@ const createFilterFormTemplate = () => `
               name="sort_by"
               class="text-sm border-gray-100 rounded"
             >
-              <option readonly>Sort</option>
-              <option value="title-asc">Title, A-Z</option>
-              <option value="title-desc">Title, Z-A</option>
-              <option value="price-asc">Price, Low-High</option>
-              <option value="price-desc">Price, High-Low</option>
+              <option value="default">Urutkan</option>
+              <option value="title-asc">Nama, A-Z</option>
+              <option value="title-desc">Nama, Z-A</option>
+              <option value="price-asc">Harga Terendah</option>
+              <option value="price-desc">Harga Tertinggi</option>
             </select>
           </div>
         </div>
@@ -188,7 +188,7 @@ const createProductListTemplate = (product) => `
               class="inline-block px-2 py-1 leading-none bg-orange-200 text-orange-800 rounded-full font-semibold uppercase tracking-wide text-xs"
               >${product.username}</span
             >
-            <h2 class="mt-2 mb-2 font-bold" id="productName">${product.name}</h2>
+            <h2 class="mt-2 mb-2 font-bold" id="productName" style="text-transform: capitalize;">${product.name}</h2>
             <p class="text-sm">
             ${product.description.slice(0, 50)}...
             </p>
@@ -478,9 +478,9 @@ const createNavlinkWithAuth = () => `
                   </button>
                 </div>
                 <div class="hide origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1" id="user">
-                  <a href="#/profile" class="block px-4 py-2 text-sm " role="menuitem" tabindex="-1" id="user-menu-item-0">Your Profile</a>
+                  <a href="#/profile" class="block px-4 py-2 text-sm " role="menuitem" tabindex="-1" id="user-menu-item-0">Profil Saya</a>
                   <a href="#/wishlist" class="block px-4 py-2 text-sm " role="menuitem" tabindex="-1" id="user-menu-item-1">Wishlist</a>
-                  <a href="#" class="block px-4 py-2 text-sm " role="menuitem" tabindex="-1" id="user-menu-item-2">Sign out</a>
+                  <a href="#" class="block px-4 py-2 text-sm " role="menuitem" tabindex="-1" id="user-menu-item-2">Keluar</a>
                 </div>
 `;
 
@@ -494,7 +494,7 @@ const createProfileTemplate = (data) => `
                   <img
                     class="h-auto w-full mx-auto"
                     src="logo/user.png"
-                    alt=""
+                    alt="Foto Profil"
                   />
                 </div>
                 <h1 class="text-gray-900 font-bold text-xl leading-8 my-1 text-center">${data.data.username}</h1>
@@ -502,16 +502,8 @@ const createProfileTemplate = (data) => `
                   class="bg-gray-100 text-gray-600 hover:text-gray-700 hover:shadow py-2 px-3 mt-3 divide-y rounded shadow-sm"
                 >
                   <li class="flex items-center py-3">
-                    <span>Status</span>
-                    <span class="ml-auto"
-                      ><span class="bg-green-500 py-1 px-2 rounded text-white text-sm"
-                        >Active</span
-                      ></span
-                    >
-                  </li>
-                  <li class="flex items-center py-3">
-                    <span>Member since</span>
-                    <span class="ml-auto">Nov 07, 2016</span>
+                    <span>Terdaftar Sejak</span>
+                    <span class="ml-auto" id="createdAt">Nov 07, 2016</span>
                   </li>
                 </ul>
               </div>
@@ -541,39 +533,39 @@ const createProfileTemplate = (data) => `
                       />
                     </svg>
                   </span>
-                  <span class="tracking-wide">About</span>
+                  <span class="tracking-wide">Akun Saya</span>
                 </div>
                 <div class="text-gray-700 mt-4">
                   <div class="grid md:grid-cols-2 text-sm mb-3">
                     <div class="grid grid-cols-2">
-                      <div class="px-4 py-2 font-semibold">First Name</div>
+                      <div class="px-4 py-2 font-semibold">Nama Depan</div>
                       <div class="px-4 py-2">${data.data.firstname}</div>
                     </div>
                     <div class="grid grid-cols-2">
-                      <div class="px-4 py-2 font-semibold">Last Name</div>
+                      <div class="px-4 py-2 font-semibold">Nama Belakang</div>
                       <div class="px-4 py-2">${data.data.lastname}</div>
                     </div>
                     <div class="grid grid-cols-2">
-                      <div class="px-4 py-2 font-semibold">Gender</div>
+                      <div class="px-4 py-2 font-semibold">Jenis Kelamin</div>
                       <div class="px-4 py-2">${data.data.gender}</div>
                     </div>
                     <div class="grid grid-cols-2">
-                      <div class="px-4 py-2 font-semibold">Contact No.</div>
+                      <div class="px-4 py-2 font-semibold">Nomor Handphone</div>
                       <div class="px-4 py-2">${data.data.phone}</div>
                     </div>
                     <div class="grid grid-cols-2">
-                      <div class="px-4 py-2 font-semibold">Current Address</div>
+                      <div class="px-4 py-2 font-semibold">Alamat</div>
                       <div class="px-4 py-2">${data.data.address}</div>
                     </div>
                     <div class="grid grid-cols-2">
-                      <div class="px-4 py-2 font-semibold">Email.</div>
+                      <div class="px-4 py-2 font-semibold">Email</div>
                       <div class="px-4 py-2">${data.data.email}</div>
                     </div>
                 </div>
                 <button
                 class="outline outline-2 outline-green-500 outline-offset-2 block w-full text-sm font-semibold rounded-lg hover:bg-green-300 focus:outline-none focus:shadow-outline focus:bg-gray-100 hover:shadow-xs p-3 my-4"
                 id="btnEdit">
-                Edit Profile
+                Edit Profil
               </button>
               <button
               id="btnInventory"
@@ -711,6 +703,7 @@ const createTeamCardTemplate = (data) => `
         <source media="(max-width: 600px)" srcset="${data.photoSmall}">
         <img
             class="lazyload"
+            id="imgTeams"
             src="${data.photoLarge}" 
             alt=""></img>
         </picture>

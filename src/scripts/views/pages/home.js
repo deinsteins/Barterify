@@ -32,12 +32,49 @@ const Home = {
   },
 
   async afterRender() {
-    const productData = await BarterifyDbSource.ProductList();
     const container = document.querySelector('#content');
     container.innerHTML += createFilterFormTemplate();
     const productList = document.querySelector('#productList');
-    productData.data.forEach((product) => {
-      productList.innerHTML += createProductListTemplate(product);
+    const productData = await BarterifyDbSource.ProductList();
+
+    const clearCard = () => {
+      productList.innerHTML = '';
+    };
+
+    const createProductList = (list) => {
+      list.data.forEach((product) => {
+        productList.innerHTML += createProductListTemplate(product);
+      });
+    };
+
+    createProductList(productData);
+
+    document.getElementById('SortBy').addEventListener(('change'), async () => {
+      const optionValue = document.getElementById('SortBy').value;
+      if (optionValue === 'title-asc') {
+        clearCard();
+        const sortByQuery = 'name';
+        const productSort = await BarterifyDbSource.ProductList(sortByQuery);
+        createProductList(productSort);
+      } else if (optionValue === 'title-desc') {
+        clearCard();
+        const sortByQuery = 'name:desc';
+        const productSort = await BarterifyDbSource.ProductList(sortByQuery);
+        createProductList(productSort);
+      } else if (optionValue === 'price-asc') {
+        clearCard();
+        const sortByQuery = 'price';
+        const productSort = await BarterifyDbSource.ProductList(sortByQuery);
+        createProductList(productSort);
+      } else if (optionValue === 'price-desc') {
+        clearCard();
+        const sortByQuery = 'price:desc';
+        const productSort = await BarterifyDbSource.ProductList(sortByQuery);
+        createProductList(productSort);
+      } else {
+        clearCard();
+        createProductList(productData);
+      }
     });
     const productCardTotal = document.querySelectorAll('[id=productCard]').length;
     const counterShow = document.getElementById('productCount');

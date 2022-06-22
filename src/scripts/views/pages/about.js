@@ -21,7 +21,7 @@ const About = {
               md:mb-6
             "
           >
-            About Our Team
+            Tentang Kami
           </h2>
 
         <p class="max-w-screen-md mx-auto text-center text-gray-500 md:text-lg">

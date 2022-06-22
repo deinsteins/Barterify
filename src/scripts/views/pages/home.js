@@ -33,10 +33,10 @@ const Home = {
 
   async afterRender() {
     const productData = await BarterifyDbSource.ProductList();
-    const container= document.querySelector('#content');
+    const container = document.querySelector('#content');
     container.innerHTML += createFilterFormTemplate();
     const productList = document.querySelector('#productList');
-    productData.data.forEach((product) =>{
+    productData.data.forEach((product) => {
       productList.innerHTML += createProductListTemplate(product);
     });
     const productCardTotal = document.querySelectorAll('[id=productCard]').length;

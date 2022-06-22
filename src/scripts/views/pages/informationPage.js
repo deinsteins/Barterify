@@ -1,14 +1,11 @@
-import BarterifyDbSource from '../../data/barterifydb-source';
-import { createInformationPage } from '../templates/template-creator';
-
 const InformationPage = {
-    async render() {
-        const hero = document.querySelector('.hero-image');
-        hero.style.display = 'none';
-        const nav = document.querySelector('nav');
-        nav.style.backgroundColor = '#112b3c';
-        nav.style.position = 'relative';
-        return `
+  async render() {
+    const hero = document.querySelector('.hero-image');
+    hero.style.display = 'none';
+    const nav = document.querySelector('nav');
+    nav.style.backgroundColor = '#112b3c';
+    nav.style.position = 'relative';
+    return `
         <div class="max-w-screen-xl px-4 mx-auto md:px-8">
             <div class="mt-10 mb-10 md:mb-16">
             <h2
@@ -77,8 +74,8 @@ const InformationPage = {
 
       </div>
 
-        `
-    },
+        `;
+  },
 
 };
 

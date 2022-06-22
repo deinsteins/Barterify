@@ -2,13 +2,13 @@ import BarterifyDbSource from '../../data/barterifydb-source';
 import { createTeamCardTemplate } from '../templates/template-creator';
 
 const About = {
-    async render() {
-        const hero = document.querySelector('.hero-image');
-        hero.style.display = 'none';
-        const nav = document.querySelector('nav');
-        nav.style.backgroundColor = '#112b3c';
-        nav.style.position = 'relative';
-        return `
+  async render() {
+    const hero = document.querySelector('.hero-image');
+    hero.style.display = 'none';
+    const nav = document.querySelector('nav');
+    nav.style.backgroundColor = '#112b3c';
+    nav.style.position = 'relative';
+    return `
         <div class="max-w-screen-xl px-4 mx-auto md:px-8">
         <div class="mt-10 mb-10 md:mb-16">
           <h2
@@ -40,15 +40,15 @@ const About = {
           margin-top: 5%;
         }
       </style>
-        `
-    },
-    async afterRender() {
-      const teamsData = await BarterifyDbSource.Data();
-      const aboutContainer = document.getElementById('aboutUs');
-      teamsData.teams.forEach((team) =>{
-        aboutContainer.innerHTML += createTeamCardTemplate(team);
-      });
-    },
+        `;
+  },
+  async afterRender() {
+    const teamsData = await BarterifyDbSource.Data();
+    const aboutContainer = document.getElementById('aboutUs');
+    teamsData.teams.forEach((team) => {
+      aboutContainer.innerHTML += createTeamCardTemplate(team);
+    });
+  },
 };
 
 export default About;

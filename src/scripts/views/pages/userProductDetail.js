@@ -1,8 +1,8 @@
+import Swal from 'sweetalert2';
 import BarterifyDbSource from '../../data/barterifydb-source';
 import UrlParser from '../../routes/url-parser';
 import { createUserProductDetailTemplate } from '../templates/template-creator';
-import { redirectInventory, redirectUserProfile, redirectEditProduct } from "../../utils/redirect-helper";
-import Swal from 'sweetalert2';
+import { redirectInventory } from '../../utils/redirect-helper';
 
 const userProductDetail = {
   async render() {
@@ -42,17 +42,17 @@ const userProductDetail = {
           cancelButton: 'order-1 right-gap',
           confirmButton: 'order-2',
           denyButton: 'order-3',
-        }
+        },
       }).then((result) => {
         if (result.isConfirmed) {
           BarterifyDbSource.UserProductDelete(url.id);
-          Swal.fire('Deleted!', '', 'success')
+          Swal.fire('Deleted!', '', 'success');
           redirectInventory();
         } else if (result.isDenied) {
-          Swal.fire('Changes are not saved', '', 'info')
+          Swal.fire('Changes are not saved', '', 'info');
         }
-      })
-    })
+      });
+    });
   },
 };
 

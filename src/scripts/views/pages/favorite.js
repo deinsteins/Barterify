@@ -44,14 +44,13 @@ const Favorites = {
     if (list.length === 0) {
       productContainer.innerHTML += `
       <p class="product__empty__label" tabindex="0">
-        <b>Anda belom mempunyai wishlist product</b>
+        <b>Anda belum mempunyai wishlist produk</b>
       </p>
       `;
     }
     list.forEach((data) => {
       productContainer.innerHTML += createProductListTemplate(data);
     });
-    
   },
 };
 

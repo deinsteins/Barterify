@@ -1,5 +1,6 @@
-import { createNavlinkWithAuth, createNavlinkWithoutAuth } from "../views/templates/template-creator";
-import BarterifyDbSource from "../data/barterifydb-source";
+import { createNavlinkWithAuth, createNavlinkWithoutAuth } from '../views/templates/template-creator';
+import BarterifyDbSource from '../data/barterifydb-source';
+import { redirectUserRegister } from '../utils/redirect-helper';
 
 class AppBar extends HTMLElement {
   connectedCallback() {
@@ -11,7 +12,7 @@ class AppBar extends HTMLElement {
     <header>
     <div class="hero-image">
     <div class="hero-title">
-          <h1><b>Tukarkan barangmu disini.</b></h1>
+          <h1><b>Tukarkan barangmu di sini.</b></h1>
           <p>Cepat, Mudah, dan Aman</p>
       </div>
     </div>
@@ -49,32 +50,31 @@ class AppBar extends HTMLElement {
       }
     </style>
       `;
-      const navlinkContainer = document.getElementById('navlink');
-      const checkAuth = localStorage.getItem('token');
-      if (checkAuth == null) {
-        navlinkContainer.innerHTML += createNavlinkWithoutAuth();
-      } else {
-        navlinkContainer.innerHTML += createNavlinkWithAuth();
-        document.getElementById('user-menu-button').addEventListener('click', async (e) => {
-          // e.preventDefault();
-          const userDropdown = document.getElementById('user');
-          userDropdown.classList.toggle('show');
-        });
+    const navlinkContainer = document.getElementById('navlink');
+    const checkAuth = localStorage.getItem('token');
+    if (checkAuth == null) {
+      navlinkContainer.innerHTML += createNavlinkWithoutAuth();
+    } else {
+      navlinkContainer.innerHTML += createNavlinkWithAuth();
+      document.getElementById('user-menu-button').addEventListener('click', async () => {
+        // e.preventDefault();
+        const userDropdown = document.getElementById('user');
+        userDropdown.classList.toggle('show');
+      });
 
-        document.querySelector('main').addEventListener('click', async (e) => {
-          const userDropdown = document.getElementById('user');
-          userDropdown.classList.remove('show');
-        });
+      document.querySelector('main').addEventListener('click', async () => {
+        const userDropdown = document.getElementById('user');
+        userDropdown.classList.remove('show');
+      });
 
-        document.getElementById('user-menu-item-2').addEventListener('click', async (e) => {
-          const data = await BarterifyDbSource.logout();
-          if (data.success == '') {
-            redirectUserRegister();
-          } 
-        })
-      }
-      
+      document.getElementById('user-menu-item-2').addEventListener('click', async () => {
+        const data = await BarterifyDbSource.logout();
+        if (data.success === '') {
+          redirectUserRegister();
+        }
+      });
     }
+  }
 }
 
 customElements.define('app-bar', AppBar);

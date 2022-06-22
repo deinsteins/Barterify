@@ -47,14 +47,13 @@ const Inventory = {
             </div>
           </div>
         </section>
-        `
-        ;
+        `;
   },
 
   async afterRender() {
     const productData = await BarterifyDbSource.UserProductList();
     const productList = document.querySelector('#productCard');
-    productData.data.forEach((product) =>{
+    productData.data.forEach((product) => {
       productList.innerHTML += createUserProductListTemplate(product);
     });
   },

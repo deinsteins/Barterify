@@ -27,6 +27,8 @@ const productDetail = {
     const { data } = await BarterifyDbSource.ProductDetail(url.id);
     const Container = document.querySelector('#productContainer');
     Container.innerHTML = createProductDetailTemplate(data);
+    const receiverName = data.username;
+    sessionStorage.setItem('receiverName', JSON.stringify(receiverName));
 
     LikeButtonPresenter.init({
       likeButtonContainer: document.querySelector('#likeButtonContainer'),

@@ -1,9 +1,9 @@
 const redirectUserLogin = () => {
-      document.location.hash = '/home';
-  };
+  document.location.hash = '/home';
+};
 
 const redirectUserRegister = () => {
-    window.location.reload();
+  window.location.reload();
 };
 
 const redirectUserProfile = () => {
@@ -22,11 +22,9 @@ const redirectInventory = () => {
 const redirectUserProductEdit = () => {
   document.location.hash = `/userproducts/${sessionStorage.getItem('productId')}`;
   window.location.reload();
-}
+};
 
-
-
-export { 
+export {
   redirectUserLogin,
   redirectUserRegister,
   redirectUserProfile,

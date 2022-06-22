@@ -25,7 +25,6 @@ const userProductDetail = {
   async afterRender() {
     const url = UrlParser.parseActiveUrlWithoutCombiner();
     const { data } = await BarterifyDbSource.UserProductDetail(url.id);
-    console.log(data);
     const Container = document.querySelector('#productContainer');
     Container.innerHTML = createUserProductDetailTemplate(data);
 

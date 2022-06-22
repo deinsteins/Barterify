@@ -142,8 +142,6 @@ class BarterifyDbSource {
         method: 'GET',
         params: { sortBy: sortQuery },
       });
-      console.log(query);
-      console.log(response);
       if (response.statusText !== 'OK') {
         throw new Error(response.data.message);
       }
@@ -233,7 +231,7 @@ class BarterifyDbSource {
     const jwtToken = localStorage.getItem('token').replaceAll('"', '');
     try {
       const bodyFormData = new FormData();
-      const file = document.getElementById('product-edit-image');
+      const file = document.getElementById('productEditImage');
       if (!file.files[0]) {
         const selectedFile = document.getElementById('defaultImg').src.slice(22);
         bodyFormData.append('image', selectedFile);

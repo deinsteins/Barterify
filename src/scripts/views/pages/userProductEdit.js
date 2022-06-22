@@ -41,14 +41,14 @@ const UserProductEdit = {
       Idproduct,
     );
     const categories = await BarterifyDbSource.GetCategories();
-    const categoriesOptions = document.getElementById('product-edit-category');
+    const categoriesOptions = document.getElementById('productCategory');
     categories.data.forEach((category) => {
       categoriesOptions.innerHTML += createCategoriesTemplate(category);
     });
 
-    const input = document.getElementById('product-edit-image');
+    const inputFile = document.getElementById('productEditImage');
 
-    input.addEventListener('change', async (e) => {
+    inputFile.addEventListener('change', async (e) => {
       const { target } = e;
       if (target.files && target.files[0]) {
         const maxAllowedSize = 2 * 1024 * 1024;
@@ -65,32 +65,68 @@ const UserProductEdit = {
 
     document.getElementById('editProductSubmit').addEventListener('click', async (e) => {
       e.preventDefault();
-      const data = await BarterifyDbSource.productEdit({
-        name: document.getElementById('name').value,
-        price: document.getElementById('price').value,
-        waNumber: document.getElementById('waNumber').value,
-        category: document.getElementById('product-edit-category').value,
-        dateOfPurchase: document.getElementById('date-of-purchase').value,
-        description: document.getElementById('description').value,
-        location: document.getElementById('location').value,
-      });
-      console.log(data);
-      if (data.error) {
+
+      const name = document.getElementById('productName').value.toLowerCase();
+      const price = document.getElementById('price').value;
+      const waNumber = document.getElementById('waNumber').value;
+      const category = document.getElementById('productCategory').value;
+      const categoryName = document.getElementById('optionId').innerText;
+      const dateOfPurchase = document.getElementById('dateOfPurchase').value;
+      const description = document.getElementById('description').value;
+      const location = document.getElementById('location').value;
+
+      if (name.length > 30) {
         Swal.fire({
           icon: 'error',
           title: 'Oops...',
-          text: 'Mohon lengkapi semua data',
+          text: 'Nama Barang maksimal 30 karakter',
+        });
+      } else if (dateOfPurchase > Date.now()) {
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'Tanggal pembelian barang tidak boleh lebih dari hari ini',
+        });
+      } else if (description.length <= 40) {
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'Deskripsi minimal 40 karakter',
+        });
+      } else if (waNumber.toString().startsWith('628') === false) {
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'Nomor Whatapps harus diawali 628',
         });
       } else {
-        Swal.fire({
-          title: 'Barang/Jasa berhasil di ubah',
-          confirmButtonText: 'OK',
-        }).then((result) => {
-          if (result.isConfirmed) {
-            Swal.fire('Saved!', '', 'success');
-            redirectUserProductEdit();
-          }
+        const data = await BarterifyDbSource.productEdit({
+          name,
+          price,
+          waNumber,
+          category,
+          categoryName,
+          dateOfPurchase,
+          description,
+          location,
         });
+        if (data.error) {
+          Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Mohon lengkapi semua data',
+          });
+        } else {
+          Swal.fire({
+            title: 'Barang/Jasa berhasil di ubah',
+            confirmButtonText: 'OK',
+          }).then((result) => {
+            if (result.isConfirmed) {
+              Swal.fire('Saved!', '', 'success');
+              redirectUserProductEdit();
+            }
+          });
+        }
       }
     });
   },

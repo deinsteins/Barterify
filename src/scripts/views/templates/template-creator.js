@@ -899,22 +899,22 @@ const createProductEditFormTemplate = (data) => `
                     <img alt="ecommerce" id="defaultImg" class="lg:w-1/2 w-full lg:h-auto h-64 object-cover object-center rounded" src="${CONFIG.BASE_IMAGE_URL}${data.data.image}">
                     <label
                       class="block text-sm font-medium mt-10 text-gray-700"
-                      for="product-edit-image"
-                      >Upload foto (JPG/PNG) max 2 MB</label>
-                    <input type="file" name="product-image" id="product-edit-image" accept=".jpg, .jpeg, .png" class="w-full text-gray-700 px-3 py-2 border rounded"/>
+                      for="productEditImage"
+                      >Upload Foto (JPG/PNG) max 2 MB</label>
+                    <input type="file" name="productImage" id="productEditImage" accept=".jpg, .jpeg, .png" class="w-full text-gray-700 px-3 py-2 border rounded"/>
                   </div>
                   <div class="col-span-6 sm:col-span-3">
                     <label
-                      for="name"
+                      for="productName"
                       class="block text-sm font-medium text-gray-700"
-                      >Product Name</label
+                      >Nama Barang</label
                     >
                     <input
                       type="text"
-                      name="name"
-                      id="name"
+                      name="productName"
+                      id="productName"
                       value="${data.data.name}"
-                      autocomplete="given-name"
+                      autocomplete="name"
                       class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
                       required
                     />
@@ -924,7 +924,7 @@ const createProductEditFormTemplate = (data) => `
                     <label
                       for="price"
                       class="block text-sm font-medium text-gray-700"
-                      >Product Price</label
+                      >Harga Jual</label
                     >
                     <input
                       type="text"
@@ -938,31 +938,14 @@ const createProductEditFormTemplate = (data) => `
                   </div>
 
                   <div class="col-span-6 sm:col-span-3">
-                    <label
-                      for="waNumber"
-                      class="block text-sm font-medium text-gray-700"
-                      >Nomor Whatapps</label
-                    >
-                    <input
-                      type="text"
-                      name="waNumber"
-                      id="waNumber"
-                      value="${data.data.waNumber}"
-                      autocomplete="waNumber"
-                      class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
-                      required
-                    />
-                  </div>
-
-                  <div class="col-span-6 sm:col-span-3">
                         <label
-                        for="category"
+                        for="productCategory"
                         class="block text-sm font-medium text-gray-700"
-                        >Product Category</label
+                        >Kategori Produk</label
                         >
                         <select
-                          id="product-edit-category"
-                          name="product-category"
+                          id="productCategory"
+                          name="productCategory"
                           autocomplete="product-category-name"    
                           class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                         >
@@ -972,18 +955,17 @@ const createProductEditFormTemplate = (data) => `
 
               <div class="col-span-6 sm:col-span-3">
               <label
-                  for="date-of-purchase"
+                  for="dateOfPurchase"
                   class="block text-sm font-medium text-gray-700"
-                  >Date Of Purchase</label
+                  >Tanggal Pembelian Barang</label
               >
               <input
                   type="date"
-                  name="date-of-purchase"
-                  id="date-of-purchase"
+                  name="dateOfPurchase"
+                  id="dateOfPurchase"
                   autocomplete="dateOfPurchase"
                   value="${data.data.dateOfPurchase.slice(0, 10)}"
                   class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
-                  placeholder="Contoh 62888211524416"
                   required
               />
               </div>
@@ -991,7 +973,7 @@ const createProductEditFormTemplate = (data) => `
                   <label
                     for="description"
                     class="block text-sm font-medium text-gray-700"
-                    >Description</label
+                    >Deskripsi</label
                   >
                   <textarea
                     name="description"
@@ -1005,7 +987,7 @@ const createProductEditFormTemplate = (data) => `
                   <label
                     for="location"
                     class="block text-sm font-medium text-gray-700"
-                    >Location</label
+                    >Lokasi</label
                   >
                   <textarea
                     name="location"
@@ -1015,6 +997,24 @@ const createProductEditFormTemplate = (data) => `
                     required
                   />${data.data.location}</textarea>
                 </div>
+
+                <div class="col-span-6 sm:col-span-3">
+                    <label
+                      for="waNumber"
+                      class="block text-sm font-medium text-gray-700"
+                      >Nomor Whatapps</label
+                    >
+                    <input
+                      type="text"
+                      name="waNumber"
+                      id="waNumber"
+                      value="${data.data.waNumber}"
+                      autocomplete="waNumber"
+                      placeholder="Contoh: 6281808275432"
+                      class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                      required
+                    />
+                  </div>
               </div>
             </div>
             <div class="px-4 py-3 bg-gray-50 text-right sm:px-6">
@@ -1022,7 +1022,7 @@ const createProductEditFormTemplate = (data) => `
                 type="submit"
                 id="editProductSubmit"
                 class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                >Update Product</button>
+                >Perbarui Data Produk</button>
             </div>
           </div>
           </form>

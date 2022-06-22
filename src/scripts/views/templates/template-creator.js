@@ -170,7 +170,6 @@ const createFilterFormTemplate = () => `
             <div class="flex flex-wrap -mx-4" id="productList">
 `;
 
-
 const createProductListTemplate = (product) => `
         <div class="w-full sm:w-1/2 md:w-1/2 xl:w-1/4 p-4" id="productCard">
         <a
@@ -220,7 +219,7 @@ const createProductDetailTemplate = (product) => `
       <div class="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
         <h2 class="text-sm title-font text-gray-500 tracking-widest">${product.username}</h2>
         <h1 class="text-gray-900 text-3xl title-font font-medium mb-1">${product.name}</h1>
-        <h2 class="text-sm title-font text-gray-500 tracking-widest">${product.createdAt.slice(0,10)}</h2>
+        <h2 class="text-sm title-font text-gray-500 tracking-widest">${product.createdAt.slice(0, 10)}</h2>
         <p class="mt-6 leading-relaxed">${product.description}</p>
         <div class="flex mt-6 items-center pb-5 border-b-2 border-gray-100 mb-5">
           <div class="flex">
@@ -230,7 +229,7 @@ const createProductDetailTemplate = (product) => `
           <div class="flex ml-6 items-center">
             <span class="mr-3">Tanggal Pembelian :</span>
             <div class="relative">
-              <span class="mr-3">${product.dateOfPurchase.slice(0,10)}</span>
+              <span class="mr-3">${product.dateOfPurchase.slice(0, 10)}</span>
             </div>
           </div>
         </div>
@@ -239,7 +238,7 @@ const createProductDetailTemplate = (product) => `
         </div>
         <div class="flex">
         <button class="flex mt-5 text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded">Ajukan Barter</button>
-          <a href="#/chat" title="Chat dengan pemilik" class="mt-5 rounded-full w-10 h-10 bg-gray-200 p-0 border-0 inline-flex items-center justify-center text-gray-500 ml-4">
+          <a href="https://wa.me/${product.waNumber}" title="Chat dengan pemilik" class="mt-5 rounded-full w-10 h-10 bg-gray-200 p-0 border-0 inline-flex items-center justify-center text-gray-500 ml-4">
           <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
           </a>
           <button title="Tambahkan ke wishlist" class="mt-5 rounded-full w-10 h-10 bg-gray-200 p-0 border-0 inline-flex items-center justify-center text-gray-500 ml-4" id="likeButtonContainer">
@@ -313,7 +312,7 @@ const createUserProductDetailTemplate = (product) => `
         <div class="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
           <h2 class="text-sm title-font text-gray-500 tracking-widest">${product.username}</h2>
           <h1 class="text-gray-900 text-3xl title-font font-medium mb-1">${product.name}</h1>
-          <h2 class="text-sm title-font text-gray-500 tracking-widest">${product.createdAt.slice(0,10)}</h2>
+          <h2 class="text-sm title-font text-gray-500 tracking-widest">${product.createdAt.slice(0, 10)}</h2>
           <p class="mt-6 leading-relaxed">${product.description}</p>
           <div class="flex mt-6 items-center pb-5 border-b-2 border-gray-100 mb-5">
             <div class="flex">
@@ -323,7 +322,7 @@ const createUserProductDetailTemplate = (product) => `
             <div class="flex ml-6 items-center">
               <span class="mr-3">Tanggal Pembelian :</span>
               <div class="relative">
-                <span class="mr-3">${product.dateOfPurchase.slice(0,10)}</span>
+                <span class="mr-3">${product.dateOfPurchase.slice(0, 10)}</span>
               </div>
             </div>
           </div>
@@ -467,6 +466,9 @@ const createNavlinkWithAuth = () => `
               <li>
               <a href="#/about" class="block md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700" id="link">Tentang Kami</a>
               </li>
+              <li>
+              <a href="#/chat" class="block md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700" id="link">Ruang Chat</a>
+              </li>
               <!-- Profile dropdown -->
               <div class="ml-3 relative">
                 <div class="mt-3" id="profileIcon">
@@ -482,7 +484,7 @@ const createNavlinkWithAuth = () => `
                 </div>
 `;
 
-const createProfileTemplate = (data) =>   `
+const createProfileTemplate = (data) => `
         <div class="mt-11 md:flex no-wrap md:-mx-2" >
             <!-- Left Side -->
             <div class="w-full md:w-3/12 md:mx-2" >
@@ -810,6 +812,23 @@ const createAddProductFormTemplate = () => `
                   </div>
 
                   <div class="col-span-6 sm:col-span-4">
+                  <label
+                  for="waNumber"
+                  class="block text-sm font-medium text-gray-700"
+                  >Nomor Whatapps</label
+                  >
+
+                  <input
+                    type="number"
+                    name="waNumber"
+                    id="waNumber"
+                    autocomplete="phone"
+                    class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                    required 
+                />
+                </div>
+
+                  <div class="col-span-6 sm:col-span-4">
                 <label
                     for="date"
                     class="block text-sm font-medium text-gray-700"
@@ -870,7 +889,7 @@ const createAddProductFormTemplate = () => `
           </form>
 `;
 
-const createCategoriesTemplate = (category) =>`
+const createCategoriesTemplate = (category) => `
       <div>
       <option id="optionId" value="${category.id}">${category.name}</option>
       </div>
@@ -922,6 +941,24 @@ const createProductEditFormTemplate = (data) => `
                       required
                     />
                   </div>
+
+                  <div class="col-span-6 sm:col-span-3">
+                    <label
+                      for="waNumber"
+                      class="block text-sm font-medium text-gray-700"
+                      >Nomor Whatapps</label
+                    >
+                    <input
+                      type="text"
+                      name="waNumber"
+                      id="waNumber"
+                      value="${data.data.waNumber}"
+                      autocomplete="waNumber"
+                      class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                      required
+                    />
+                  </div>
+
                   <div class="col-span-6 sm:col-span-3">
                         <label
                         for="category"
@@ -949,7 +986,7 @@ const createProductEditFormTemplate = (data) => `
                   name="date-of-purchase"
                   id="date-of-purchase"
                   autocomplete="dateOfPurchase"
-                  value="${data.data.dateOfPurchase.slice(0,10)}"
+                  value="${data.data.dateOfPurchase.slice(0, 10)}"
                   class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
                   placeholder="Contoh 62888211524416"
                   required

@@ -1,7 +1,7 @@
-import BarterifyDbSource from "../../data/barterifydb-source";
-import { createLoginRegisterFormTemplate } from "../templates/template-creator";
-import { redirectUserLogin, redirectUserRegister } from "../../utils/redirect-helper";
-import showMessage from "../../utils/alert-helper";
+import BarterifyDbSource from '../../data/barterifydb-source';
+import { createLoginRegisterFormTemplate } from '../templates/template-creator';
+import { redirectUserLogin, redirectUserRegister } from '../../utils/redirect-helper';
+import showMessage from '../../utils/alert-helper';
 
 const LoginRegister = {
   async render() {
@@ -20,7 +20,7 @@ const LoginRegister = {
             <p>Create Your New Account !</p>
             <button class="btn transparent" id="sign-up-btn">Sign up</button>
           </div>
-          <img src="images/Logo/Logo_Barterify_Transparant.png" class="image" alt="" />
+          <img src="logo/Logo_Barterify_Transparant.png" class="image" alt="" />
         </div>
         <div class="panel right-panel">
           <div class="content">
@@ -28,7 +28,7 @@ const LoginRegister = {
             <p>back to the log in page.</p>
             <button class="btn transparent" id="sign-in-btn">Sign in</button>
           </div>
-          <img src="images/Logo/Logo_Barterify_B.png" class="image" alt="" />
+          <img src="logo/Logo_Barterify_B.png" class="image" alt="" />
         </div>
       </div>
     </div>
@@ -438,27 +438,27 @@ const LoginRegister = {
         }
 
     </style>
-    `
+    `;
   },
 
   async afterRender() {
-    const sign_in_btn = document.querySelector("#sign-in-btn");
-    const sign_up_btn = document.querySelector("#sign-up-btn");
-    const container = document.querySelector("#container");
+    const signInBtn = document.querySelector('#sign-in-btn');
+    const signUpBtn = document.querySelector('#sign-up-btn');
+    const container = document.querySelector('#container');
 
-    sign_up_btn.addEventListener("click", () => {
-      container.classList.add("sign-up-mode");
+    signUpBtn.addEventListener('click', () => {
+      container.classList.add('sign-up-mode');
     });
 
-    sign_in_btn.addEventListener("click", () => {
-      container.classList.remove("sign-up-mode");
+    signInBtn.addEventListener('click', () => {
+      container.classList.remove('sign-up-mode');
     });
     const header = document.querySelector('header');
     header.style.display = 'none';
     const footer = document.querySelector('footer');
     footer.style.display = 'none';
     const formContainer = document.querySelector('.signin-signup');
-    formContainer.innerHTML += createLoginRegisterFormTemplate();    
+    formContainer.innerHTML += createLoginRegisterFormTemplate();
 
     document.getElementById('sign-in-form').addEventListener('submit', async (e) => {
       e.preventDefault();
@@ -480,16 +480,16 @@ const LoginRegister = {
         email: document.getElementById('email').value,
         username: document.getElementById('username').value,
         password: document.getElementById('password').value,
-        password_confirmation: document.getElementById('repassword').value,
+        passwordConfirm: document.getElementById('repassword').value,
       });
       if (data.error) {
         showMessage(data.error);
       } else {
-        showMessage("Akun berhasil dibuat, Silahkan Login");
+        showMessage('Akun berhasil dibuat, Silahkan Login');
         redirectUserRegister();
       }
     });
   },
-}
+};
 
 export default LoginRegister;

@@ -16,12 +16,10 @@ const redirectUserProfileEdit = () => {
 
 const redirectInventory = () => {
   document.location.hash = '/inventory';
-  window.location.reload();
 };
 
 const redirectUserProductEdit = () => {
   document.location.hash = `/userproducts/${sessionStorage.getItem('productId')}`;
-  window.location.reload();
 };
 
 export {

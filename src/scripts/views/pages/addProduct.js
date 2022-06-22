@@ -55,33 +55,69 @@ const addProduct = {
 
     document.getElementById('btnSubmit').addEventListener('click', async (e) => {
       e.preventDefault();
-      const data = await BarterifyDbSource.AddProduct({
-        name: document.getElementById('product-name').value.toLowerCase(),
-        price: document.getElementById('price').value,
-        waNumber: document.getElementById('waNumber').value,
-        category: document.getElementById('product-category').value,
-        categoryName: document.getElementById('optionId').innerText,
-        dateOfPurchase: document.getElementById('date').value,
-        description: document.getElementById('description').value,
-        location: document.getElementById('location').value,
-      });
-      console.log(data);
-      if (data.error) {
+
+      const name = document.getElementById('product-name').value.toLowerCase();
+      const price = document.getElementById('price').value;
+      const waNumber = document.getElementById('waNumber').value;
+      const category = document.getElementById('product-category').value;
+      const categoryName = document.getElementById('optionId').innerText;
+      const dateOfPurchase = document.getElementById('date').value;
+      const description = document.getElementById('description').value;
+      const location = document.getElementById('location').value;
+
+      if (name.length > 30) {
         Swal.fire({
           icon: 'error',
           title: 'Oops...',
-          text: 'Mohon lengkapi semua data',
+          text: 'Nama Barang maksimal 30 karakter',
+        });
+      } else if (dateOfPurchase > Date.now()) {
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'Tanggal pembelian barang tidak boleh lebih dari hari ini',
+        });
+      } else if (description.length <= 40) {
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'Deskripsi minimal 40 karakter',
+        });
+      } else if (waNumber.toString().startsWith('628') === false) {
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'Nomor Whatapps harus diawali 628',
         });
       } else {
-        Swal.fire({
-          title: 'Barang/Jasa berhasil di posting',
-          confirmButtonText: 'OK',
-        }).then((result) => {
-          if (result.isConfirmed) {
-            Swal.fire('Saved!', '', 'success');
-            redirectInventory();
-          }
+        const data = await BarterifyDbSource.AddProduct({
+          name,
+          price,
+          waNumber,
+          category,
+          categoryName,
+          dateOfPurchase,
+          description,
+          location,
         });
+        console.log(data);
+        if (data.error) {
+          Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Mohon lengkapi semua data',
+          });
+        } else {
+          Swal.fire({
+            title: 'Barang/Jasa berhasil di posting',
+            confirmButtonText: 'OK',
+          }).then((result) => {
+            if (result.isConfirmed) {
+              Swal.fire('Terposting!', '', 'sukses');
+              redirectInventory();
+            }
+          });
+        }
       }
     });
   },

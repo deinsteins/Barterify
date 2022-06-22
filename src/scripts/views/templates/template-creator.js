@@ -190,7 +190,7 @@ const createProductListTemplate = (product) => `
             >
             <h2 class="mt-2 mb-2 font-bold" id="productName" style="text-transform: capitalize;">${product.name}</h2>
             <p class="text-sm">
-            ${product.description.slice(0, 50)}...
+            ${product.description.slice(0, 30)}...
             </p>
             <div class="mt-3 flex items-center">
               <span class="text-sm font-semibold">Rp</span>&nbsp;<span
@@ -218,7 +218,7 @@ const createProductDetailTemplate = (product) => `
       <img alt="ecommerce" class="lg:w-1/2 w-full lg:h-auto h-64 object-cover object-center rounded" src="${CONFIG.BASE_IMAGE_URL}${product.image}">
       <div class="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
         <h2 class="text-sm title-font text-gray-500 tracking-widest">${product.username}</h2>
-        <h1 class="text-gray-900 text-3xl title-font font-medium mb-1">${product.name}</h1>
+        <h1 class="text-gray-900 text-3xl title-font font-medium mb-1" style="text-transform: capitalize;">${product.name}</h1>
         <h2 class="text-sm title-font text-gray-500 tracking-widest">${product.createdAt.slice(0, 10)}</h2>
         <p class="mt-6 leading-relaxed">${product.description}</p>
         <div class="flex mt-6 items-center pb-5 border-b-2 border-gray-100 mb-5">
@@ -280,9 +280,9 @@ const createUserProductListTemplate = (product) => `
               class="inline-block px-2 py-1 leading-none bg-orange-200 text-orange-800 rounded-full font-semibold uppercase tracking-wide text-xs"
               >${product.username}</span
             >
-            <h2 class="mt-2 mb-2 font-bold">${product.name}</h2>
+            <h2 class="mt-2 mb-2 font-bold" style="text-transform: capitalize;">${product.name}</h2>
             <p class="text-sm">
-            ${product.description.slice(0, 50)}...
+            ${product.description.slice(0, 30)}...
             </p>
             <div class="mt-3 flex items-center">
               <span class="text-sm font-semibold">Rp</span>&nbsp;<span
@@ -311,7 +311,7 @@ const createUserProductDetailTemplate = (product) => `
         <img alt="ecommerce" class="lg:w-1/2 w-full lg:h-auto h-64 object-cover object-center rounded" src="${CONFIG.BASE_IMAGE_URL}${product.image}">
         <div class="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
           <h2 class="text-sm title-font text-gray-500 tracking-widest">${product.username}</h2>
-          <h1 class="text-gray-900 text-3xl title-font font-medium mb-1">${product.name}</h1>
+          <h1 class="text-gray-900 text-3xl title-font font-medium mb-1" style="text-transform: capitalize;">${product.name}</h1>
           <h2 class="text-sm title-font text-gray-500 tracking-widest">${product.createdAt.slice(0, 10)}</h2>
           <p class="mt-6 leading-relaxed">${product.description}</p>
           <div class="flex mt-6 items-center pb-5 border-b-2 border-gray-100 mb-5">
@@ -769,7 +769,7 @@ const createAddProductFormTemplate = () => `
                     type="text"
                     name="product-name"
                     id="product-name"
-                    autocomplete="email"
+                    autocomplete="product-name"
                     class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-15 shadow-sm sm:text-sm border-gray-300 rounded-md w-full" required
                     />
                 </div>
@@ -784,7 +784,7 @@ const createAddProductFormTemplate = () => `
                     type="number"
                     name="price"
                     id="price"
-                    autocomplete="phone"
+                    autocomplete="price"
                     class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
                     required 
                 />
@@ -803,23 +803,6 @@ const createAddProductFormTemplate = () => `
                     >
                     </select>
                   </div>
-
-                  <div class="col-span-6 sm:col-span-4">
-                  <label
-                  for="waNumber"
-                  class="block text-sm font-medium text-gray-700"
-                  >Nomor Whatapps</label
-                  >
-
-                  <input
-                    type="number"
-                    name="waNumber"
-                    id="waNumber"
-                    autocomplete="phone"
-                    class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
-                    required 
-                />
-                </div>
 
                   <div class="col-span-6 sm:col-span-4">
                 <label
@@ -850,7 +833,7 @@ const createAddProductFormTemplate = () => `
                     <label
                       for="description"
                       class="block text-sm font-medium text-gray-700"
-                      >Deskripsi</label
+                      >Deskripsi (minimal 40 karakter)</label
                     >
                     <textarea name="description"
                     id="description" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" rows="4"></textarea>
@@ -867,6 +850,25 @@ const createAddProductFormTemplate = () => `
                   id="location" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" rows="4"></textarea>
               
                 </div>
+
+                
+                <div class="col-span-6 sm:col-span-4">
+                <label
+                for="waNumber"
+                class="block text-sm font-medium text-gray-700"
+                >Nomor Whatapps</label
+                >
+
+                <input
+                  type="number"
+                  name="waNumber"
+                  id="waNumber"
+                  autocomplete="waNumber"
+                  placeholder="Contoh: 6281808275432"
+                  class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                  required 
+              />
+              </div>
                 </div>
               </div>
               <div class="px-4 py-3 bg-gray-50 text-right sm:px-6">
@@ -875,7 +877,7 @@ const createAddProductFormTemplate = () => `
                   type="submit"
                   class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                 >
-                  Save
+                  Posting Produk
                 </button>
               </div>
             </div>

@@ -31,11 +31,11 @@ const userProductDetail = {
     document.getElementById('btnDeleteProduct').addEventListener('click', async (e) => {
       e.preventDefault();
       Swal.fire({
-        title: 'Apakah anda yakin ingin menghapus produk?',
+        title: 'Apakah anda yakin ingin menghapus produk ini?',
         showDenyButton: true,
         showCancelButton: true,
-        confirmButtonText: 'Yes',
         denyButtonText: 'No',
+        confirmButtonText: 'Yes',
         customClass: {
           actions: 'my-actions',
           cancelButton: 'order-1 right-gap',
@@ -45,10 +45,10 @@ const userProductDetail = {
       }).then((result) => {
         if (result.isConfirmed) {
           BarterifyDbSource.UserProductDelete(url.id);
-          Swal.fire('Deleted!', '', 'success');
+          Swal.fire('Terhapus', '', 'success');
           redirectInventory();
         } else if (result.isDenied) {
-          Swal.fire('Changes are not saved', '', 'info');
+          Swal.fire('Dibatalkan', '', 'info');
         }
       });
     });

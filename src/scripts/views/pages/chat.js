@@ -26,7 +26,7 @@ const Chat = {
         <div class="public-chat">
             <div class="client">
             <div class="client-name">
-                <span id="my-name">
+                <span id="myName">
         
             </span>
         </div>
@@ -39,7 +39,8 @@ const Chat = {
             </div>                      
             
             <div class="message-input">
-                <button class="send_button" id="public_message_send"> <img src="/send-plane-2-fill.svg" alt="" srcset=""></div></button> <!-- MESSAGE  SEND BUTTON -->
+            <input id="messageInput" type="text">
+                <button class="send_button" id="public_message_send"> <img src="/send-plane-2-fill.svg" alt="" srcset=""></div></button>
             </div>
         </div>
     </div>
@@ -53,7 +54,7 @@ const Chat = {
     const userName = localStorage.getItem('username').replaceAll('"', '');
     if (userName) {
       socket.emit('new-user-joined', userName);
-      const myName = document.getElementById('my-name');
+      const myName = document.getElementById('myName');
       myName.innerText = userName.toUpperCase();
     }
 
@@ -83,7 +84,7 @@ const Chat = {
     function sendMessage(toUser) {
       if (toUser === 'public') {
         if (userName) {
-          const messageSended = document.getElementById('message_input').value;
+          const messageSended = document.getElementById('messageInput').value;
           if (messageSended) {
             socket.emit('message-sended', messageSended);
             append(messageSended, 'sended');
@@ -94,7 +95,7 @@ const Chat = {
               text: 'Silahkan ketik pesan terlebih dahulu',
             });
           }
-          document.getElementById('message_input').value = '';
+          document.getElementById('messageInput').value = '';
         } else {
           location.reload();
         }

@@ -54,7 +54,7 @@ const UserProfileEdit = {
           confirmButtonText: 'OK',
         }).then((result) => {
           if (result.isConfirmed) {
-            Swal.fire('Tersimpan!', '', 'sukses');
+            Swal.fire('Tersimpan', '', 'success');
             redirectUserProfileEdit();
           }
         });

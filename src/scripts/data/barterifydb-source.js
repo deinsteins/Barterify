@@ -196,7 +196,7 @@ class BarterifyDbSource {
   }) {
     const jwtToken = localStorage.getItem('token').replaceAll('"', '');
     try {
-      const selectedFile = document.getElementById('product-image').files[0];
+      const selectedFile = document.getElementById('productImage').files[0];
       const bodyFormData = new FormData();
       bodyFormData.append('name', name);
       bodyFormData.append('image', selectedFile);
@@ -236,7 +236,7 @@ class BarterifyDbSource {
         const selectedFile = document.getElementById('defaultImg').src.slice(22);
         bodyFormData.append('image', selectedFile);
       } else {
-        const selectedFile = document.getElementById('product-edit-image').files[0];
+        const selectedFile = document.getElementById('productEditImage').files[0];
         bodyFormData.append('image', selectedFile);
       }
       bodyFormData.append('name', name);

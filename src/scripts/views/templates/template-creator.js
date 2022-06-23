@@ -9,7 +9,7 @@ const createFilterFormTemplate = () => `
         <summary
           class="flex items-center justify-between px-5 py-3 bg-gray-100 lg:hidden"
         >
-          <span class="text-sm font-medium"> Toggle Filters </span>
+          <span class="text-sm font-medium"> Filter Produk </span>
 
           <svg
             class="w-5 h-5"
@@ -238,7 +238,7 @@ const createProductDetailTemplate = (product) => `
         </div>
         <div class="flex">
         <button class="flex mt-5 text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded">Ajukan Barter</button>
-          <a href="https://wa.me/${product.waNumber}" title="Chat dengan pemilik" class="mt-5 rounded-full w-10 h-10 bg-gray-200 p-0 border-0 inline-flex items-center justify-center text-gray-500 ml-4">
+          <a href="https://wa.me/${product.waNumber}" target="_blank" rel="noopener" title="Chat dengan pemilik" class="mt-5 rounded-full w-10 h-10 bg-gray-200 p-0 border-0 inline-flex items-center justify-center text-gray-500 ml-4">
           <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
           </a>
           <button title="Tambahkan ke wishlist" class="mt-5 rounded-full w-10 h-10 bg-gray-200 p-0 border-0 inline-flex items-center justify-center text-gray-500 ml-4" id="likeButtonContainer">

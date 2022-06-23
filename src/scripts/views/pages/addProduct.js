@@ -31,12 +31,12 @@ const addProduct = {
     const container = document.getElementById('formContainer');
     container.innerHTML += createAddProductFormTemplate();
     const categories = await BarterifyDbSource.GetCategories();
-    const categoriesOptions = document.getElementById('product-category');
+    const categoriesOptions = document.getElementById('productCategory');
     categories.data.forEach((category) => {
       categoriesOptions.innerHTML += createCategoriesTemplate(category);
     });
 
-    const input = document.getElementById('product-image');
+    const input = document.getElementById('productImage');
 
     input.addEventListener('change', async (e) => {
       const { target } = e;
@@ -112,7 +112,7 @@ const addProduct = {
             confirmButtonText: 'OK',
           }).then((result) => {
             if (result.isConfirmed) {
-              Swal.fire('Terposting!', '', 'sukses');
+              Swal.fire('Terposting', '', 'success');
               redirectInventory();
             }
           });

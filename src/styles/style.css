@@ -86,55 +86,7 @@ header nav a:hover {
   font-size: 32px;
 }
 
-/*MAIN*/
-main .kategori_card {
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-  border-radius: 5px;
-  padding: 20px;
-  margin-top: 20px;
-}
-main .kategori_card h1 {
-  margin-bottom: 20px;
-  color: #112b3c;
-  font-size: 20px;
-  text-align: center;
-}
-main .kategori_card h5 {
-  color: #205375;
-  text-align: center;
-}
-
-main .produk_card {
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-  border-radius: 5px;
-  padding: 20px;
-  margin-top: 20px;
-}
-
-main .produk_card h1 {
-  margin-bottom: 20px;
-  color: #112b3c;
-  font-size: 20px;
-  text-align: center;
-}
-main .produk_card h5 {
-  color: #205375;
-  text-align: center;
-}
-
-.c-card img {
-  transition: transform 0.3s ease-in-out;
-}
-
-.c-card:hover img {
-  transform: scale(1.05);
-}
-
-.icon {
-  margin-right: 3px;
-}
 /*footer*/
-
 footer {
   text-align: center;
   background-color: #112b3c;
@@ -146,6 +98,7 @@ footer b {
   color: #f66b0e;
 }
 
+/*others*/
 .overlay {
   display: none;
   position: fixed;
@@ -179,3 +132,16 @@ footer b {
   width: 250px;
   height: 250px;
 }
+
+.c-card img {
+  transition: transform 0.3s ease-in-out;
+}
+
+.c-card:hover img {
+  transform: scale(1.05);
+}
+
+.icon {
+  margin-right: 3px;
+}
+

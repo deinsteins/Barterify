@@ -56,12 +56,12 @@ const addProduct = {
     document.getElementById('btnSubmit').addEventListener('click', async (e) => {
       e.preventDefault();
 
-      const name = document.getElementById('product-name').value.toLowerCase();
+      const name = document.getElementById('productName').value.toLowerCase();
       const price = document.getElementById('price').value;
       const waNumber = document.getElementById('waNumber').value;
-      const category = document.getElementById('product-category').value;
+      const category = document.getElementById('productCategory').value;
       const categoryName = document.getElementById('optionId').innerText;
-      const dateOfPurchase = document.getElementById('date').value;
+      const dateOfPurchase = document.getElementById('dateOfPurchase').value;
       const description = document.getElementById('description').value;
       const location = document.getElementById('location').value;
 
@@ -100,7 +100,6 @@ const addProduct = {
           description,
           location,
         });
-        console.log(data);
         if (data.error) {
           Swal.fire({
             icon: 'error',

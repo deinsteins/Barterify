@@ -503,7 +503,7 @@ const createProfileTemplate = (data) => `
                 >
                   <li class="flex items-center py-3">
                     <span>Terdaftar Sejak</span>
-                    <span class="ml-auto" id="createdAt">Nov 07, 2016</span>
+                    <span class="ml-auto" id="createdAt">${data.data.createdSince.slice(0, 10)}</span>
                   </li>
                 </ul>
               </div>
@@ -761,15 +761,15 @@ const createAddProductFormTemplate = () => `
                 <div class="grid grid-cols-6 gap-6">
                     <div class="col-span-6 sm:col-span-4">
                     <label
-                    for="product-name"
+                    for="productName"
                     class="block text-sm font-medium text-gray-700"
                     >Nama Barang</label
                     >
                     <input
                     type="text"
-                    name="product-name"
-                    id="product-name"
-                    autocomplete="product-name"
+                    name="productName"
+                    id="productName"
+                    autocomplete="productName"
                     class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-15 shadow-sm sm:text-sm border-gray-300 rounded-md w-full" required
                     />
                 </div>
@@ -791,13 +791,13 @@ const createAddProductFormTemplate = () => `
                 </div>
                   <div class="col-span-6 sm:col-span-3">
                     <label
-                      for="product-category"
+                      for="productCategory"
                       class="block text-sm font-medium text-gray-700"
                       >Kategori</label
                     >
                     <select
-                      id="product-category"
-                      name="product-category"
+                      id="productCategory"
+                      name="productCategory"
                       autocomplete="product-category-name"
                       class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                     >
@@ -806,15 +806,15 @@ const createAddProductFormTemplate = () => `
 
                   <div class="col-span-6 sm:col-span-4">
                 <label
-                    for="date"
+                    for="dateOfPurchase"
                     class="block text-sm font-medium text-gray-700"
-                    >Tanggal Beli</label
+                    >Tanggal Pembelian Barang</label
                 >
                 <input
                     type="date"
-                    name="date"
-                    id="date"
-                    autocomplete="date"
+                    name="dateOfPurchase"
+                    id="dateOfPurchase"
+                    autocomplete="dateOfPurchase"
                     class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
                     required 
                 />
@@ -823,10 +823,10 @@ const createAddProductFormTemplate = () => `
                   <div class="col-span-6">
                   <label
                     class="block text-sm font-medium text-gray-700"
-                    for="product-image"
+                    for="productImage"
                     >Upload foto (JPG/PNG) max 2 MB</label
-                > <input type="file" name="product-image"
-                id="product-image" accept=".jpg, .jpeg, .png" class="w-full text-gray-700 px-3 py-2 border rounded" >
+                > <input type="file" name="productImage"
+                id="productImage" accept=".jpg, .jpeg, .png" class="w-full text-gray-700 px-3 py-2 border rounded" >
                 </div>
 
                   <div class="col-span-6">

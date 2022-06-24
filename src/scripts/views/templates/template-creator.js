@@ -129,12 +129,12 @@ const createFilterFormTemplate = () => `
           </div>
 
           <div
-            class="flex justify-between px-5 py-3 border-t border-gray-200"
+            class="flex justify-between px-6 py-4 border-t border-gray-200"
           >
             <button
               name="commit"
               type="button"
-              class="px-5 py-3 text-xs font-medium text-white bg-green-600 rounded"
+              class="px-6 py-4 text-xs font-medium text-black bg-green-500 rounded"
             >
               Tampilkan
             </button>
@@ -146,17 +146,17 @@ const createFilterFormTemplate = () => `
       <div class="flex items-center justify-between">
           <p class="text-sm text-gray-500">
           Menampilkan
-            <span class="hidden sm:inline" id="productCount">0</span>
+            <span class="sm:inline" id="productCount">0</span>
             Produk
           </p>
       
-          <div class="ml-4">
+          <div class="py-3 ml-4">
             <label for="SortBy" class="sr-only"> Sort </label>
       
             <select
               id="SortBy"
               name="sort_by"
-              class="text-sm border-gray-100 rounded"
+              class="text-sm border-gray-100 py-3 rounded"
             >
               <option value="default">Urutkan</option>
               <option value="title-asc">Nama, A-Z</option>
@@ -237,11 +237,11 @@ const createProductDetailTemplate = (product) => `
           <span class="title-font font-medium text-2xl text-gray-900">Rp.${product.price.toLocaleString()}</span>
         </div>
         <div class="flex">
-        <button class="flex mt-5 text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded">Ajukan Barter</button>
-          <a href="https://wa.me/${product.waNumber}" target="_blank" rel="noopener" title="Chat dengan pemilik" class="mt-5 rounded-full w-10 h-10 bg-gray-200 p-0 border-0 inline-flex items-center justify-center text-gray-500 ml-4">
-          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
+        <button class="flex mt-5 text-white bg-indigo-500 border-0 py-3 px-6 hover:bg-indigo-600 rounded">Ajukan Barter</button>
+          <a href="https://wa.me/${product.waNumber}" target="_blank" rel="noopener" title="Chat dengan pemilik" class="mt-5 rounded-full w-12 h-12 bg-gray-200 p-0 border-0 inline-flex items-center justify-center text-gray-500 ml-4">
+          <svg xmlns="http://www.w3.org/2000/svg" width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
           </a>
-          <button title="Tambahkan ke wishlist" class="mt-5 rounded-full w-10 h-10 bg-gray-200 p-0 border-0 inline-flex items-center justify-center text-gray-500 ml-4" id="likeButtonContainer">
+          <button title="Tambahkan ke wishlist" class="mt-5 rounded-full w-12 h-12s bg-gray-200 p-0 border-0 inline-flex items-center justify-center text-gray-500 ml-4" id="likeButtonContainer">
             
           </button>
         </div>
@@ -332,8 +332,8 @@ const createUserProductDetailTemplate = (product) => `
           <div class="flex">
           </div>
           <div class="flex mt-5">
-          <a href="#/product-edit/${product.id}" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800" id="btnEditProduct">Edit</a>
-        <a href="#"class="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900" id="btnDeleteProduct">Hapus</a>
+          <a href="#/product-edit/${product.id}" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-3 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800" id="btnEditProduct">Edit</a>
+        <a href="#"class="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-3 mr-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900" id="btnDeleteProduct">Hapus</a>
         </div>
         </div>
         </div>
@@ -443,45 +443,48 @@ const createLoginRegisterFormTemplate = () => `
 
 const createNavlinkWithoutAuth = () => `
             <li>
-              <a href="#" class="block md:bg-transparent md:text-blue-700 md:p-0 dark:text-white" aria-current="page" id="link">Beranda</a>
+              <a href="#" class="block md:bg-transparent md:text-blue-700 md:p-0 dark:text-white" aria-current="page" id="homeLink">Beranda</a>
               </li>
               <li>
-              <a href="#/information-page" class="block md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700" id="link">Informasi</a>
+              <a href="#/information-page" class="block md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700" id="informationLink">Informasi</a>
               </li>
               <li>
-              <a href="#/about" class="block md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700" id="link">Tentang Kami</a>
+              <a href="#/about" class="block md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700" id="aboutLink">Tentang Kami</a>
               </li>
               <li>
-              <a href="#/login-register" class="block md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700" id="link">Daftar/Masuk</a>
+              <a href="#/login-register" class="block md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700" id="loginLink">Daftar/Masuk</a>
             </li>
 `;
 
 const createNavlinkWithAuth = () => `
             <li>
-              <a href="#" class="block md:bg-transparent md:text-blue-700 md:p-0 dark:text-white" aria-current="page" id="link">Beranda</a>
+              <a href="#" class="block md:bg-transparent md:text-blue-700 md:p-0 dark:text-white" aria-current="page" id="homeLink">Beranda</a>
               </li>
               <li>
-              <a href="#/information-page" class="block md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700" id="link">Informasi</a>
+              <a href="#/information-page" class="block md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700" id="informationLink">Informasi</a>
               </li>
               <li>
-              <a href="#/about" class="block md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700" id="link">Tentang Kami</a>
+              <a href="#/about" class="block md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700" id="aboutLink">Tentang Kami</a>
               </li>
               <li>
-              <a href="#/chat" class="block md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700" id="link">Ruang Chat</a>
+              <a href="#/chat" class="block md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700" id="chatLink">Ruang Chat</a>
               </li>
+              <li>
               <!-- Profile dropdown -->
               <div class="ml-3 relative">
                 <div class="mt-3" id="profileIcon">
                   <button type="button" class="bg-gray-800 flex text-sm rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white" id="user-menu-button" aria-expanded="false" aria-haspopup="true">
                     <span class="sr-only">Open user menu</span>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="#FFFF" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><path d="M5.52 19c.64-2.2 1.84-3 3.22-3h6.52c1.38 0 2.58.8 3.22 3"/><circle cx="12" cy="10" r="3"/><circle cx="12" cy="12" r="10"/></svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="#FFFF" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><path d="M5.52 19c.64-2.2 1.84-3 3.22-3h6.52c1.38 0 2.58.8 3.22 3"/><circle cx="12" cy="10" r="3"/><circle cx="12" cy="12" r="10"/></svg>
                   </button>
                 </div>
                 <div class="hide origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1" id="user">
-                  <a href="#/profile" class="block px-4 py-2 text-sm " role="menuitem" tabindex="-1" id="user-menu-item-0">Profil Saya</a>
-                  <a href="#/wishlist" class="block px-4 py-2 text-sm " role="menuitem" tabindex="-1" id="user-menu-item-1">Wishlist</a>
-                  <a href="#" class="block px-4 py-2 text-sm " role="menuitem" tabindex="-1" id="user-menu-item-2">Keluar</a>
+                  <a href="#/profile" class="block px-4 py-3 text-sm " role="menuitem" tabindex="-1" id="user-menu-item-0">Profil Saya</a>
+                  <a href="#/wishlist" class="block px-4 py-3 text-sm " role="menuitem" tabindex="-1" id="user-menu-item-1">Wishlist</a>
+                  <a href="#/inventory" class="block px-4 py-3 text-sm " role="menuitem" tabindex="-1" id="user-menu-item-1">Inventory Saya</a>
+                  <a href="#" class="block px-4 py-3 text-sm " role="menuitem" tabindex="-1" id="user-menu-item-2">Keluar</a>
                 </div>
+                </li>
 `;
 
 const createProfileTemplate = (data) => `
@@ -589,7 +592,7 @@ const createProfileEditFormTemplate = (data) => `
                     <label
                       for="first-name"
                       class="block text-sm font-medium text-gray-700"
-                      >First name</label
+                      >Nama Depan</label
                     >
                     <input
                       type="text"
@@ -606,7 +609,7 @@ const createProfileEditFormTemplate = (data) => `
                     <label
                       for="last-name"
                       class="block text-sm font-medium text-gray-700"
-                      >Last name</label
+                      >Nama Belakang</label
                     >
                     <input
                       type="text"
@@ -622,7 +625,7 @@ const createProfileEditFormTemplate = (data) => `
                         <label
                         for="email-address"
                         class="block text-sm font-medium text-gray-700"
-                        >Email address</label
+                        >Email</label
                         >
                         <input
                         type="text"
@@ -640,7 +643,7 @@ const createProfileEditFormTemplate = (data) => `
               <label
                   for="phone-number"
                   class="block text-sm font-medium text-gray-700"
-                  >Phone Number</label
+                  >Nomor Handphone</label
               >
               <input
                   type="number"
@@ -657,7 +660,7 @@ const createProfileEditFormTemplate = (data) => `
                   <label
                     for="gender"
                     class="block text-sm font-medium text-gray-700"
-                    >Gender</label
+                    >Jenis Kelamin</label
                   >
                   <select
                     id="gender"
@@ -674,7 +677,7 @@ const createProfileEditFormTemplate = (data) => `
                   <label
                     for="address"
                     class="block text-sm font-medium text-gray-700"
-                    >Address</label
+                    >Alamat</label
                   >
                   <textarea
                     name="saddress"
@@ -690,8 +693,8 @@ const createProfileEditFormTemplate = (data) => `
               <button 
                 type="submit"
                 id="editProfile"
-                class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                >Save</button>
+                class="inline-flex justify-center py-3 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                >Simpan</button>
             </div>
           </div>
           </form>
@@ -875,7 +878,7 @@ const createAddProductFormTemplate = () => `
                 <button
                   id="btnSubmit"
                   type="submit"
-                  class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                  class="inline-flex justify-center py-3 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                 >
                   Posting Produk
                 </button>
@@ -1021,7 +1024,7 @@ const createProductEditFormTemplate = (data) => `
               <button 
                 type="submit"
                 id="editProductSubmit"
-                class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                class="inline-flex justify-center py-3 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                 >Perbarui Data Produk</button>
             </div>
           </div>

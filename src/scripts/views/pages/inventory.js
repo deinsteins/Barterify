@@ -22,7 +22,6 @@ const Inventory = {
                 Produk Saya
             </h2>
             </div>
-            <div class="lg:sticky lg:top-4" id="sidebarContainer">
             <div class="flex justify-between px-5 py-3">
           <a
             href="/#/product"
@@ -34,7 +33,6 @@ const Inventory = {
             Posting Barang/Jasa
           </a>
         </div>
-      </div>
       <div class="lg:col-span-3">
       <div class="flex items-center justify-between">
           <div class="container mx-auto">
@@ -47,6 +45,11 @@ const Inventory = {
             </div>
           </div>
         </section>
+        <style>
+          #btnAdd {
+            padding: 14px;
+          }
+        </style>
         `;
   },
 

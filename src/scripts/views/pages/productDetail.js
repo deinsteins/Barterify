@@ -1,8 +1,10 @@
+import Swal from 'sweetalert2';
 import BarterifyDbSource from '../../data/barterifydb-source';
 import UrlParser from '../../routes/url-parser';
 import { createProductDetailTemplate } from '../templates/template-creator';
 import LikeButtonPresenter from '../../utils/like-button-presenter';
 import FavoriteProductIdb from '../../data/favorite-product-idb';
+import { redirectWishlist } from '../../utils/redirect-helper';
 
 const productDetail = {
   async render() {
@@ -25,6 +27,14 @@ const productDetail = {
   async afterRender() {
     const url = UrlParser.parseActiveUrlWithoutCombiner();
     const { data } = await BarterifyDbSource.ProductDetail(url.id);
+    if (!data) {
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Produk tidak ditemukan',
+      });
+      redirectWishlist();
+    }
     const Container = document.querySelector('#productContainer');
     Container.innerHTML = createProductDetailTemplate(data);
     const receiverName = data.username;

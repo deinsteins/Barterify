@@ -22,6 +22,10 @@ const redirectUserProductEdit = () => {
   document.location.hash = `/userproducts/${sessionStorage.getItem('productId')}`;
 };
 
+const redirectWishlist = () => {
+  document.location.hash = '/wishlist';
+};
+
 export {
   redirectUserLogin,
   redirectUserRegister,
@@ -29,4 +33,5 @@ export {
   redirectUserProfileEdit,
   redirectInventory,
   redirectUserProductEdit,
+  redirectWishlist,
 };

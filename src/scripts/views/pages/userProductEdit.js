@@ -17,7 +17,7 @@ const UserProductEdit = {
         <div class="overlay" id="message-overlay"></div>
           <div class="px-4 text-center mt-11 sm:px-0">
             <h3 class="text-xl font-semibold leading-6 text-gray-900">
-              Edit Product User
+              Edit Produk Saya
             </h3>
         </div>
         <div class="mx-5 md:mx-3 md:col-span-2 px-5 py-3" id="productEditForm">         

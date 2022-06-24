@@ -37,10 +37,12 @@ class AppBar extends HTMLElement {
     </header>
     <style>
       .hide {
+        display: none;
         opacity: 0;
         scale: 95;
       }
       .show {
+        display: block;
         background-color: #112b3c;
         opacity: 100;
         scale: 100;

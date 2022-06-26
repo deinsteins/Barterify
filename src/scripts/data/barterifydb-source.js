@@ -136,6 +136,7 @@ class BarterifyDbSource {
 
   static async ProductList(query) {
     const sortQuery = query;
+    console.log(sortQuery);
     try {
       const response = await axios({
         url: `${API_ENDPOINT.PRODUCT_LIST}`,
@@ -145,6 +146,26 @@ class BarterifyDbSource {
       if (response.statusText !== 'OK') {
         throw new Error(response.data.message);
       }
+      console.log(response);
+      return response.data;
+    } catch (err) {
+      return { error: err.response || err.message };
+    }
+  }
+
+  static async ProductSearch(query) {
+    const sortQuery = query;
+    console.log(sortQuery);
+    try {
+      const response = await axios({
+        url: `${API_ENDPOINT.PRODUCT_LIST}`,
+        method: 'GET',
+        params: { name: sortQuery },
+      });
+      if (response.statusText !== 'OK') {
+        throw new Error(response.data.message);
+      }
+      console.log(response);
       return response.data;
     } catch (err) {
       return { error: err.response || err.message };
@@ -236,7 +257,7 @@ class BarterifyDbSource {
         const selectedFile = document.getElementById('defaultImg').src.slice(22);
         bodyFormData.append('image', selectedFile);
       } else {
-        const selectedFile = document.getElementById('productEditImage').files[0];
+        const selectedFile = document.getElementById('product-edit-image').files[0];
         bodyFormData.append('image', selectedFile);
       }
       bodyFormData.append('name', name);

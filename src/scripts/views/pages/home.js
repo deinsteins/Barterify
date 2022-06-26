@@ -22,6 +22,7 @@ const Home = {
                 Rekomendasi
             </h2>
             </div>
+            
         <div class="max-w-screen-xl px-4 py-12 mx-auto sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 gap-4 lg:grid-cols-4 lg:items-start" id="content">
                 
@@ -75,6 +76,17 @@ const Home = {
         clearCard();
         createProductList(productData);
       }
+    });
+
+    document.getElementById('cariButtonElement').addEventListener(('click'), async (e) => {
+      e.preventDefault();
+      clearCard();
+      const searchValue = document.getElementById('cariElement').value;
+      const searchByQuery = `name=${searchValue}`;
+      console.log(searchByQuery);
+      const productSearch = await BarterifyDbSource.ProductSearch(searchValue);
+
+      createProductList(productSearch);
     });
     const productCardTotal = document.querySelectorAll('[id=productCard]').length;
     const counterShow = document.getElementById('productCount');

@@ -1,3 +1,4 @@
+import Swal from 'sweetalert2';
 import { createNavlinkWithAuth, createNavlinkWithoutAuth } from '../views/templates/template-creator';
 import BarterifyDbSource from '../data/barterifydb-source';
 import { redirectUserRegister } from '../utils/redirect-helper';
@@ -59,7 +60,6 @@ class AppBar extends HTMLElement {
     } else {
       navlinkContainer.innerHTML += createNavlinkWithAuth();
       document.getElementById('user-menu-button').addEventListener('click', async () => {
-        // e.preventDefault();
         const userDropdown = document.getElementById('user');
         userDropdown.classList.toggle('show');
       });
@@ -70,10 +70,27 @@ class AppBar extends HTMLElement {
       });
 
       document.getElementById('user-menu-item-2').addEventListener('click', async () => {
-        const data = await BarterifyDbSource.logout();
-        if (data.success === '') {
-          redirectUserRegister();
-        }
+        Swal.fire({
+          title: 'Apakah anda yakin ingin log out?',
+          showDenyButton: true,
+          denyButtonText: 'Tidak',
+          confirmButtonText: 'Ya',
+          customClass: {
+            actions: 'my-actions',
+            cancelButton: 'order-1 right-gap',
+            confirmButton: 'order-2',
+            denyButton: 'order-3',
+          },
+        }).then((result) => {
+          if (result.isConfirmed) {
+            const data = BarterifyDbSource.logout();
+            if (data.success === '') {
+              redirectUserRegister();
+            }
+          } else if (result.isDenied) {
+            Swal.fire('Dibatalkan', '', 'info');
+          }
+        });
       });
     }
   }

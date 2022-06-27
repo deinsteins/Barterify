@@ -25,11 +25,22 @@ const About = {
           </h2>
 
         <p class="max-w-screen-md mx-auto text-center text-gray-500 md:text-lg">
-          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Facilis
-          perspiciatis omnis aspernatur impedit vel, consectetur laudantium nulla et
-          aliqua
+          Barterify adalah sebuah Platform Web untuk memudahkan masyarakat dalam melakukan barter barang dan jasa.
         </p>
         </div>
+
+        <h2
+        class="
+          mb-4
+          text-2xl
+          font-bold
+          text-center text-gray-800
+          lg:text-3xl
+          md:mb-6
+        "
+      >
+        Tim Kami
+      </h2>
 
         <div class="grid gap-5 md:grid-cols-2" id="aboutUs">
           

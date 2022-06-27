@@ -5,8 +5,7 @@
       "photoSmall": "images/deni-small.jpg",
       "photoLarge": "images/deni-large.jpg",
       "role": "Fullstack Developer",
-      "facebook": "",
-      "twitter" :"",
+      "twitter" :"https://twitter.com/",
       "linkedin": "https://linkedin.com/in/deni-hidayat-9a8b5b108/",
       "github": "https://github.com/deinsteins"
     },
@@ -16,9 +15,9 @@
       "photoLarge": "images/windi-large.jpg",
       "role": "Frontend Developer",
       "facebook": "",
-      "twitter": "",
-      "linkedin": "",
-      "github": ""
+      "twitter": "https://twitter.com/",
+      "linkedin": "https://linkedin.com/in/",
+      "github": "https://github.com/"
     },
     {
       "name": "Adam Arnap",
@@ -36,9 +35,9 @@
       "photoLarge": "images/putri-large.jpg",
       "role": "Frontend Developer",
       "facebook": "",
-      "twitter": "",
-      "linkedin": "",
-      "github": ""
+      "twitter": "https://twitter.com/",
+      "linkedin": "https://linkedin.com/in/",
+      "github": "https://github.com/"
     }
   ]
 }

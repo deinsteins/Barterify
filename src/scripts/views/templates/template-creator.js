@@ -29,8 +29,8 @@ const createFilterFormTemplate = () => `
 
         <form action="" class="border-t border-gray-200 lg:border-t-0 p-2">
         <div id="cari-container" class="m-1" id="dicari">
-          <input placeholder=" Silahkan cari produk ..." id="cariElement" class="rounded m-1 text-xs py-2" type="text">
-          <button id="cariButtonElement" class="p-2 text-xs font-medium text-white bg-blue-900 rounded" type="submit">Cari</button>
+          <input placeholder=" Silahkan cari produk ..." id="cariElement" class="rounded m-1 text-xs py-4" type="text">
+          <button id="cariButtonElement" class="px-4 py-4 text-xs font-medium text-white bg-blue-900 rounded" type="submit">Cari</button>
         </div>
           <fieldset>
             <legend
@@ -138,7 +138,7 @@ const createFilterFormTemplate = () => `
             <button
               name="commit"
               type="button"
-              class="px-6 py-4 text-xs font-medium text-black bg-green-500 rounded"
+              class="px-6 py-4 text-xs font-medium text-white bg-blue-900 rounded"
             >
               Tampilkan
             </button>
@@ -245,7 +245,7 @@ const createProductDetailTemplate = (product) => `
           <a href="https://wa.me/${product.waNumber}" target="_blank" rel="noopener" title="Chat dengan pemilik" class="mt-5 rounded-full w-12 h-12 bg-gray-200 p-0 border-0 inline-flex items-center justify-center text-gray-500 ml-4">
           <svg xmlns="http://www.w3.org/2000/svg" width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
           </a>
-          <button title="Tambahkan ke wishlist" class="mt-5 rounded-full w-12 h-12s bg-gray-200 p-0 border-0 inline-flex items-center justify-center text-gray-500 ml-4" id="likeButtonContainer"> 
+          <button title="Tambahkan ke wishlist" class="mt-5 rounded-full w-12 h-12s bg-gray-200 p-0 border-0 inline-flex items-center justify-center text-gray-500 ml-4" id="likeButtonContainer">
           </button>
         </div>
       </div>
@@ -711,7 +711,7 @@ const createTeamCardTemplate = (data) => `
             class="lazyload"
             id="imgTeams"
             src="${data.photoLarge}" 
-            alt=""></img>
+            alt="Profile Photo"></img>
         </picture>
       </div>
       <div class="flex flex-col items-center justify-center">
@@ -722,18 +722,9 @@ const createTeamCardTemplate = (data) => `
 
         <div class="flex">
           <div class="flex gap-4">
-            <a href="${data.facebook}">
-              <svg
-                class="w-6 h-6 text-blue-600 fill-current"
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"
-                />
-              </svg>
-            </a>
-            <a href=${data.twitter}">
+            <a target="_blank" rel="noopener" href="${data.github}">
+            <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor" class="bi bi-github" viewBox="0 0 16 16"> <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>
+            <a target="_blank" rel="noopener" href="${data.twitter}">
               <svg
                 class="w-6 h-6 text-blue-300 fill-current"
                 xmlns="http://www.w3.org/2000/svg"

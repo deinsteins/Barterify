@@ -89,10 +89,7 @@ const Home = {
       e.preventDefault();
       clearCard();
       const searchValue = document.getElementById('cariElement').value;
-      const searchByQuery = `name=${searchValue}`;
-      console.log(searchByQuery);
       const productSearch = await BarterifyDbSource.ProductSearch(searchValue);
-
       createProductList(productSearch);
       countProduct();
     });
@@ -101,10 +98,7 @@ const Home = {
       e.preventDefault();
       clearCard();
       const searchValue = document.getElementById('cariElement').value;
-      const searchByQuery = `name=${searchValue}`;
-      console.log(searchByQuery);
       const productSearch = await BarterifyDbSource.ProductSearch(searchValue);
-
       createProductList(productSearch);
       countProduct();
     });

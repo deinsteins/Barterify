@@ -16,17 +16,17 @@ const LoginRegister = {
       <div class="panels-container">
         <div class="panel left-panel">
           <div class="content">
-            <h3>New here ?</h3>
-            <p>Create Your New Account !</p>
-            <button class="btn transparent" id="sign-up-btn">Sign up</button>
+            <h3>Belum memiliki akun ?</h3>
+            <p>Buat akun baru disini!</p>
+            <button class="btn transparent" id="sign-up-btn">Daftar</button>
           </div>
           <img src="logo/Logo_Barterify_Transparant.png" class="image" alt="" />
         </div>
         <div class="panel right-panel">
           <div class="content">
-            <h3>Already have an account ?</h3>
-            <p>back to the log in page.</p>
-            <button class="btn transparent" id="sign-in-btn">Sign in</button>
+            <h3>Sudah memiliki akun ?</h3>
+            <p>kembali ke halaman login.</p>
+            <button class="btn transparent" id="sign-in-btn">Masuk</button>
           </div>
           <img src="logo/Logo_Barterify_B.png" class="image" alt="" />
         </div>

@@ -56,7 +56,7 @@ const UserProductEdit = {
           Swal.fire({
             icon: 'error',
             title: 'Oops...',
-            text: 'File too Big, please select a file less than 2mb',
+            text: 'Tanggal pembelian barang tidak boleh lebih dari hari ini',
           });
           target.value = '';
         }
@@ -69,8 +69,9 @@ const UserProductEdit = {
       const name = document.getElementById('productName').value.toLowerCase();
       const price = document.getElementById('price').value;
       const waNumber = document.getElementById('waNumber').value;
-      const category = document.getElementById('productCategory').value;
-      const categoryName = document.getElementById('optionId').innerText;
+      const option = document.getElementById('productCategory');
+      const category = option.options[option.selectedIndex].value;
+      const categoryName = option.options[option.selectedIndex].text;
       const dateOfPurchase = document.getElementById('dateOfPurchase').value;
       const description = document.getElementById('description').value;
       const location = document.getElementById('location').value;

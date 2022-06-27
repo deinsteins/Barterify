@@ -34,8 +34,9 @@ const userProductDetail = {
         title: 'Apakah anda yakin ingin menghapus produk ini?',
         showDenyButton: true,
         showCancelButton: true,
-        denyButtonText: 'No',
-        confirmButtonText: 'Yes',
+        denyButtonText: 'Tidak',
+        confirmButtonText: 'Ya',
+        cancelButtonText: 'Batal',
         customClass: {
           actions: 'my-actions',
           cancelButton: 'order-1 right-gap',

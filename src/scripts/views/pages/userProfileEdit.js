@@ -35,29 +35,49 @@ const UserProfileEdit = {
 
     document.getElementById('editProfile').addEventListener('click', async (e) => {
       e.preventDefault();
-      const data = await BarterifyDbSource.profileEdit({
-        firstname: document.getElementById('first-name').value,
-        lastname: document.getElementById('last-name').value,
-        gender: document.getElementById('gender').value,
-        phone: document.getElementById('phone-number').value,
-        address: document.getElementById('address').value,
-      });
-      if (data.error) {
+      const firstname = document.getElementById('first-name').value;
+      const lastname = document.getElementById('last-name').value;
+      const gender = document.getElementById('gender').value;
+      const phone = document.getElementById('phone-number').value;
+      const address = document.getElementById('address').value;
+
+      if (address.length < 20) {
         Swal.fire({
           icon: 'error',
           title: 'Oops...',
-          text: 'Mohon lengkapi semua data',
+          text: 'Tulis alamat lebih lengkap',
+        });
+      } else if (phone.toString().startsWith('628') === false) {
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'Nomor Handphone harus diawali 628',
         });
       } else {
-        Swal.fire({
-          title: 'Profile berhasil diubah',
-          confirmButtonText: 'OK',
-        }).then((result) => {
-          if (result.isConfirmed) {
-            Swal.fire('Tersimpan', '', 'success');
-            redirectUserProfileEdit();
-          }
+        const data = await BarterifyDbSource.profileEdit({
+          firstname,
+          lastname,
+          gender,
+          phone,
+          address,
         });
+        if (data.error) {
+          Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Mohon lengkapi semua data',
+          });
+        } else {
+          Swal.fire({
+            title: 'Profile berhasil diubah',
+            confirmButtonText: 'OK',
+          }).then((result) => {
+            if (result.isConfirmed) {
+              Swal.fire('Tersimpan', '', 'success');
+              redirectUserProfileEdit();
+            }
+          });
+        }
       }
     });
   },

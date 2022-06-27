@@ -46,7 +46,7 @@ const addProduct = {
           Swal.fire({
             icon: 'error',
             title: 'Oops...',
-            text: 'File too Big, please select a file less than 2mb',
+            text: 'File terlalu besar, silahkan pilih file dibawah 2mb',
           });
           target.value = '';
         }
@@ -59,11 +59,15 @@ const addProduct = {
       const name = document.getElementById('productName').value.toLowerCase();
       const price = document.getElementById('price').value;
       const waNumber = document.getElementById('waNumber').value;
-      const category = document.getElementById('productCategory').value;
-      const categoryName = document.getElementById('optionId').innerText;
+      const option = document.getElementById('productCategory');
+      const category = option.options[option.selectedIndex].value;
+      const categoryName = option.options[option.selectedIndex].text;
       const dateOfPurchase = document.getElementById('dateOfPurchase').value;
       const description = document.getElementById('description').value;
       const location = document.getElementById('location').value;
+      let GivenDate = dateOfPurchase;
+      const CurrentDate = new Date();
+      GivenDate = new Date(GivenDate);
 
       if (name.length > 30) {
         Swal.fire({
@@ -71,7 +75,7 @@ const addProduct = {
           title: 'Oops...',
           text: 'Nama Barang maksimal 30 karakter',
         });
-      } else if (dateOfPurchase > Date.now()) {
+      } else if (GivenDate > CurrentDate) {
         Swal.fire({
           icon: 'error',
           title: 'Oops...',

@@ -15,6 +15,7 @@ body {
 /* HEADER */
 .hero-image {
   background-image: url("/images/Background_Home_Page-large.jpg");
+  background-color: #112b3c;
   min-height: 500px;
   background-size: cover;
   padding-bottom: 30px;

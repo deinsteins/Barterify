@@ -122,7 +122,7 @@ const UserProductEdit = {
             confirmButtonText: 'OK',
           }).then((result) => {
             if (result.isConfirmed) {
-              Swal.fire('Saved!', '', 'success');
+              Swal.fire('Tersimpan', '', 'success');
               redirectUserProductEdit();
             }
           });

@@ -26,8 +26,7 @@
     "regenerator-runtime": "^0.13.9",
     "serviceworker-webpack-plugin": "^1.0.1",
     "socket.io-client": "^4.5.1",
-    "sweetalert2": "^11.4.17",
-    "y": "^0.3.2"
+    "sweetalert2": "^11.4.17"
   },
   "devDependencies": {
     "@babel/core": "^7.10.5",

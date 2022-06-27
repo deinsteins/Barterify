@@ -112,7 +112,7 @@ const addProduct = {
             confirmButtonText: 'OK',
           }).then((result) => {
             if (result.isConfirmed) {
-              Swal.fire('Terposting!', '', 'sukses');
+              Swal.fire('Terposting', '', 'success');
               redirectInventory();
             }
           });

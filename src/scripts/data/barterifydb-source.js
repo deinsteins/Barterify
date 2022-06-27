@@ -136,7 +136,6 @@ class BarterifyDbSource {
 
   static async ProductList(query) {
     const sortQuery = query;
-    console.log(sortQuery);
     try {
       const response = await axios({
         url: `${API_ENDPOINT.PRODUCT_LIST}`,
@@ -146,7 +145,6 @@ class BarterifyDbSource {
       if (response.statusText !== 'OK') {
         throw new Error(response.data.message);
       }
-      console.log(response);
       return response.data;
     } catch (err) {
       return { error: err.response || err.message };
@@ -155,7 +153,6 @@ class BarterifyDbSource {
 
   static async ProductSearch(query) {
     const sortQuery = query;
-    console.log(sortQuery);
     try {
       const response = await axios({
         url: `${API_ENDPOINT.PRODUCT_LIST}`,
@@ -165,7 +162,6 @@ class BarterifyDbSource {
       if (response.statusText !== 'OK') {
         throw new Error(response.data.message);
       }
-      console.log(response);
       return response.data;
     } catch (err) {
       return { error: err.response || err.message };

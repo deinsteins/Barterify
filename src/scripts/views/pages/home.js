@@ -78,6 +78,25 @@ const Home = {
       }
     });
 
+    const countProduct = () => {
+      const productCardTotal = document.querySelectorAll('[id=productCard]').length;
+      const counterShow = document.getElementById('productCount');
+      counterShow.innerText = productCardTotal;
+    };
+    countProduct();
+
+    document.getElementById('cariElement').addEventListener(('keyup'), async (e) => {
+      e.preventDefault();
+      clearCard();
+      const searchValue = document.getElementById('cariElement').value;
+      const searchByQuery = `name=${searchValue}`;
+      console.log(searchByQuery);
+      const productSearch = await BarterifyDbSource.ProductSearch(searchValue);
+
+      createProductList(productSearch);
+      countProduct();
+    });
+
     document.getElementById('cariButtonElement').addEventListener(('click'), async (e) => {
       e.preventDefault();
       clearCard();
@@ -87,10 +106,8 @@ const Home = {
       const productSearch = await BarterifyDbSource.ProductSearch(searchValue);
 
       createProductList(productSearch);
+      countProduct();
     });
-    const productCardTotal = document.querySelectorAll('[id=productCard]').length;
-    const counterShow = document.getElementById('productCount');
-    counterShow.innerText = productCardTotal;
   },
 };
 

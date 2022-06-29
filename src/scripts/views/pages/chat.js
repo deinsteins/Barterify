@@ -49,7 +49,7 @@ const Chat = {
   },
 
   async afterRender() {
-    const socket = io('http://localhost:8000/');
+    const socket = io('https://barterify.netlify.app/');
     const messageContainer = document.querySelector('.messages');
     const userName = localStorage.getItem('username').replaceAll('"', '');
     if (userName) {

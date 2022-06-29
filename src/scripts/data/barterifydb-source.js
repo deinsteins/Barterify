@@ -267,7 +267,7 @@ class BarterifyDbSource {
       const bodyFormData = new FormData();
       const file = document.getElementById('productEditImage');
       if (!file.files[0]) {
-        const selectedFile = document.getElementById('defaultImg').src.slice(22);
+        const selectedFile = document.getElementById('defaultImg').src.slice(36);
         bodyFormData.append('image', selectedFile);
       } else {
         const selectedFile = document.getElementById('product-edit-image').files[0];

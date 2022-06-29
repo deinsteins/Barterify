@@ -8,6 +8,7 @@ import '../styles/chat.css';
 
 import './component/app-bar';
 import './component/footer-bar';
+import './component/skip-content';
 
 import App from './views/app';
 import swRegister from './utils/sw-register';

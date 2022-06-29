@@ -14,7 +14,7 @@ const Home = {
     const footer = document.querySelector('footer');
     footer.style.display = 'block';
     return `
-    <section>
+    <section id="content" tabindex="0">
         <div class="max-w-screen-xl px-4 py-12 mx-auto sm:px-6 lg:px-8">
             <div class="relative max-w-3xl mx-auto text-center">
             <span class="absolute inset-x-0 h-px -translate-y-1/2 bg-black/10 top-1/2"></span>
@@ -24,7 +24,7 @@ const Home = {
             </div>
             
         <div class="max-w-screen-xl px-4 py-12 mx-auto sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 gap-4 lg:grid-cols-4 lg:items-start" id="content">
+            <div class="grid grid-cols-1 gap-4 lg:grid-cols-4 lg:items-start" id="list">
                 
             </div>
           </div>
@@ -33,7 +33,7 @@ const Home = {
   },
 
   async afterRender() {
-    const container = document.querySelector('#content');
+    const container = document.querySelector('#list');
     container.innerHTML += createFilterFormTemplate();
     const productList = document.querySelector('#productList');
     const productData = await BarterifyDbSource.ProductList();
@@ -136,6 +136,8 @@ const Home = {
       createProductList(productData);
       countProduct();
     });
+    const footerPage = document.querySelector('footer');
+    footerPage.classList.add('show');
   },
 };
 

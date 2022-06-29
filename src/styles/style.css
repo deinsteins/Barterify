@@ -89,6 +89,7 @@ header nav a:hover {
 
 /*footer*/
 footer {
+  display: none;
   text-align: center;
   background-color: #112b3c;
   color: #a3a3a3;
@@ -97,6 +98,10 @@ footer {
 
 footer b {
   color: #f66b0e;
+}
+
+footer.show {
+  display: block;
 }
 
 /*others*/
@@ -154,3 +159,19 @@ footer b {
   width: 44px;
 }
 
+.skip-link {
+  position: absolute;
+  top: -51px;
+  left: 0;
+  background-color: white;
+  color: black;
+  padding: 14px;
+  z-index: 999;
+  border-radius: 14px;
+  text-decoration: none;
+}
+
+.skip-link:focus {
+  top: 0;
+  transition: all 0.5s;
+}

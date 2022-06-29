@@ -1,6 +1,6 @@
 const CONFIG = {
-  BASE_URL: 'http://localhost:3000/api',
-  BASE_IMAGE_URL: 'http://localhost:3000/',
+  BASE_URL: 'https://barterify-capstone.herokuapp.com/api',
+  BASE_IMAGE_URL: 'https://barterify-capstone.herokuapp.com//',
   CACHE_NAME: 'Barterify',
   DATABASE_NAME: 'barterify-database',
   DATABASE_VERSION: 1,

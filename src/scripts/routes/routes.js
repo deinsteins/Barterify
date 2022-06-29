@@ -11,6 +11,7 @@ import userProductDetail from '../views/pages/userProductDetail';
 import UserProductEdit from '../views/pages/userProductEdit';
 import Favorites from '../views/pages/favorite';
 import Chat from '../views/pages/chat';
+import Transaction from '../views/pages/transaction';
 
 const routes = {
   '/': Home,
@@ -27,6 +28,7 @@ const routes = {
   '/product-edit/:id': UserProductEdit,
   '/wishlist': Favorites,
   '/chat': Chat,
+  '/transaction': Transaction,
 };
 
 export default routes;

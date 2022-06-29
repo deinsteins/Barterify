@@ -338,6 +338,56 @@ class BarterifyDbSource {
       return { error: err.response || err.message };
     }
   }
+
+  static async ApplyBarter({
+    productId, productName, receiverId, receiverName, offer, productOfferId, message,
+  }) {
+    const jwtToken = localStorage.getItem('token').replaceAll('"', '');
+    try {
+      const response = await axios({
+        url: `${API_ENDPOINT.BARTER}`,
+        method: 'POST',
+        headers: {
+          Authorization: `${jwtToken}`,
+        },
+        data: {
+          productId,
+          productName,
+          receiverId,
+          receiverName,
+          offer,
+          productOfferId,
+          message,
+        },
+      });
+      if (response.status !== 201) {
+        throw new Error(response);
+      }
+      return response;
+    } catch (err) {
+      return { error: err.response || err.message };
+    }
+  }
+
+  static async GetBartersData() {
+    const jwtToken = localStorage.getItem('token').replaceAll('"', '');
+    try {
+      const response = await axios({
+        url: `${API_ENDPOINT.BARTER}`,
+        method: 'GET',
+        headers: {
+          Authorization: `${jwtToken}`,
+        },
+      });
+
+      if (response.statusText !== 'OK') {
+        throw new Error(response.data.message);
+      }
+      return response.data;
+    } catch (err) {
+      return { error: err.response || err.message };
+    }
+  }
 }
 
 export default BarterifyDbSource;

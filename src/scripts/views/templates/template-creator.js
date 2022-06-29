@@ -241,11 +241,47 @@ const createProductDetailTemplate = (product) => `
           <span class="title-font font-medium text-2xl text-gray-900">Rp.${product.price.toLocaleString()}</span>
         </div>
         <div class="flex">
-        <button class="flex mt-5 text-white bg-indigo-500 border-0 py-3 px-6 hover:bg-indigo-600 rounded" id="barter">Ajukan Barter</button>
+        <button class="flex mt-5 text-white bg-indigo-500 border-0 py-3 px-6 hover:bg-indigo-600 rounded" data-modal-toggle="barter-modal" id="barter">Ajukan Barter</button>
+        <!-- Main modal -->
+        <div id="barter-modal" tabindex="-1" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 w-full md:inset-0 h-modal md:h-full justify-center items-center">
+            <div class="relative p-5 w-full h-full md:h-auto" id="modalContainer">
+                <!-- Modal content -->
+                <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+                    <button type="button" id="btnClose" class="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-800 dark:hover:text-white" data-modal-toggle="barter-modal">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>  
+                    </button>
+                    <div class="py-6 px-6 lg:px-8">
+                        <h3 class="mb-4 text-xl font-medium text-gray-900 dark:text-white">Silahkan Ajukan Penawaran</h3>
+                        <form class="space-y-6" action="#">
+                            <input type="hidden" name="productId" id="productId" value="${product.id}" required>
+                            <input type="hidden" name="productName" id="productName" value="${product.name}" required>
+                            <input type="hidden" name="receiverId" id="receiverId" value="${product.user}" required>
+                            <input type="hidden" name="receiverName" id="receiverName" value="${product.username}" required>
+                            <div>
+                                <label for="offer" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Pilih Barangmu yang ingin di barter</label>
+                                <select
+                                name="offer" id="offer" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required>
+                                </select>
+                            </div>
+                            <div>
+                                <label for="message" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Pesan</label>
+                                <textarea
+                                name="message" 
+                                id="message" 
+                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required
+                              /></textarea>
+                            </div>
+                            <button type="submit" id="btnSubmit" class="w-full text-white bg-indigo-700 hover:bg-indigo-500 focus:ring-4 focus:outline-none focus:ring-indigo-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-indigo-600 dark:hover:bg-indigo-700 dark:focus:ring-indigo-800">Kirim Penawaran</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div> 
           <a href="https://wa.me/${product.waNumber}" target="_blank" rel="noopener" title="Chat dengan pemilik" class="mt-5 rounded-full w-12 h-12 bg-gray-200 p-0 border-0 inline-flex items-center justify-center text-gray-500 ml-4">
           <svg xmlns="http://www.w3.org/2000/svg" width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
           </a>
           <button title="Tambahkan ke wishlist" class="mt-5 rounded-full w-12 h-12s bg-gray-200 p-0 border-0 inline-flex items-center justify-center text-gray-500 ml-4" id="likeButtonContainer">
+            
           </button>
         </div>
       </div>
@@ -344,7 +380,7 @@ const createUserProductDetailTemplate = (product) => `
 
 const createLoginRegisterFormTemplate = () => `
             <form class="sign-in-form" id="sign-in-form">
-                <h2 class="title">Log in</h2>
+                <h2 class="title">Masuk ke Barterify</h2>
                 <div class="input-field">
                   <i
                     ><svg
@@ -375,10 +411,10 @@ const createLoginRegisterFormTemplate = () => `
                   </i>
                   <input type="password" placeholder="Password" id="passwordLogin" required/>
                 </div>
-                <input type="submit" value="Login" class="btn solid" />
+                <input type="submit" value="Masuk" class="btn solid" />
               </form>
               <form class="sign-up-form" id="sign-up-form">
-                <h2 class="title">Sign up</h2>
+                <h2 class="title">Daftar</h2>
                 <div class="input-field">
                   <i
                     ><svg
@@ -440,7 +476,7 @@ const createLoginRegisterFormTemplate = () => `
                   </i>
                   <input type="password" placeholder="Password Confirmation" id="repassword" required minlength="8"/>
                 </div>
-                <input type="submit" class="btn" value="Sign up" />
+                <input type="submit" class="btn" value="Daftar" />
             </form>
 `;
 
@@ -485,6 +521,7 @@ const createNavlinkWithAuth = () => `
                   <a href="#/profile" class="block px-4 py-3 text-sm " role="menuitem" tabindex="-1" id="user-menu-item-0">Profil Saya</a>
                   <a href="#/wishlist" class="block px-4 py-3 text-sm " role="menuitem" tabindex="-1" id="user-menu-item-1">Wishlist</a>
                   <a href="#/inventory" class="block px-4 py-3 text-sm " role="menuitem" tabindex="-1" id="user-menu-item-1">Inventory Saya</a>
+                  <a href="#/transaction" class="block md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700" id="chatLink">Transaksi Saya</a>
                   <a href="#" class="block px-4 py-3 text-sm " role="menuitem" tabindex="-1" id="user-menu-item-2">Keluar</a>
                 </div>
                 </li>
@@ -556,7 +593,7 @@ const createProfileTemplate = (data) => `
                       <div class="px-4 py-2">${data.data.gender}</div>
                     </div>
                     <div class="grid grid-cols-2">
-                      <div class="px-4 py-2 font-semibold">Nomor Handphone</div>
+                      <div class="px-4 py-2 font-semibold">Nomor Whatapps</div>
                       <div class="px-4 py-2">${data.data.phone}</div>
                     </div>
                     <div class="grid grid-cols-2">
@@ -646,7 +683,7 @@ const createProfileEditFormTemplate = (data) => `
               <label
                   for="phone-number"
                   class="block text-sm font-medium text-gray-700"
-                  >Nomor Handphone</label
+                  >Nomor Whatapps</label
               >
               <input
                   type="number"
@@ -1025,6 +1062,34 @@ const createProductEditFormTemplate = (data) => `
           </form>
 `;
 
+const createOfferTemplate = (data) => `
+      <div>
+      <option value="${data.id}">${data.name}</option>
+      </div>
+`;
+
+const createRequestBarterList = (data) => `
+          <div class="bg-white p-6 rounded-lg shadow-lg">
+            <h2 class="text-2xl font-bold mb-2 text-gray-800">${data.senderName}</h2>
+            <p class="text-gray-300">${data.createdAt.slice(0, 10)}</p>
+            <p class="text-gray-700">Penawaran Barter :<br><a class="text-lg font-bold text-blue-700" href="#/products/${data.productId}">${data.productName}</a> <svg style="display: inline;" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left-right" viewBox="0 0 16 16"> <path fill-rule="evenodd" d="M1 11.5a.5.5 0 0 0 .5.5h11.793l-3.147 3.146a.5.5 0 0 0 .708.708l4-4a.5.5 0 0 0 0-.708l-4-4a.5.5 0 0 0-.708.708L13.293 11H1.5a.5.5 0 0 0-.5.5zm14-7a.5.5 0 0 1-.5.5H2.707l3.147 3.146a.5.5 0 1 1-.708.708l-4-4a.5.5 0 0 1 0-.708l4-4a.5.5 0 1 1 .708.708L2.707 4H14.5a.5.5 0 0 1 .5.5z"/></svg> <a class="text-lg font-bold text-blue-700" href="#/products/${data.productOfferId}">${data.offer}</a></p>
+            <p class="text-gray-700">${data.message}</p>
+            <div class="mt-5">
+            <a href="https://wa.me/${data.waNumber}" class="p-3 mt-2 rounded-lg bg-green-500 text-white hover:bg-green-700" id="btnAccept">Chat dengan Penawar</a>
+            </div>
+          </div>
+`;
+
+const createApplyBarterList = (data) => `
+          <div class="bg-white p-6 rounded-lg shadow-lg">
+            <p class="text-gray-300">${data.createdAt.slice(0, 10)}</p>
+            <h2 class="text-gray-700">Pengajuan Barter ke : <p class="inline font-bold">${data.receiverName}</h2>
+            <h2 class="text-2xl font-bold mb-2 text-gray-800"><a class="text-2xl font-bold text-blue-700" href="#/products/${data.productId}">${data.productName}</a> <svg style="display: inline;" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left-right" viewBox="0 0 16 16"> <path fill-rule="evenodd" d="M1 11.5a.5.5 0 0 0 .5.5h11.793l-3.147 3.146a.5.5 0 0 0 .708.708l4-4a.5.5 0 0 0 0-.708l-4-4a.5.5 0 0 0-.708.708L13.293 11H1.5a.5.5 0 0 0-.5.5zm14-7a.5.5 0 0 1-.5.5H2.707l3.147 3.146a.5.5 0 1 1-.708.708l-4-4a.5.5 0 0 1 0-.708l4-4a.5.5 0 1 1 .708.708L2.707 4H14.5a.5.5 0 0 1 .5.5z"/></svg> <a class="text-2xl font-bold text-blue-700" href="#/products/${data.productOfferId}">${data.offer}</a></h2>
+            <p class="text-gray-700">Status: <span class="status" id="offerStatus">${data.status}</span></p>
+            <p class="text-gray-700">${data.message}</p>
+          </div>
+`;
+
 export {
   createFilterFormTemplate,
   createProductListTemplate,
@@ -1042,4 +1107,7 @@ export {
   createProductEditFormTemplate,
   createLikeButtonTemplate,
   createUnlikedButtonTemplate,
+  createOfferTemplate,
+  createRequestBarterList,
+  createApplyBarterList,
 };

@@ -88,7 +88,7 @@ const Home = {
     document.getElementById('cariElement').addEventListener(('keyup'), async (e) => {
       e.preventDefault();
       clearCard();
-      const searchValue = document.getElementById('cariElement').value;
+      const searchValue = document.getElementById('cariElement').value.toLowerCase();
       const productSearch = await BarterifyDbSource.ProductSearch(searchValue);
       createProductList(productSearch);
       countProduct();
@@ -97,9 +97,43 @@ const Home = {
     document.getElementById('cariButtonElement').addEventListener(('click'), async (e) => {
       e.preventDefault();
       clearCard();
-      const searchValue = document.getElementById('cariElement').value;
+      const searchValue = document.getElementById('cariElement').value.toLowerCase();
       const productSearch = await BarterifyDbSource.ProductSearch(searchValue);
       createProductList(productSearch);
+      countProduct();
+    });
+
+    const categories = await BarterifyDbSource.GetCategories();
+    const categoriesOptions = document.getElementById('productCategory');
+    categories.data.forEach((category) => {
+      categoriesOptions.innerHTML += `
+      <div class="flex items-center">
+              <input
+                id="category"
+                type="radio"
+                name="category"
+                class="w-5 h-5 border-gray-300 rounded"
+                value="${category.id}"
+              />
+              <label for="category" class="ml-3 text-sm font-medium" style="text-transform: capitalize;">
+                ${category.name}
+              </label>
+              </div>
+      `;
+    });
+    document.getElementById('commit').addEventListener(('click'), async (e) => {
+      e.preventDefault();
+      clearCard();
+      const inputCategory = document.querySelector('input[name="category"]:checked').value;
+      const categoryFilter = await BarterifyDbSource.ProductFilter(inputCategory);
+      createProductList(categoryFilter);
+      countProduct();
+    });
+    document.getElementById('reset').addEventListener(('click'), async () => {
+      const inputCategory = document.getElementById('category');
+      inputCategory.checked = false;
+      clearCard();
+      createProductList(productData);
       countProduct();
     });
   },

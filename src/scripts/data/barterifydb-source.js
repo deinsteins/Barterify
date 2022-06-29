@@ -168,6 +168,23 @@ class BarterifyDbSource {
     }
   }
 
+  static async ProductFilter(query) {
+    const filterQuery = query;
+    try {
+      const response = await axios({
+        url: `${API_ENDPOINT.PRODUCT_LIST}`,
+        method: 'GET',
+        params: { category: filterQuery },
+      });
+      if (response.statusText !== 'OK') {
+        throw new Error(response.data.message);
+      }
+      return response.data;
+    } catch (err) {
+      return { error: err.response || err.message };
+    }
+  }
+
   static async UserProductList() {
     const jwtToken = localStorage.getItem('token').replaceAll('"', '');
     try {

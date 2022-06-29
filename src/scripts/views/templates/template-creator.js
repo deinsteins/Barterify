@@ -32,103 +32,16 @@ const createFilterFormTemplate = () => `
           <input placeholder=" Silahkan cari produk ..." id="cariElement" class="rounded m-1 text-xs py-4" type="text">
           <button id="cariButtonElement" class="px-4 py-4 text-xs font-medium text-white bg-blue-900 rounded" type="submit">Cari</button>
         </div>
-          <fieldset>
-            <legend
-              class="block w-full px-5 py-3 text-xs font-medium bg-gray-50"
-            >
-              Jenis
-            </legend>
-
-            <div class="px-5 py-6 space-y-2">
-              <div class="flex items-center">
-                <input
-                  id="barang"
-                  type="checkbox"
-                  name="type[barang]"
-                  class="w-5 h-5 border-gray-300 rounded"
-                />
-
-                <label for="barang" class="ml-3 text-sm font-medium">
-                  Barang
-                </label>
-              </div>
-
-              <div class="flex items-center">
-                <input
-                  id="jasa"
-                  type="checkbox"
-                  name="type[jasa]"
-                  class="w-5 h-5 border-gray-300 rounded"
-                />
-
-                <label for="jasa" class="ml-3 text-sm font-medium">
-                  Jasa
-                </label>
-              </div>
-            </div>
-          </fieldset>
-
           <div>
             <fieldset>
               <legend
                 class="block w-full px-5 py-3 text-xs font-medium bg-gray-50"
               >
-                Lokasi
+                Kategori
               </legend>
 
-              <div class="px-5 py-6 space-y-2">
-                <div class="flex items-center">
-                  <input
-                    id="semua-lokasi"
-                    type="checkbox"
-                    name="location[semua-lokasi]"
-                    class="w-5 h-5 border-gray-300 rounded"
-                  />
-
-                  <label for="semua-lokasi" class="ml-3 text-sm font-medium">
-                    Semua Lokasi
-                  </label>
-                </div>
-
-                <div class="flex items-center">
-                  <input
-                    id="bekasi"
-                    type="checkbox"
-                    name="location[bekasi]"
-                    class="w-5 h-5 border-gray-300 rounded"
-                  />
-
-                  <label for="bekasi" class="ml-3 text-sm font-medium">
-                    Bekasi
-                  </label>
-                </div>
-
-                <div class="flex items-center">
-                  <input
-                    id="jakarta"
-                    type="checkbox"
-                    name="location[jakarta]"
-                    class="w-5 h-5 border-gray-300 rounded"
-                  />
-
-                  <label for="jakarta" class="ml-3 text-sm font-medium">
-                    Jakarta
-                  </label>
-                </div>
-
-                <div class="flex items-center">
-                  <input
-                    id="jogja"
-                    type="checkbox"
-                    name="location[jogja]"
-                    class="w-5 h-5 border-gray-300 rounded"
-                  />
-
-                  <label for="jogja" class="ml-3 text-sm font-medium">
-                    Yogyakarta
-                  </label>
-                </div>
-              </div>
+              <div class="px-5 py-6 space-y-2" id="productCategory">
+              
             </fieldset>
           </div>
 
@@ -138,9 +51,18 @@ const createFilterFormTemplate = () => `
             <button
               name="commit"
               type="button"
+              id="commit"
               class="px-6 py-4 text-xs font-medium text-white bg-blue-900 rounded"
             >
               Tampilkan
+            </button>
+            <button
+              name="reset"
+              type="button"
+              id="reset"
+              class="px-6 py-4 text-xs font-medium text-white bg-red-900 rounded"
+            >
+              Reset
             </button>
           </div>
         </form>
@@ -1063,9 +985,7 @@ const createProductEditFormTemplate = (data) => `
 `;
 
 const createOfferTemplate = (data) => `
-      <div>
       <option value="${data.id}">${data.name}</option>
-      </div>
 `;
 
 const createRequestBarterList = (data) => `

@@ -19,13 +19,13 @@
 /* NAVBAR */
 
 .navbar {
-  width: 116%;
+  width: 100%;
   margin: auto;
   padding: 2% 4%;
 }
 
 .user-name {
-  width: 85%;
+  width: 100%;
   display: flex;
   background: #8495c7;
   align-items: center;

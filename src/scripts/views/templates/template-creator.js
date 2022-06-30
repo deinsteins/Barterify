@@ -1,5 +1,3 @@
-import CONFIG from '../../globals/config';
-
 const createFilterFormTemplate = () => `
     <div class="lg:sticky lg:top-4">
       <details
@@ -105,7 +103,7 @@ const createProductListTemplate = (product) => `
           <div class="relative pb-48 overflow-hidden">
             <img
               class="lazyload absolute inset-0 h-full w-full object-cover"
-              src="${CONFIG.BASE_IMAGE_URL}${product.image}"
+              src="${product.image}"
               alt=""
             />
           </div>
@@ -141,7 +139,7 @@ const createProductListTemplate = (product) => `
 
 const createProductDetailTemplate = (product) => `
       <div class="lg:w-4/5 mx-auto flex flex-wrap">
-      <img alt="ecommerce" class="lg:w-1/2 w-full lg:h-auto h-64 object-cover object-center rounded" src="${CONFIG.BASE_IMAGE_URL}${product.image}">
+      <img alt="ecommerce" class="lg:w-1/2 w-full lg:h-auto h-64 object-cover object-center rounded" src="${product.image}">
       <div class="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
         <h2 class="text-sm title-font text-gray-500 tracking-widest">${product.username}</h2>
         <h1 class="text-gray-900 text-3xl title-font font-medium mb-1" style="text-transform: capitalize;">${product.name}</h1>
@@ -232,7 +230,7 @@ const createUserProductListTemplate = (product) => `
           <div class="relative pb-48 overflow-hidden">
             <img
               class="lazyload absolute inset-0 h-full w-full object-cover"
-              src="${CONFIG.BASE_IMAGE_URL}${product.image}"
+              src="${product.image}"
               alt=""
             />
           </div>
@@ -269,7 +267,7 @@ const createUserProductListTemplate = (product) => `
 
 const createUserProductDetailTemplate = (product) => `
         <div class="lg:w-4/5 mx-auto flex flex-wrap">
-        <img alt="ecommerce" class="lg:w-1/2 w-full lg:h-auto h-64 object-cover object-center rounded" src="${CONFIG.BASE_IMAGE_URL}${product.image}">
+        <img alt="ecommerce" class="lg:w-1/2 w-full lg:h-auto h-64 object-cover object-center rounded" src="${product.image}">
         <div class="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
           <h2 class="text-sm title-font text-gray-500 tracking-widest">${product.username}</h2>
           <h1 class="text-gray-900 text-3xl title-font font-medium mb-1" style="text-transform: capitalize;">${product.name}</h1>
@@ -852,7 +850,7 @@ const createProductEditFormTemplate = (data) => `
             <div class="px-4 py-5 bg-white sm:p-6">
                   <div class="grid grid-cols-6 gap-6">
                     <div class="col-span-6">
-                    <img alt="ecommerce" id="defaultImg" class="lg:w-1/2 w-full lg:h-auto h-64 object-cover object-center rounded" src="${CONFIG.BASE_IMAGE_URL}${data.data.image}">
+                    <img alt="ecommerce" id="defaultImg" class="lg:w-1/2 w-full lg:h-auto h-64 object-cover object-center rounded" src="${data.data.image}">
                     <label
                       class="block text-sm font-medium mt-10 text-gray-700"
                       for="productEditImage"

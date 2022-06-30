@@ -47,7 +47,7 @@ const addProduct = {
           Swal.fire({
             icon: 'error',
             title: 'Oops...',
-            text: 'File terlalu besar, silahkan pilih file dibawah 2mb',
+            text: 'File terlalu besar, silahkan pilih file dibawah 2 MB',
           });
           target.value = '';
         }

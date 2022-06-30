@@ -59,7 +59,7 @@ const UserProductEdit = {
           Swal.fire({
             icon: 'error',
             title: 'Oops...',
-            text: 'Tanggal pembelian barang tidak boleh lebih dari hari ini',
+            text: 'File terlalu besar, silahkan pilih file dibawah 2 MB',
           });
           target.value = '';
         }
@@ -130,6 +130,7 @@ const UserProductEdit = {
         });
         LoaderInitiator.closeLoader();
         if (data.error) {
+          console.log(data);
           Swal.fire({
             icon: 'error',
             title: 'Oops...',

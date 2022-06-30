@@ -14,11 +14,6 @@ const Chat = {
     <div class="user-name"> 
         <span id="public"><marquee>Selamat datang di ruang chat publik silahkan bernegosiasi, promosi, ataupun mengobrol dengan sopan</marquee></span> 
     </div>
-    <div class="leave-chat">  
-        <div class="button render-animation">
-            <a href="" onclick="javascript:window.close();"> Leave Chat  </a> 
-        </div>
-    </div>
 </div>
     <div class="cointainer">
 
@@ -31,6 +26,11 @@ const Chat = {
             </span>
         </div>
             </div>
+        </div>
+        <div class="leave-chat">  
+        <div class="button render-animation">
+            <a href="" onclick="javascript:window.close();"> Leave Chat  </a> 
+        </div>
         </div>
         </div>
         

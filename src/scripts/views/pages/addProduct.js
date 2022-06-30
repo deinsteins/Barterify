@@ -69,6 +69,7 @@ const addProduct = {
       let GivenDate = dateOfPurchase;
       const CurrentDate = new Date();
       GivenDate = new Date(GivenDate);
+      const numbers = /^[0-9]+$/;
 
       if (name.length > 30) {
         Swal.fire({
@@ -82,17 +83,29 @@ const addProduct = {
           title: 'Oops...',
           text: 'Tanggal pembelian barang tidak boleh lebih dari hari ini',
         });
+      } else if (!price.match(numbers)) {
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'Harga produk hanya bisa di isi dengan angka',
+        });
       } else if (description.length <= 40) {
         Swal.fire({
           icon: 'error',
           title: 'Oops...',
           text: 'Deskripsi minimal 40 karakter',
         });
-      } else if (waNumber.toString().startsWith('628') === false) {
+      } else if (waNumber.toString().startsWith('628') === false || waNumber.length < 10) {
         Swal.fire({
           icon: 'error',
           title: 'Oops...',
-          text: 'Nomor Whatapps harus diawali 628',
+          text: 'Nomor Whatapps harus diawali 628 dan minimal 10 karakter',
+        });
+      } else if (!waNumber.match(numbers)) {
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'Nomor Whatapps hanya bisa di isi angka',
         });
       } else {
         LoaderInitiator.showLoader();

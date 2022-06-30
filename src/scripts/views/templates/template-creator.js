@@ -883,7 +883,7 @@ const createProductEditFormTemplate = (data) => `
                       >Harga Jual</label
                     >
                     <input
-                      type="text"
+                      type="number"
                       name="price"
                       id="price"
                       value="${data.data.price}"
@@ -961,7 +961,7 @@ const createProductEditFormTemplate = (data) => `
                       >Nomor Whatapps</label
                     >
                     <input
-                      type="text"
+                      type="number"
                       name="waNumber"
                       id="waNumber"
                       value="${data.data.waNumber}"

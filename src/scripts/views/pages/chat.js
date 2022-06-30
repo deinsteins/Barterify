@@ -10,6 +10,7 @@ const Chat = {
     const footer = document.querySelector('footer');
     footer.style.display = 'none';
     return `
+    <section class="chat">
     <div class="navbar">     
     <div class="user-name"> 
         <span id="public"><marquee>Selamat datang di ruang chat publik silahkan bernegosiasi, promosi, ataupun mengobrol dengan sopan</marquee></span> 
@@ -44,7 +45,7 @@ const Chat = {
             </div>
         </div>
     </div>
-
+    </section>
     `;
   },
 
@@ -124,6 +125,12 @@ const Chat = {
 
     document.querySelector('.send_button').addEventListener(('click'), async () => {
       sendMessage('public');
+    });
+    document.querySelector('#messageInput').addEventListener(('keypress'), async (e) => {
+      if (e.key === 'Enter') {
+        e.preventDefault();
+        document.querySelector('.send_button').click();
+      }
     });
   },
 };

@@ -10,9 +10,10 @@
   padding: 0;
 }
 
-body {
+.chat {
   background-color: #4A5A6C;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
 }
 
 /* NAVBAR */

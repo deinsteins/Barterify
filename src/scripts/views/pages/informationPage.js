@@ -1,3 +1,5 @@
+import LoaderInitiator from '../../utils/loader-helper';
+
 const InformationPage = {
   async render() {
     const hero = document.querySelector('.hero-image');
@@ -5,6 +7,7 @@ const InformationPage = {
     const nav = document.querySelector('nav');
     nav.style.backgroundColor = '#112b3c';
     nav.style.position = 'relative';
+    LoaderInitiator.showLoader();
     return `
         <div class="max-w-screen-xl px-4 mx-auto md:px-8">
             <div class="mt-10 mb-10 md:mb-16">
@@ -77,6 +80,9 @@ const InformationPage = {
         `;
   },
 
+  async afterRender() {
+    LoaderInitiator.closeLoader();
+  },
 };
 
 export default InformationPage;

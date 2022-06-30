@@ -1,4 +1,5 @@
 import BarterifyDbSource from '../../data/barterifydb-source';
+import LoaderInitiator from '../../utils/loader-helper';
 import { createTeamCardTemplate } from '../templates/template-creator';
 
 const About = {
@@ -54,11 +55,13 @@ const About = {
         `;
   },
   async afterRender() {
+    LoaderInitiator.showLoader();
     const teamsData = await BarterifyDbSource.Data();
     const aboutContainer = document.getElementById('aboutUs');
     teamsData.teams.forEach((team) => {
       aboutContainer.innerHTML += createTeamCardTemplate(team);
     });
+    LoaderInitiator.closeLoader();
   },
 };
 

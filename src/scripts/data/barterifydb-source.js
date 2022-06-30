@@ -206,14 +206,10 @@ class BarterifyDbSource {
   }
 
   static async GetCategories() {
-    const jwtToken = localStorage.getItem('token').replaceAll('"', '');
     try {
       const response = await axios({
         url: `${API_ENDPOINT.CATEGORY}`,
         method: 'GET',
-        headers: {
-          Authorization: `${jwtToken}`,
-        },
       });
 
       if (response.statusText !== 'OK') {

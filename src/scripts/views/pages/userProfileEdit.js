@@ -2,6 +2,7 @@ import Swal from 'sweetalert2';
 import { createProfileEditFormTemplate } from '../templates/template-creator';
 import BarterifyDbSource from '../../data/barterifydb-source';
 import { redirectUserProfileEdit } from '../../utils/redirect-helper';
+import LoaderInitiator from '../../utils/loader-helper';
 
 const UserProfileEdit = {
   async render() {
@@ -29,9 +30,11 @@ const UserProfileEdit = {
   },
 
   async afterRender() {
+    LoaderInitiator.showLoader();
     const profile = await BarterifyDbSource.profile();
     const profileContainer = document.getElementById('profileForm');
     profileContainer.innerHTML += createProfileEditFormTemplate(profile);
+    LoaderInitiator.closeLoader();
 
     document.getElementById('editProfile').addEventListener('click', async (e) => {
       e.preventDefault();
@@ -54,6 +57,7 @@ const UserProfileEdit = {
           text: 'Nomor Handphone harus diawali 628',
         });
       } else {
+        LoaderInitiator.showLoader();
         const data = await BarterifyDbSource.profileEdit({
           firstname,
           lastname,
@@ -61,6 +65,7 @@ const UserProfileEdit = {
           phone,
           address,
         });
+        LoaderInitiator.closeLoader();
         if (data.error) {
           Swal.fire({
             icon: 'error',

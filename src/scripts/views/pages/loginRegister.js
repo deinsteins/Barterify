@@ -2,9 +2,11 @@ import BarterifyDbSource from '../../data/barterifydb-source';
 import { createLoginRegisterFormTemplate } from '../templates/template-creator';
 import { redirectUserLogin, redirectUserRegister } from '../../utils/redirect-helper';
 import showMessage from '../../utils/alert-helper';
+import LoaderInitiator from '../../utils/loader-helper';
 
 const LoginRegister = {
   async render() {
+    LoaderInitiator.closeLoader();
     return `
     <div class="overlay" id="message-overlay"></div>
     <div class="container" id="container">
@@ -462,10 +464,12 @@ const LoginRegister = {
 
     document.getElementById('sign-in-form').addEventListener('submit', async (e) => {
       e.preventDefault();
+      LoaderInitiator.showLoader();
       const data = await BarterifyDbSource.login({
         email: document.getElementById('usernameLogin').value,
         password: document.getElementById('passwordLogin').value,
       });
+      LoaderInitiator.closeLoader();
       if (data.error) {
         showMessage(data.error);
       } else {
@@ -476,12 +480,14 @@ const LoginRegister = {
 
     document.getElementById('sign-up-form').addEventListener('submit', async (e) => {
       e.preventDefault();
+      LoaderInitiator.showLoader();
       const data = await BarterifyDbSource.register({
         email: document.getElementById('email').value,
         username: document.getElementById('username').value,
         password: document.getElementById('password').value,
         passwordConfirm: document.getElementById('repassword').value,
       });
+      LoaderInitiator.closeLoader();
       if (data.error) {
         showMessage(data.error);
       } else {

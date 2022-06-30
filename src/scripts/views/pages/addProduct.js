@@ -1,5 +1,6 @@
 import Swal from 'sweetalert2';
 import BarterifyDbSource from '../../data/barterifydb-source';
+import LoaderInitiator from '../../utils/loader-helper';
 import { redirectInventory } from '../../utils/redirect-helper';
 import { createAddProductFormTemplate, createCategoriesTemplate } from '../templates/template-creator';
 
@@ -94,6 +95,7 @@ const addProduct = {
           text: 'Nomor Whatapps harus diawali 628',
         });
       } else {
+        LoaderInitiator.showLoader();
         const data = await BarterifyDbSource.AddProduct({
           name,
           price,
@@ -104,6 +106,7 @@ const addProduct = {
           description,
           location,
         });
+        LoaderInitiator.closeLoader();
         if (data.error) {
           Swal.fire({
             icon: 'error',

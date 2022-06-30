@@ -1,4 +1,5 @@
 import BarterifyDbSource from '../../data/barterifydb-source';
+import LoaderInitiator from '../../utils/loader-helper';
 import { createApplyBarterList, createRequestBarterList } from '../templates/template-creator';
 
 const Transaction = {
@@ -65,6 +66,7 @@ const Transaction = {
   },
 
   async afterRender() {
+    LoaderInitiator.showLoader();
     const myId = await BarterifyDbSource.profile();
     const barterData = await BarterifyDbSource.GetBartersData();
     const requestContainer = document.getElementById('barterRequest');
@@ -78,6 +80,7 @@ const Transaction = {
         applyContainer.innerHTML += createApplyBarterList(element);
       }
     }
+    LoaderInitiator.closeLoader();
   },
 };
 

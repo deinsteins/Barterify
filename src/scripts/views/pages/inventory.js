@@ -1,4 +1,5 @@
 import BarterifyDbSource from '../../data/barterifydb-source';
+import LoaderInitiator from '../../utils/loader-helper';
 import { createUserProductListTemplate } from '../templates/template-creator';
 
 const Inventory = {
@@ -54,11 +55,13 @@ const Inventory = {
   },
 
   async afterRender() {
+    LoaderInitiator.showLoader();
     const productData = await BarterifyDbSource.UserProductList();
     const productList = document.querySelector('#productCard');
     productData.data.forEach((product) => {
       productList.innerHTML += createUserProductListTemplate(product);
     });
+    LoaderInitiator.closeLoader();
   },
 };
 

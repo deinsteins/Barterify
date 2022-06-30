@@ -3,6 +3,7 @@ import { createProductEditFormTemplate, createCategoriesTemplate } from '../temp
 import BarterifyDbSource from '../../data/barterifydb-source';
 import { redirectUserProductEdit } from '../../utils/redirect-helper';
 import UrlParser from '../../routes/url-parser';
+import LoaderInitiator from '../../utils/loader-helper';
 
 const UserProductEdit = {
   async render() {
@@ -30,8 +31,8 @@ const UserProductEdit = {
   },
 
   async afterRender() {
+    LoaderInitiator.showLoader();
     const url = UrlParser.parseActiveUrlWithoutCombiner();
-
     const product = await BarterifyDbSource.UserProductDetail(url.id);
     const productContainer = document.getElementById('productEditForm');
     productContainer.innerHTML += createProductEditFormTemplate(product);
@@ -45,6 +46,8 @@ const UserProductEdit = {
     categories.data.forEach((category) => {
       categoriesOptions.innerHTML += createCategoriesTemplate(category);
     });
+
+    LoaderInitiator.closeLoader();
 
     const inputFile = document.getElementById('productEditImage');
 
@@ -101,6 +104,7 @@ const UserProductEdit = {
           text: 'Nomor Whatapps harus diawali 628',
         });
       } else {
+        LoaderInitiator.showLoader();
         const data = await BarterifyDbSource.productEdit({
           name,
           price,
@@ -111,6 +115,7 @@ const UserProductEdit = {
           description,
           location,
         });
+        LoaderInitiator.closeLoader();
         if (data.error) {
           Swal.fire({
             icon: 'error',

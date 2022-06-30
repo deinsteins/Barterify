@@ -5,6 +5,7 @@ import { createOfferTemplate, createProductDetailTemplate } from '../templates/t
 import LikeButtonPresenter from '../../utils/like-button-presenter';
 import FavoriteProductIdb from '../../data/favorite-product-idb';
 import { redirectWishlist } from '../../utils/redirect-helper';
+import LoaderInitiator from '../../utils/loader-helper';
 
 const productDetail = {
   async render() {
@@ -33,8 +34,8 @@ const productDetail = {
 
   async afterRender() {
     const url = UrlParser.parseActiveUrlWithoutCombiner();
+    LoaderInitiator.showLoader();
     const { data } = await BarterifyDbSource.ProductDetail(url.id);
-    console.log(data);
     if (!data) {
       Swal.fire({
         icon: 'error',
@@ -45,6 +46,7 @@ const productDetail = {
     }
     const Container = document.querySelector('#productContainer');
     Container.innerHTML = createProductDetailTemplate(data);
+    LoaderInitiator.closeLoader();
 
     document.getElementById('btnClose').addEventListener(('click'), async () => {
       const barterModal = document.getElementById('barter-modal');
@@ -87,6 +89,7 @@ const productDetail = {
           text: 'Pesan minimal 20 karakter',
         });
       } else {
+        LoaderInitiator.showLoader();
         const barter = await BarterifyDbSource.ApplyBarter({
           productId,
           productName,
@@ -96,6 +99,7 @@ const productDetail = {
           productOfferId,
           message,
         });
+        LoaderInitiator.closeLoader();
         if (barter.error) {
           Swal.fire({
             icon: 'error',

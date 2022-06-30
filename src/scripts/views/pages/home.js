@@ -1,4 +1,5 @@
 import BarterifyDbSource from '../../data/barterifydb-source';
+import LoaderInitiator from '../../utils/loader-helper';
 import { createProductListTemplate, createFilterFormTemplate } from '../templates/template-creator';
 
 const Home = {
@@ -115,19 +116,24 @@ const Home = {
                 class="w-5 h-5 border-gray-300 rounded"
                 value="${category.id}"
               />
-              <label for="category" class="ml-3 text-sm font-medium" style="text-transform: capitalize;">
+              <label class="ml-3 text-sm font-medium" style="text-transform: capitalize;">
                 ${category.name}
               </label>
               </div>
       `;
     });
+
+    LoaderInitiator.closeLoader();
+
     document.getElementById('commit').addEventListener(('click'), async (e) => {
+      LoaderInitiator.showLoader();
       e.preventDefault();
       clearCard();
       const inputCategory = document.querySelector('input[name="category"]:checked').value;
       const categoryFilter = await BarterifyDbSource.ProductFilter(inputCategory);
       createProductList(categoryFilter);
       countProduct();
+      LoaderInitiator.closeLoader();
     });
     document.getElementById('reset').addEventListener(('click'), async () => {
       const inputCategory = document.getElementById('category');

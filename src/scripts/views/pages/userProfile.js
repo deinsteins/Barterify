@@ -1,5 +1,6 @@
 import BarterifyDbSource from '../../data/barterifydb-source';
 import showMessage from '../../utils/alert-helper';
+import LoaderInitiator from '../../utils/loader-helper';
 import { redirectInventory, redirectUserProfile } from '../../utils/redirect-helper';
 import { createProfileTemplate } from '../templates/template-creator';
 
@@ -21,6 +22,7 @@ const UserProfile = {
   },
 
   async afterRender() {
+    LoaderInitiator.showLoader();
     const profile = await BarterifyDbSource.profile();
     const profileContainer = document.getElementById('profile');
     profileContainer.innerHTML += createProfileTemplate(profile);
@@ -40,6 +42,7 @@ const UserProfile = {
     document.getElementById('btnInventory').addEventListener('click', async () => {
       redirectInventory();
     });
+    LoaderInitiator.closeLoader();
   },
 };
 

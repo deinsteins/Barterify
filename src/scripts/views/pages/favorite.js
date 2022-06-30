@@ -1,4 +1,5 @@
 import FavoriteProductIdb from '../../data/favorite-product-idb';
+import LoaderInitiator from '../../utils/loader-helper';
 import { createProductListTemplate } from '../templates/template-creator';
 
 const Favorites = {
@@ -39,6 +40,7 @@ const Favorites = {
   },
 
   async afterRender() {
+    LoaderInitiator.showLoader();
     const list = await FavoriteProductIdb.getAllProduct();
     const productContainer = document.querySelector('#productCard');
     if (list.length === 0) {
@@ -51,6 +53,7 @@ const Favorites = {
     list.forEach((data) => {
       productContainer.innerHTML += createProductListTemplate(data);
     });
+    LoaderInitiator.closeLoader();
   },
 };
 

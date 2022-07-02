@@ -1,6 +1,7 @@
 import UrlParser from '../routes/url-parser';
 import routes from '../routes/routes';
 import DrawerInitiator from '../utils/drawer-initiator';
+import scrollToTop from '../utils/scroll-helper';
 
 class App {
   constructor({ button, drawer, content }) {
@@ -23,6 +24,10 @@ class App {
     const page = routes[url];
     this._content.innerHTML = await page.render();
     await page.afterRender(this._content);
+
+    document.querySelector('.scroll-top').addEventListener(('click'), async () => {
+      scrollToTop();
+    });
 
     const skipLinkElem = document.querySelector('.skip-link');
     skipLinkElem.addEventListener('click', (e) => {

@@ -86,15 +86,6 @@ const Home = {
     };
     countProduct();
 
-    document.getElementById('cariElement').addEventListener(('keyup'), async (e) => {
-      e.preventDefault();
-      clearCard();
-      const searchValue = document.getElementById('cariElement').value.toLowerCase();
-      const productSearch = await BarterifyDbSource.ProductSearch(searchValue);
-      createProductList(productSearch);
-      countProduct();
-    });
-
     document.getElementById('cariButtonElement').addEventListener(('click'), async (e) => {
       e.preventDefault();
       clearCard();

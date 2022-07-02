@@ -44,23 +44,16 @@ const Transaction = {
           </div>
         </section>
         <style>
-        @media (min-width: 640px) {
-          table {
-            display: inline-table !important;
+        @media (max-width: 640px) {
+          #barterRequest {
+            grid-template-columns: 1fr;
           }
-      
-          thead tr:not(:first-child) {
-            display: none;
+
+          #barterApply {
+            grid-template-columns: 1fr;
           }
         }
       
-        td:not(:last-child) {
-          border-bottom: 0;
-        }
-      
-        th:not(:last-child) {
-          border-bottom: 2px solid rgba(0, 0, 0, .1);
-        }
       </style>
         `;
   },

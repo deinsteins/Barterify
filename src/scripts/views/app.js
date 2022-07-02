@@ -25,7 +25,8 @@ class App {
     this._content.innerHTML = await page.render();
     await page.afterRender(this._content);
 
-    document.querySelector('.scroll-top').addEventListener(('click'), async () => {
+    document.querySelector('.scroll-top').addEventListener(('click'), async (e) => {
+      e.preventDefault();
       scrollToTop();
     });
 

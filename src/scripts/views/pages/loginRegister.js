@@ -2,7 +2,7 @@ import BarterifyDbSource from '../../data/barterifydb-source';
 import { createLoginRegisterFormTemplate } from '../templates/template-creator';
 import { redirectUserLogin, redirectUserRegister } from '../../utils/redirect-helper';
 import showMessage from '../../utils/alert-helper';
-import LoaderInitiator from '../../utils/loader-helper';
+import LoaderInitiator from '../../utils/loader-initiator';
 
 const LoginRegister = {
   async render() {

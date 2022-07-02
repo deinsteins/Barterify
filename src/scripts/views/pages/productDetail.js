@@ -4,8 +4,8 @@ import UrlParser from '../../routes/url-parser';
 import { createOfferTemplate, createProductDetailTemplate } from '../templates/template-creator';
 import LikeButtonPresenter from '../../utils/like-button-presenter';
 import FavoriteProductIdb from '../../data/favorite-product-idb';
-import { redirectWishlist } from '../../utils/redirect-helper';
-import LoaderInitiator from '../../utils/loader-helper';
+import { redirectUserLogin } from '../../utils/redirect-helper';
+import LoaderInitiator from '../../utils/loader-initiator';
 
 const productDetail = {
   async render() {
@@ -35,6 +35,25 @@ const productDetail = {
   async afterRender() {
     const url = UrlParser.parseActiveUrlWithoutCombiner();
     LoaderInitiator.showLoader();
+    if (navigator.onLine === false) {
+      Swal.fire({
+        title: 'Tidak ada koneksi internet',
+        showDenyButton: true,
+        denyButtonText: 'Segarkan',
+        confirmButtonText: 'Lanjutkan',
+        customClass: {
+          actions: 'my-actions',
+          cancelButton: 'order-1 right-gap',
+          confirmButton: 'order-2',
+        },
+      }).then((result) => {
+        if (result.isConfirmed) {
+          LoaderInitiator.closeLoader();
+        } else if (result.isDenied) {
+          location.reload();
+        }
+      });
+    }
     const { data } = await BarterifyDbSource.ProductDetail(url.id);
     if (!data) {
       Swal.fire({
@@ -42,7 +61,7 @@ const productDetail = {
         title: 'Oops...',
         text: 'Produk tidak ditemukan',
       });
-      redirectWishlist();
+      redirectUserLogin();
     }
     const Container = document.querySelector('#productContainer');
     Container.innerHTML = createProductDetailTemplate(data);

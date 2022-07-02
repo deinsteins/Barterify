@@ -3,7 +3,7 @@ import BarterifyDbSource from '../../data/barterifydb-source';
 import UrlParser from '../../routes/url-parser';
 import { createUserProductDetailTemplate } from '../templates/template-creator';
 import { redirectInventory } from '../../utils/redirect-helper';
-import LoaderInitiator from '../../utils/loader-helper';
+import LoaderInitiator from '../../utils/loader-initiator';
 
 const userProductDetail = {
   async render() {
@@ -25,6 +25,25 @@ const userProductDetail = {
 
   async afterRender() {
     LoaderInitiator.showLoader();
+    if (navigator.onLine === false) {
+      Swal.fire({
+        title: 'Tidak ada koneksi internet',
+        showDenyButton: true,
+        denyButtonText: 'Segarkan',
+        confirmButtonText: 'Lanjutkan',
+        customClass: {
+          actions: 'my-actions',
+          cancelButton: 'order-1 right-gap',
+          confirmButton: 'order-2',
+        },
+      }).then((result) => {
+        if (result.isConfirmed) {
+          LoaderInitiator.closeLoader();
+        } else if (result.isDenied) {
+          location.reload();
+        }
+      });
+    }
     const url = UrlParser.parseActiveUrlWithoutCombiner();
     const { data } = await BarterifyDbSource.UserProductDetail(url.id);
     const Container = document.querySelector('#productContainer');

@@ -2,7 +2,7 @@ import Swal from 'sweetalert2';
 import { createProfileEditFormTemplate } from '../templates/template-creator';
 import BarterifyDbSource from '../../data/barterifydb-source';
 import { redirectUserProfileEdit } from '../../utils/redirect-helper';
-import LoaderInitiator from '../../utils/loader-helper';
+import LoaderInitiator from '../../utils/loader-initiator';
 
 const UserProfileEdit = {
   async render() {
@@ -70,7 +70,7 @@ const UserProfileEdit = {
           Swal.fire({
             icon: 'error',
             title: 'Oops...',
-            text: 'Mohon lengkapi semua data',
+            text: 'Mohon lengkapi semua data atau cek koneksi internet',
           });
         } else {
           Swal.fire({

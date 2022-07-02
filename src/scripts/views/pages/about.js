@@ -1,5 +1,5 @@
 import BarterifyDbSource from '../../data/barterifydb-source';
-import LoaderInitiator from '../../utils/loader-helper';
+import LoaderInitiator from '../../utils/loader-initiator';
 import { createTeamCardTemplate } from '../templates/template-creator';
 
 const About = {

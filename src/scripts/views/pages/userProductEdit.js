@@ -3,7 +3,7 @@ import { createProductEditFormTemplate, createCategoriesTemplate } from '../temp
 import BarterifyDbSource from '../../data/barterifydb-source';
 import { redirectUserProductEdit } from '../../utils/redirect-helper';
 import UrlParser from '../../routes/url-parser';
-import LoaderInitiator from '../../utils/loader-helper';
+import LoaderInitiator from '../../utils/loader-initiator';
 
 const UserProductEdit = {
   async render() {
@@ -134,7 +134,7 @@ const UserProductEdit = {
           Swal.fire({
             icon: 'error',
             title: 'Oops...',
-            text: 'Mohon lengkapi semua data',
+            text: 'Mohon lengkapi semua data atau cek koneksi internet',
           });
         } else {
           Swal.fire({

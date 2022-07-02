@@ -1,4 +1,4 @@
-import LoaderInitiator from '../../utils/loader-helper';
+import LoaderInitiator from '../../utils/loader-initiator';
 
 const InformationPage = {
   async render() {

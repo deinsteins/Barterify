@@ -1,6 +1,6 @@
 import Swal from 'sweetalert2';
 import BarterifyDbSource from '../../data/barterifydb-source';
-import LoaderInitiator from '../../utils/loader-helper';
+import LoaderInitiator from '../../utils/loader-initiator';
 import { redirectInventory } from '../../utils/redirect-helper';
 import { createAddProductFormTemplate, createCategoriesTemplate } from '../templates/template-creator';
 
@@ -124,7 +124,7 @@ const addProduct = {
           Swal.fire({
             icon: 'error',
             title: 'Oops...',
-            text: 'Mohon lengkapi semua data',
+            text: 'Mohon lengkapi semua data atau cek koneksi internet',
           });
         } else {
           Swal.fire({

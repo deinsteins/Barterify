@@ -1,4 +1,3 @@
-import Swal from 'sweetalert2';
 import BarterifyDbSource from '../../data/barterifydb-source';
 import LoaderInitiator from '../../utils/loader-initiator';
 import { createProductListTemplate, createFilterFormTemplate } from '../templates/template-creator';
@@ -35,25 +34,6 @@ const Home = {
   },
 
   async afterRender() {
-    if (navigator.onLine === false) {
-      Swal.fire({
-        title: 'Tidak ada koneksi internet',
-        showDenyButton: true,
-        denyButtonText: 'Segarkan',
-        confirmButtonText: 'Lanjutkan',
-        customClass: {
-          actions: 'my-actions',
-          cancelButton: 'order-1 right-gap',
-          confirmButton: 'order-2',
-        },
-      }).then((result) => {
-        if (result.isConfirmed) {
-          LoaderInitiator.closeLoader();
-        } else if (result.isDenied) {
-          location.reload();
-        }
-      });
-    }
     const container = document.querySelector('#list');
     container.innerHTML += createFilterFormTemplate();
     const productList = document.querySelector('#productList');

@@ -1,7 +1,9 @@
+import Swal from 'sweetalert2';
 import UrlParser from '../routes/url-parser';
 import routes from '../routes/routes';
 import DrawerInitiator from '../utils/drawer-initiator';
 import scrollToTop from '../utils/scroll-helper';
+import LoaderInitiator from '../utils/loader-initiator';
 
 class App {
   constructor({ button, drawer, content }) {
@@ -20,6 +22,25 @@ class App {
   }
 
   async renderPage() {
+    if (navigator.onLine === false) {
+      Swal.fire({
+        title: 'Tidak ada koneksi internet',
+        showDenyButton: true,
+        denyButtonText: 'Segarkan',
+        confirmButtonText: 'Lanjutkan',
+        customClass: {
+          actions: 'my-actions',
+          cancelButton: 'order-1 right-gap',
+          confirmButton: 'order-2',
+        },
+      }).then((result) => {
+        if (result.isConfirmed) {
+          LoaderInitiator.closeLoader();
+        } else if (result.isDenied) {
+          location.reload();
+        }
+      });
+    }
     const url = UrlParser.parseActiveUrlWithCombiner();
     const page = routes[url];
     this._content.innerHTML = await page.render();

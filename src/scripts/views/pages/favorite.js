@@ -1,4 +1,3 @@
-import Swal from 'sweetalert2';
 import FavoriteProductIdb from '../../data/favorite-product-idb';
 import LoaderInitiator from '../../utils/loader-initiator';
 import { createProductListTemplate } from '../templates/template-creator';
@@ -42,25 +41,6 @@ const Favorites = {
 
   async afterRender() {
     LoaderInitiator.showLoader();
-    if (navigator.onLine === false) {
-      Swal.fire({
-        title: 'Tidak ada koneksi internet',
-        showDenyButton: true,
-        denyButtonText: 'Segarkan',
-        confirmButtonText: 'Lanjutkan',
-        customClass: {
-          actions: 'my-actions',
-          cancelButton: 'order-1 right-gap',
-          confirmButton: 'order-2',
-        },
-      }).then((result) => {
-        if (result.isConfirmed) {
-          LoaderInitiator.closeLoader();
-        } else if (result.isDenied) {
-          location.reload();
-        }
-      });
-    }
     const list = await FavoriteProductIdb.getAllProduct();
     const productContainer = document.querySelector('#productCard');
     if (list.length === 0) {

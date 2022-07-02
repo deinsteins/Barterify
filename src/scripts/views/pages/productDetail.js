@@ -35,25 +35,6 @@ const productDetail = {
   async afterRender() {
     const url = UrlParser.parseActiveUrlWithoutCombiner();
     LoaderInitiator.showLoader();
-    if (navigator.onLine === false) {
-      Swal.fire({
-        title: 'Tidak ada koneksi internet',
-        showDenyButton: true,
-        denyButtonText: 'Segarkan',
-        confirmButtonText: 'Lanjutkan',
-        customClass: {
-          actions: 'my-actions',
-          cancelButton: 'order-1 right-gap',
-          confirmButton: 'order-2',
-        },
-      }).then((result) => {
-        if (result.isConfirmed) {
-          LoaderInitiator.closeLoader();
-        } else if (result.isDenied) {
-          location.reload();
-        }
-      });
-    }
     const { data } = await BarterifyDbSource.ProductDetail(url.id);
     if (!data) {
       Swal.fire({

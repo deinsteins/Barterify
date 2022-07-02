@@ -9,6 +9,8 @@ const Chat = {
     header.style.display = 'none';
     const footer = document.querySelector('footer');
     footer.style.display = 'none';
+    const scrollTop = document.querySelector('scroll-top');
+    scrollTop.style.display = 'none';
     return `
     <section class="chat">
     <div class="navbar">     
